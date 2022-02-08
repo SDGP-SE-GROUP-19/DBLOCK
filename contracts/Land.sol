@@ -12,16 +12,35 @@ contract Land {
         string district;
         string province;
     }
+    struct Buyer{
+        // Buyer instance variables
+       uint id;
+       string nic;
+       string name;
+       uint age;
+       string city;
+       string email; 
+    }
 
     // mappings
     mapping(uint => Deed) public deeds;
+    mapping(uint => Buyer) public Buyersmapping;
+    
+    //arrays
+    address[] public Buyerlist;
+
 
     // Count tracking variables
     uint private deedCount = 0;
+    uint private buyersCount=0;
 
     // getter for deed count
     function getDeedCount() public view returns (uint) {
         return deedCount;
+    }
+    // getter for buyer count
+    function getBuyersCount() public view returns(uint){
+        return buyersCount;
     }
 
     //getters for Deed struct
@@ -48,10 +67,28 @@ contract Land {
     function getDeedProvince(uint index) public view returns (string memory) {
         return deeds[index].province;
     }
+    //getter for the Buyerlist array
+    function getBuyer() public view returns( address [] memory){
+        return(Buyerlist);
+    }
 
     // function to add a new deed to the deeds mapping
     function addNewDeed(string memory _no, string memory _streetName, string memory _city, string memory _district,string memory _province) public {
         deeds[deedCount] = Deed(deedCount, _no, _streetName, _city, _district, _province);
         deedCount++;
     }
+
+    //function to register new Buyer
+    function registerBuyer(uint _id, string memory _nic, string memory _name, uint _age, string memory _city, string memory _email) public {
+        
+        Buyersmapping[buyersCount] = Buyer(_id, _nic,  _name, _age, _city, _email);
+        buyersCount++;
+
+    }
+    //function to display buyer details
+    function displayBuyer(uint index) public view returns (uint _id, string memory _nic, string memory _name, uint _age, string memory _city, string memory _email){
+        return(Buyersmapping[index].id, Buyersmapping[index].nic,Buyersmapping[index].name,Buyersmapping[index].age,Buyersmapping[index].city,Buyersmapping[index].email);
+
+    } 
+    
 }
