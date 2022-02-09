@@ -32,10 +32,16 @@ contract Land {
 		string email;
     }
 
+    struct Admin {
+        // Admin instance variables
+        uint id;
+    }
+
     // mappings
     mapping(uint => Deed) public deeds;
     mapping(uint => Buyer) public Buyersmapping;
     mapping(uint => Seller) public sellersMapping;
+    mapping(uint => Admin) public adminMapping;
     
     //arrays
     address[] public Buyerlist;
@@ -43,8 +49,9 @@ contract Land {
 
     // Count tracking variables
     uint private deedCount = 0;
-    uint private buyersCount=0;
+    uint private buyersCount = 0;
     uint private sellersCount = 0;
+    uint private adminCount = 0;
 
     // getter for deed count
     function getDeedCount() public view returns (uint) {
@@ -58,6 +65,11 @@ contract Land {
     // getter for seller count
     function getSellersCount() public view returns(uint){
         return sellersCount;
+    }
+
+    // getter for admin count
+    function getAdminCount() public view returns(uint){
+        return adminCount;
     }
 
     //getters for Deed struct
@@ -124,6 +136,12 @@ contract Land {
     //function to display seller details
     function displaySeller(uint index) public view returns (string memory _name, uint _id, string memory _nic, uint _age, string memory _city, string memory _email){
         return(sellersMapping[index].name, sellersMapping[index].id, sellersMapping[index].nic, sellersMapping[index].age, sellersMapping[index].city, sellersMapping[index].email);
+    }
+
+    //function to add admin
+    function addAdmin() private {
+        adminCount++;
+        adminMapping[adminCount] = Admin(adminCount);
     }
     
 }
