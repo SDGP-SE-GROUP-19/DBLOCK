@@ -21,6 +21,14 @@ contract Land {
        string city;
        string email; 
     }
+    struct Lawyer{
+        // Lawyer instance variables
+        uint lawyerId;
+        string lawyerName;
+        string lawyernic;
+        string lawyerRegNo;
+        string lawyerEmail;
+    }
 
     struct Seller {
         // Seller instance variables
@@ -32,19 +40,29 @@ contract Land {
 		string email;
     }
 
+    struct Admin {
+        // Admin instance variables
+        uint id;
+    }
+
     // mappings
     mapping(uint => Deed) public deeds;
     mapping(uint => Buyer) public Buyersmapping;
     mapping(uint => Seller) public sellersMapping;
+    mapping(uint => Lawyer) public Lawyersmapping;
+    mapping(uint => Admin) public adminMapping;
     
     //arrays
     address[] public Buyerlist;
     address[] public sellerList;
+    address[] public lawyerList;
 
     // Count tracking variables
     uint private deedCount = 0;
-    uint private buyersCount=0;
+    uint private buyersCount = 0;
     uint private sellersCount = 0;
+    uint private lawyerCount=0;
+    uint private adminCount = 0;
 
     // getter for deed count
     function getDeedCount() public view returns (uint) {
@@ -54,10 +72,19 @@ contract Land {
     function getBuyersCount() public view returns(uint){
         return buyersCount;
     }
+    // getter for lawyer count
+    function getLawyerCount() public view returns(uint){
+        return lawyerCount;
+    }
 
     // getter for seller count
     function getSellersCount() public view returns(uint){
         return sellersCount;
+    }
+
+    // getter for admin count
+    function getAdminCount() public view returns(uint){
+        return adminCount;
     }
 
     //getters for Deed struct
@@ -94,6 +121,11 @@ contract Land {
         return(sellerList);
     }
 
+    //getter for the lawyerList array
+    function getLawyer() public view returns( address [] memory){
+        return(lawyerList);
+    }
+
     // function to add a new deed to the deeds mapping
     function addNewDeed(string memory _no, string memory _streetName, string memory _city, string memory _district,string memory _province) public {
         deeds[deedCount] = Deed(deedCount, _no, _streetName, _city, _district, _province);
@@ -115,6 +147,12 @@ contract Land {
 
     }
 
+    //function to register a new Lawyer
+    function registerLawyer(uint _lawyerId, string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail) public {
+        Lawyersmapping[lawyerCount] = Lawyer(_lawyerId, _lawyerName, _lawyernic, _lawyerRegNo, _lawyerEmail);
+        lawyerCount++;
+    }
+
     //function to display buyer details
     function displayBuyer(uint index) public view returns (uint _id, string memory _nic, string memory _name, uint _age, string memory _city, string memory _email){
         return(Buyersmapping[index].id, Buyersmapping[index].nic,Buyersmapping[index].name,Buyersmapping[index].age,Buyersmapping[index].city,Buyersmapping[index].email);
@@ -125,5 +163,15 @@ contract Land {
     function displaySeller(uint index) public view returns (string memory _name, uint _id, string memory _nic, uint _age, string memory _city, string memory _email){
         return(sellersMapping[index].name, sellersMapping[index].id, sellersMapping[index].nic, sellersMapping[index].age, sellersMapping[index].city, sellersMapping[index].email);
     }
+
+    //function to add admin
+    function addAdmin() private {
+        adminCount++;
+        adminMapping[adminCount] = Admin(adminCount);
+    }
     
+    //function to display lawyer details
+    function displayLawyer(uint index) public view returns (uint _lawyerId, string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail){
+        return(Lawyersmapping[index].lawyerId, Lawyersmapping[index].lawyerName, Lawyersmapping[index].lawyernic, Lawyersmapping[index].lawyerRegNo, Lawyersmapping[index].lawyerEmail);
+    }
 }
