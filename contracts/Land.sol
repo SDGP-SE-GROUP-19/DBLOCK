@@ -11,6 +11,8 @@ contract Land {
         string city;
         string district;
         string province;
+        uint assignedLawyerId; // to link the relevant lawyer to the deed
+        uint assignedSellerId; // to link the seller lawyer to the deed
     }
 
     struct Buyer{
@@ -22,7 +24,7 @@ contract Land {
        string city;
        string email; 
     }
-    
+
     struct Lawyer{
         // Lawyer instance variables
         uint lawyerId;
@@ -70,10 +72,12 @@ contract Land {
     function getDeedCount() public view returns (uint) {
         return deedCount;
     }
+
     // getter for buyer count
     function getBuyersCount() public view returns(uint){
         return buyersCount;
     }
+
     // getter for lawyer count
     function getLawyerCount() public view returns(uint){
         return lawyerCount;
@@ -113,6 +117,15 @@ contract Land {
     function getDeedProvince(uint index) public view returns (string memory) {
         return deeds[index].province;
     }
+
+    function getLawyerIdOfDeed(uint index) public view returns (uint) {
+        return deeds[index].assignedLawyerId;
+    }
+
+    function getSellerIdOfDeed(uint index) public view returns (uint) {
+        return deeds[index].assignedSellerId;
+    }
+
     //getter for the Buyerlist array
     function getBuyer() public view returns( address [] memory){
         return(Buyerlist);
@@ -129,8 +142,8 @@ contract Land {
     }
 
     // function to add a new deed to the deeds mapping
-    function addNewDeed(string memory _no, string memory _streetName, string memory _city, string memory _district,string memory _province) public {
-        deeds[deedCount] = Deed(deedCount, _no, _streetName, _city, _district, _province);
+    function addNewDeed(string memory _no, string memory _streetName, string memory _city, string memory _district, string memory _province, uint _assignedLawyerId, uint _assignedSellerId) public {
+        deeds[deedCount] = Deed(deedCount, _no, _streetName, _city, _district, _province, _assignedLawyerId, _assignedSellerId);
         deedCount++;
     }
 
