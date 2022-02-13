@@ -12,6 +12,7 @@ contract Land {
         string district;
         string province;
     }
+
     struct Buyer{
         // Buyer instance variables
        uint id;
@@ -21,6 +22,7 @@ contract Land {
        string city;
        string email; 
     }
+    
     struct Lawyer{
         // Lawyer instance variables
         uint lawyerId;
