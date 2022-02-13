@@ -12,7 +12,7 @@ contract Land {
         string district;
         string province;
         uint assignedLawyerId; // to link the relevant lawyer to the deed
-        uint assignedSellerId; // to link the seller lawyer to the deed
+        uint assignedSellerId; // to link the relevant seller to the deed
     }
 
     struct Buyer{
