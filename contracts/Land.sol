@@ -126,6 +126,34 @@ contract Land {
         return deeds[index].assignedSellerId;
     }
 
+    // function to compare strings
+    function compareStrings (string memory s1, string memory s2) private pure returns (bool) {
+        if (keccak256(abi.encodePacked(s1)) == keccak256(abi.encodePacked(s2)))
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+
+    // function to get the deed by the land address for searching purposes
+    function findDeedByAddress(string memory _no, string memory _streetName, string memory _city, string memory _district, string memory _province) public view returns (uint) {
+        uint i = 0;
+        uint returningDeedId;
+        while (i < deedCount)
+        {
+            if (compareStrings(_no, deeds[i].no) && compareStrings(_streetName, deeds[i].streetName) && compareStrings(_city, deeds[i].city) && compareStrings(_district, deeds[i].district) && compareStrings(_province, deeds[i].province))
+            {
+                returningDeedId = deeds[i].deedId;
+                break;
+            }
+            i++;
+        }
+        return returningDeedId;
+    }
+
     //getter for the Buyerlist array
     function getBuyer() public view returns( address [] memory){
         return(Buyerlist);
