@@ -127,7 +127,7 @@ contract Land {
     }
 
     // function to compare strings
-    function compareStrings (string memory s1, string memory s2) private pure returns (bool) {
+    function compareStrings(string memory s1, string memory s2) private pure returns (bool) {
         if (keccak256(abi.encodePacked(s1)) == keccak256(abi.encodePacked(s2)))
         {
             return true;
