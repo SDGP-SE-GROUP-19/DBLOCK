@@ -124,14 +124,7 @@ class App extends Component {
       this.state.newAssignedSellerId
     ).send({ from: accounts[0] });
 
-    // calling the getDeedId method from the smart contract and storing it in a variable
-    const response = await contract.methods.findDeedByAddress(
-      this.state.newNo,
-      this.state.newStreetName,
-      this.state.newCity,
-      this.state.newDistrict,
-      this.state.newProvince
-    ).call();
+    const response = await contract.methods.getDeedCount().call();
 
     // Log variable
     console.log(response);
@@ -150,9 +143,9 @@ class App extends Component {
     return (
       <div className="App">
 
-        <h1>DBlock</h1>
+        <h3>Add a new deed</h3>
 
-        <div>Last added deed ID: { this.state.storageValue }</div>
+        <div>Deed count: { this.state.storageValue }</div>
 
         <p></p>
 
