@@ -23,6 +23,7 @@ contract Land {
        uint age;
        string city;
        string email; 
+       uint telephoneNumber;
     }
 
     struct Lawyer{
@@ -42,6 +43,7 @@ contract Land {
         uint age;
         string city;
 		string email;
+        uint telephoneNumber;
     }
 
     struct Admin {
@@ -176,16 +178,15 @@ contract Land {
     }
 
     //function to register new Buyer
-    function registerBuyer(uint _id, string memory _nic, string memory _name, uint _age, string memory _city, string memory _email) public {
-        
-        Buyersmapping[buyersCount] = Buyer(_id, _nic,  _name, _age, _city, _email);
+    function registerBuyer(uint _id, string memory _nic, string memory _name, uint _age, string memory _city, string memory _email, uint _telephoneNumber) public {
+        Buyersmapping[buyersCount] = Buyer(_id, _nic,  _name, _age, _city, _email, _telephoneNumber);
         buyersCount++;
 
     }
 
     //function to register a seller
-    function registerSeller(string memory _name, uint _id, string memory _nic, uint _age, string memory _city, string memory _email) public {
-        sellersMapping[sellersCount] = Seller(_name, _id, _nic, _age, _city, _email);
+    function registerSeller(string memory _name, uint _id, string memory _nic, uint _age, string memory _city, string memory _email, uint _telephoneNumber) public {
+        sellersMapping[sellersCount] = Seller(_name, _id, _nic, _age, _city, _email, _telephoneNumber);
         sellersCount++;
 
     }
@@ -197,14 +198,14 @@ contract Land {
     }
 
     //function to display buyer details
-    function displayBuyer(uint index) public view returns (uint _id, string memory _nic, string memory _name, uint _age, string memory _city, string memory _email){
-        return(Buyersmapping[index].id, Buyersmapping[index].nic,Buyersmapping[index].name,Buyersmapping[index].age,Buyersmapping[index].city,Buyersmapping[index].email);
+    function displayBuyer(uint index) public view returns (uint _id, string memory _nic, string memory _name, uint _age, string memory _city, string memory _email, uint _telephoneNumber){
+        return(Buyersmapping[index].id, Buyersmapping[index].nic,Buyersmapping[index].name,Buyersmapping[index].age,Buyersmapping[index].city,Buyersmapping[index].email,Buyersmapping[index].telephoneNumber);
 
     } 
 
     //function to display seller details
-    function displaySeller(uint index) public view returns (string memory _name, uint _id, string memory _nic, uint _age, string memory _city, string memory _email){
-        return(sellersMapping[index].name, sellersMapping[index].id, sellersMapping[index].nic, sellersMapping[index].age, sellersMapping[index].city, sellersMapping[index].email);
+    function displaySeller(uint index) public view returns (string memory _name, uint _id, string memory _nic, uint _age, string memory _city, string memory _email, uint _telephoneNumber){
+        return(sellersMapping[index].name, sellersMapping[index].id, sellersMapping[index].nic, sellersMapping[index].age, sellersMapping[index].city, sellersMapping[index].email, sellersMapping[index].telephoneNumber);
     }
 
     //function to add admin
