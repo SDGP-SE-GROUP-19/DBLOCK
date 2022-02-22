@@ -82,14 +82,16 @@ class SearchDeed extends Component {
         const deedSellerResponse = await contract.methods.getSellerIdOfDeed(searchingDeedId).call();
 
         // log variables
-        console.log("Deed Info:");
-        console.log(deedNoResponse);
-        console.log(deedStreetResponse);
-        console.log(deedCityResponse);
-        console.log(deedDistrictResponse);
-        console.log(deedProvinceResponse);
-        console.log(deedLawyerResponse);
-        console.log(deedSellerResponse);
+        console.log(
+            "Deed Info: ",
+            deedNoResponse,", ",
+            deedStreetResponse,", ",
+            deedCityResponse,", ",
+            deedDistrictResponse,", ",
+            deedProvinceResponse,", LID[",
+            deedLawyerResponse,"], SID[",
+            deedSellerResponse,"]"
+        );
 
         // setting the state with relevant info
         this.setState({
