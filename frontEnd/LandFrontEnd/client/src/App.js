@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import NewDeedForm from "./components/NewDeedForm";
-import SearchDeed from "./components/SearchDeed";
+import AdminNavigator from "./components/AdminNavigator";
 
 class App extends Component {
 
@@ -9,11 +8,7 @@ class App extends Component {
 
     return (
       <div className="App">
-
-        {/* <NewDeedForm></NewDeedForm> */}
-
-        <SearchDeed></SearchDeed>
-
+        <AdminNavigator />
       </div>
     );
   }
