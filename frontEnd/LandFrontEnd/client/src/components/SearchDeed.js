@@ -4,27 +4,32 @@ import getWeb3 from "../getWeb3";
 
 class SearchDeed extends Component {
 
-    state = {
+    constructor(props) {
 
-        searchedNo: "",
-        searchedStreetName: "",
-        searchedCity: "",
-        searchedDistrict: "",
-        searchedProvince: "",
-        searchedLawyerId: 0,
-        searchedSellerId: 0,
+        super(props);
 
-        web3: null,
-        accounts: null,
-        contract: null,
+        this.state = {
 
-        searchingDeedId: 0
-    };
+            searchedNo: "",
+            searchedStreetName: "",
+            searchedCity: "",
+            searchedDistrict: "",
+            searchedProvince: "",
+            searchedLawyerId: 0,
+            searchedSellerId: 0,
+
+            web3: null,
+            accounts: null,
+            contract: null,
+
+            searchingDeedId: 0
+        }
+    }
 
     componentDidMount = async () => {
 
         try {
-    
+
           // Binding for scope
           this.handleSubmit = this.handleSubmit.bind(this);
           this.handleSearchingDeedIdChange = this.handleSearchingDeedIdChange.bind(this);

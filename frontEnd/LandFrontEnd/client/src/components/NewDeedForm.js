@@ -4,22 +4,27 @@ import getWeb3 from "../getWeb3";
 
 class NewDeedForm extends Component {
 
-  state = {
+  constructor(props) {
 
-    storageValue: 0,
+    super(props);
 
-    web3: null,
-    accounts: null,
-    contract: null,
-    
-    newNo: "",
-    newStreetName: "",
-    newCity: "",
-    newDistrict: "",
-    newProvince: "",
-    newAssignedLawyerId: 0,
-    newAssignedSellerId: 0
-  };
+    this.state = {
+
+      storageValue: 0,
+
+      web3: null,
+      accounts: null,
+      contract: null,
+      
+      newNo: "",
+      newStreetName: "",
+      newCity: "",
+      newDistrict: "",
+      newProvince: "",
+      newAssignedLawyerId: 0,
+      newAssignedSellerId: 0
+    }
+  }
 
   componentDidMount = async () => {
 
