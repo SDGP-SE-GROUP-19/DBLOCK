@@ -156,6 +156,13 @@ contract Land {
         return returningDeedId;
     }
 
+    // function to change land deed buyer and seller
+    function changeDeedBuyerAndSeller(uint _deedId, uint _assignedLawyerId, uint _assignedSellerId) public {
+        
+        deeds[_deedId].assignedLawyerId = _assignedLawyerId;
+        deeds[_deedId].assignedSellerId = _assignedSellerId;
+    }
+
     //getter for the Buyerlist array
     function getBuyer() public view returns( address [] memory){
         return(Buyerlist);
