@@ -101,7 +101,7 @@ class SearchDeed2 extends Component {
         event.preventDefault();
 
         // Initialize account and contract variables from state
-        const { accounts, contract } = this.state;
+        const { contract } = this.state;
 
         // Calling findDeedByAddress method from the smart contract
         const response = await contract.methods.findDeedByAddress(
