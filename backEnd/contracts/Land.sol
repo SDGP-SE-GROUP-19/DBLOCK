@@ -250,4 +250,39 @@ contract Land {
     function getLawyerEmail(uint index) public view returns (string memory) {
         return Lawyersmapping[index].lawyerEmail;
     }
+
+    // function to get the seller id
+    function getSellerId(uint index) public view returns (uint) {
+        return sellersMapping[index].id;
+    }
+
+    // function to get the seller name
+    function getSellerName(uint index) public view returns (string memory) {
+        return sellersMapping[index].name;
+    }
+
+    // function to get the seller nic
+    function getSellerNic(uint index) public view returns (string memory) {
+        return sellersMapping[index].nic;
+    }
+
+    // function to get the seller age
+    function getSellerAge(uint index) public view returns (uint) {
+        return sellersMapping[index].age;
+    }
+
+    // function to get the seller city
+    function getSellerCity(uint index) public view returns (string memory) {
+        return sellersMapping[index].city;
+    }
+
+    // function to get the seller email
+    function getSellerEmail(uint index) public view returns (string memory) {
+        return sellersMapping[index].email;
+    }
+
+    // function to get the seller telephonenumber
+    function getSellerTelephoneNo(uint index) public view returns (uint) {
+        return sellersMapping[index].telephoneNumber;
+    }
 }
