@@ -199,23 +199,23 @@ class SearchDeed2 extends Component {
 
           <fieldset className="displayLawyerInfo">
 
-            <div>Lawyer ID: { this.state.lawyerId }</div>
+            <h4>Relevant Lawyer's Info</h4>
+            <p></p>
 
+            <div>Lawyer ID: { this.state.lawyerId }</div>
             <p></p>
 
             <div>Lawyer Name: { this.state.lawyerName }</div>
-
             <p></p>
 
             <div>Lawyer NIC: { this.state.lawyerNic }</div>
-
             <p></p>
 
             <div>Lawyer Registration Number: { this.state.lawyerRegNo }</div>
-
             <p></p>
 
             <div>Lawyer Email: { this.state.lawyerEmail }</div>
+            <p></p>
 
           </fieldset>
 
