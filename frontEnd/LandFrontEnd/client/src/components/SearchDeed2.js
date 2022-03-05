@@ -10,7 +10,13 @@ class SearchDeed2 extends Component {
 
     this.state = {
 
-      storageValue: 0,
+      storageValue: 0, // Deed ID
+
+      lawyerId: 0,
+      lawyerName: "",
+      lawyerNic: "",
+      lawyerRegNo: "",
+      lawyerEmail: "",
 
       web3: null,
       accounts: null,
@@ -104,7 +110,7 @@ class SearchDeed2 extends Component {
     const { contract } = this.state;
 
     // Calling findDeedByAddress method from the smart contract
-    const response = await contract.methods.findDeedByAddress(
+    const deedIndex = await contract.methods.findDeedByAddress(
       this.state.newNo,
       this.state.newStreetName,
       this.state.newCity,
@@ -112,11 +118,35 @@ class SearchDeed2 extends Component {
       this.state.newProvince
     ).call();
 
-    // Log variable
-    console.log(response);
+    // getting the lawyers index 
+    const lawyerIndex = await contract.methods.getLawyerIdOfDeed(deedIndex).call();
+
+    // getting the lawyers info
+    const lawyerIdVar = await contract.methods.getLawyerId(lawyerIndex).call();
+    const lawyerNameVar = await contract.methods.getLawyerName(lawyerIndex).call();
+    const lawyerNicVar = await contract.methods.getLawyerNic(lawyerIndex).call();
+    const lawyerRegNoVar = await contract.methods.getLawyerRegNo(lawyerIndex).call();
+    const lawyerEmailVar = await contract.methods.getLawyerEmail(lawyerIndex).call();
+
+    // Log variables
+    console.log(
+      "Deed ID :", deedIndex,
+      ", Lawyer ID :", lawyerIdVar,
+      ", Lawyer Name :", lawyerNameVar,
+      ", Lawyer NIC :", lawyerNicVar,
+      ", Lawyer Registration No :", lawyerRegNoVar,
+      ", Lawyer Email :", lawyerEmailVar
+    );
 
     // Set the state storageValue with the variable
-    this.setState({ storageValue: response });
+    this.setState({ 
+      storageValue: deedIndex,
+      lawyerId: lawyerIdVar,
+      lawyerName: lawyerNameVar, 
+      lawyerNic: lawyerNicVar, 
+      lawyerRegNo: lawyerRegNoVar,
+      lawyerEmail: lawyerEmailVar
+    });
   }
 
   render() {
@@ -169,7 +199,23 @@ class SearchDeed2 extends Component {
 
           <fieldset className="displayLawyerInfo">
 
+            <div>Lawyer ID: { this.state.lawyerId }</div>
 
+            <p></p>
+
+            <div>Lawyer Name: { this.state.lawyerName }</div>
+
+            <p></p>
+
+            <div>Lawyer NIC: { this.state.lawyerNic }</div>
+
+            <p></p>
+
+            <div>Lawyer Registration Number: { this.state.lawyerRegNo }</div>
+
+            <p></p>
+
+            <div>Lawyer Email: { this.state.lawyerEmail }</div>
 
           </fieldset>
 
