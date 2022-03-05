@@ -131,33 +131,55 @@ class SearchDeed2 extends Component {
 
         <h3>Deed Search By Address</h3>
 
-        <div>Deed ID: { this.state.storageValue }</div>
-
         <p></p>
 
         <form onSubmit={ this.handleSubmit }>
 
-          <label htmlFor="no">Address No:</label>
-          <input type="text" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) }/>
+          <fieldset className="getDeedInfo">
+
+            <label htmlFor="no">Address No:</label>
+            <input type="text" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) }/>
+            <p></p>
+
+            <label htmlFor="streetname">Street:</label>
+            <input type="text" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange.bind(this) }/>
+            <p></p>
+
+            <label htmlFor="city">City:</label>
+            <input type="text" id="city" value={ this.state.newCity } onChange={ this.handleCityChange.bind(this) }/>
+            <p></p>
+
+            <label htmlFor="district">District:</label>
+            <input type="text" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange.bind(this) }/>
+            <p></p>
+
+            <label htmlFor="province">Province:</label>
+            <input type="text" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) }/>
+            <p></p>
+
+            <input type="submit" value="Submit"/>
+
+          </fieldset>
+
           <p></p>
 
-          <label htmlFor="streetname">Street:</label>
-          <input type="text" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange.bind(this) }/>
+          <div>Deed ID: { this.state.storageValue }</div>
+
           <p></p>
 
-          <label htmlFor="city">City:</label>
-          <input type="text" id="city" value={ this.state.newCity } onChange={ this.handleCityChange.bind(this) }/>
+          <fieldset className="displayLawyerInfo">
+
+
+
+          </fieldset>
+
           <p></p>
 
-          <label htmlFor="district">District:</label>
-          <input type="text" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange.bind(this) }/>
-          <p></p>
+          <fieldset className="displayOwnerInfo">
 
-          <label htmlFor="province">Province:</label>
-          <input type="text" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) }/>
-          <p></p>
+            
 
-          <input type="submit" value="Submit"/>
+          </fieldset>
 
         </form>
 
