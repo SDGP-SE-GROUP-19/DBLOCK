@@ -18,6 +18,14 @@ class SearchDeed2 extends Component {
       lawyerRegNo: "",
       lawyerEmail: "",
 
+      ownerId: 0,
+      ownerName: "",
+      ownerNic: "",
+      ownerAge: 0,
+      ownerCity: "",
+      ownerTeleNo: 0,
+      ownerEmail: "",
+
       web3: null,
       accounts: null,
       contract: null,
@@ -128,24 +136,56 @@ class SearchDeed2 extends Component {
     const lawyerRegNoVar = await contract.methods.getLawyerRegNo(lawyerIndex).call();
     const lawyerEmailVar = await contract.methods.getLawyerEmail(lawyerIndex).call();
 
+    // getting the owners index
+    const ownerIndex = await contract.methods.getSellerIdOfDeed(deedIndex).call();
+
+    // getting the owners info
+    const ownerIdVar = await contract.methods.getSellerId(ownerIndex).call();
+    const ownerNameVar = await contract.methods.getSellerName(ownerIndex).call();
+    const ownerNicVar = await contract.methods.getSellerNic(ownerIndex).call();
+    const ownerAgeVar = await contract.methods.getSellerAge(ownerIndex).call();
+    const ownerCityVar = await contract.methods.getSellerCity(ownerIndex).call();
+    const ownerEmailVar = await contract.methods.getSellerEmail(ownerIndex).call();
+    const ownerTeleNoVar = await contract.methods.getSellerTelephoneNo(ownerIndex).call();
+
     // Log variables
     console.log(
+
       "Deed ID :", deedIndex,
+
       ", Lawyer ID :", lawyerIdVar,
       ", Lawyer Name :", lawyerNameVar,
       ", Lawyer NIC :", lawyerNicVar,
       ", Lawyer Registration No :", lawyerRegNoVar,
-      ", Lawyer Email :", lawyerEmailVar
+      ", Lawyer Email :", lawyerEmailVar,
+
+      ", Owner ID :", ownerIdVar,
+      ", Owner Name :", ownerNameVar,
+      ", Owner NIC :", ownerNicVar,
+      ", Owner Age :", ownerAgeVar,
+      ", Owner City :", ownerCityVar,
+      ", Owner Email :", ownerEmailVar,
+      ", Owner Telephone No :", ownerTeleNoVar
     );
 
-    // Set the state storageValue with the variable
-    this.setState({ 
+    // Set the state with the variables
+    this.setState({
+
       storageValue: deedIndex,
+
       lawyerId: lawyerIdVar,
       lawyerName: lawyerNameVar, 
       lawyerNic: lawyerNicVar, 
       lawyerRegNo: lawyerRegNoVar,
-      lawyerEmail: lawyerEmailVar
+      lawyerEmail: lawyerEmailVar,
+
+      ownerId: ownerIdVar,
+      ownerName: ownerNameVar,
+      ownerNic: ownerNicVar,
+      ownerAge: ownerAgeVar,
+      ownerCity: ownerCityVar,
+      ownerTeleNo: ownerTeleNoVar,
+      ownerEmail: ownerEmailVar
     });
   }
 
@@ -223,7 +263,29 @@ class SearchDeed2 extends Component {
 
           <fieldset className="displayOwnerInfo">
 
-            
+            <h4>Relevant Owner's Info</h4>
+            <p></p>
+
+            <div>Owner ID: { this.state.ownerId }</div>
+            <p></p>
+
+            <div>Owner Name: { this.state.ownerName }</div>
+            <p></p>
+
+            <div>Owner NIC: { this.state.ownerNic }</div>
+            <p></p>
+
+            <div>Owner Age: { this.state.ownerAge }</div>
+            <p></p>
+
+            <div>Owner City: { this.state.ownerCity }</div>
+            <p></p>
+
+            <div>Owner Telephone Number: { this.state.ownerTeleNo }</div>
+            <p></p>
+
+            <div>Owner Email: { this.state.ownerEmail }</div>
+            <p></p>
 
           </fieldset>
 
