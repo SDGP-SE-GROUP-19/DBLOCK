@@ -156,6 +156,38 @@ contract Land {
         return returningDeedId;
     }
 
+    // function to get the lawyer by email
+    function findLawyerByEmail(string memory _email) public view returns (uint) {
+        uint i = 0;
+        uint returningLawyerId;
+        while (i < lawyerCount)
+        {
+            if (compareStrings(_email, Lawyersmapping[i].lawyerEmail))
+            {
+                returningLawyerId = Lawyersmapping[i].lawyerId;
+                break;
+            }
+            i++;
+        }
+        return returningLawyerId;
+    }
+
+    //function to get the seller by email
+    function findSellerByEmail(string memory _email) public view returns (uint) {
+        uint i = 0;
+        uint returningSellerId;
+        while (i < sellersCount)
+        {
+            if (compareStrings(_email, sellersMapping[i].email))
+            {
+                returningSellerId = sellersMapping[i].id;
+                break;
+            }
+            i++;
+        }
+        return returningSellerId;
+    }
+
     // function to change land deed buyer and seller
     function changeDeedBuyerAndSeller(uint _deedId, uint _assignedLawyerId, uint _assignedSellerId) public {
         
@@ -185,22 +217,20 @@ contract Land {
     }
 
     //function to register new Buyer
-    function registerBuyer(uint _id, string memory _nic, string memory _name, uint _age, string memory _city, string memory _email, uint _telephoneNumber) public {
-        Buyersmapping[buyersCount] = Buyer(_id, _nic,  _name, _age, _city, _email, _telephoneNumber);
+    function registerBuyer(string memory _nic, string memory _name, uint _age, string memory _city, string memory _email, uint _telephoneNumber) public {
+        Buyersmapping[buyersCount] = Buyer(buyersCount, _nic,  _name, _age, _city, _email, _telephoneNumber);
         buyersCount++;
-
     }
 
     //function to register a seller
-    function registerSeller(string memory _name, uint _id, string memory _nic, uint _age, string memory _city, string memory _email, uint _telephoneNumber) public {
-        sellersMapping[sellersCount] = Seller(_name, _id, _nic, _age, _city, _email, _telephoneNumber);
+    function registerSeller(string memory _name, string memory _nic, uint _age, string memory _city, string memory _email, uint _telephoneNumber) public {
+        sellersMapping[sellersCount] = Seller(_name, sellersCount, _nic, _age, _city, _email, _telephoneNumber);
         sellersCount++;
-
     }
 
     //function to register a new Lawyer
-    function registerLawyer(uint _lawyerId, string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail) public {
-        Lawyersmapping[lawyerCount] = Lawyer(_lawyerId, _lawyerName, _lawyernic, _lawyerRegNo, _lawyerEmail);
+    function registerLawyer(string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail) public {
+        Lawyersmapping[lawyerCount] = Lawyer(lawyerCount, _lawyerName, _lawyernic, _lawyerRegNo, _lawyerEmail);
         lawyerCount++;
     }
 
