@@ -15,8 +15,8 @@ class ChangeLawSel extends Component {
             contract: null,
 
             deedId: 0,
-            newLawyerId: 0,
-            newSellerId: 0
+            newLawyerEmail: "",
+            newSellerEmail: ""
         }
     }
 
@@ -27,8 +27,8 @@ class ChangeLawSel extends Component {
           // Binding for scope
           this.handleSubmit = this.handleSubmit.bind(this);
           this.handleDeedIdChange = this.handleDeedIdChange.bind(this);
-          this.handleLawyerIdChange = this.handleLawyerIdChange.bind(this);
-          this.handleSellerIdChange = this.handleSellerIdChange.bind(this);
+          this.handleLawyerEmailChange = this.handleLawyerEmailChange.bind(this);
+          this.handleSellerEmailChange = this.handleSellerEmailChange.bind(this);
     
           // Get network provider and web3 instance.
           const web3 = await getWeb3();
@@ -65,16 +65,16 @@ class ChangeLawSel extends Component {
         this.setState({ deedId: event.target.value });
     }
 
-    handleLawyerIdChange(event) {
+    handleLawyerEmailChange(event) {
 
         // Set the state newLawyerId with input
-        this.setState({ newLawyerId: event.target.value });
+        this.setState({ newLawyerEmail: event.target.value });
     }
 
-    handleSellerIdChange(event) {
+    handleSellerEmailChange(event) {
 
         // Set the state newSellerId with input
-        this.setState({ newSellerId: event.target.value });
+        this.setState({ newSellerEmail: event.target.value });
     }
 
     async handleSubmit(event) {
@@ -84,19 +84,25 @@ class ChangeLawSel extends Component {
     
         // Initialize account and contract variables from state
         const { accounts, contract } = this.state;
+
+        // get the lawyer id by searching the lawyer's email
+        const newLawyerId = await contract.methods.findLawyerByEmail(this.state.newLawyerEmail).call();
+
+        // get the seller id by searching the seller's email
+        const newSellerId = await contract.methods.findSellerByEmail(this.state.newSellerEmail).call();
     
         // Calling addNewDeed method from the smart contract
         await contract.methods.changeDeedBuyerAndSeller(
           this.state.deedId,
-          this.state.newLawyerId,
-          this.state.newSellerId
+          newLawyerId,
+          newSellerId
         ).send({ from: accounts[0] });
     
         // Log reaction
         console.log(
             "Deed ID - ", this.state.deedId, ", ",
-            "new LID - ", this.state.newLawyerId, ", ",
-            "new SID - ", this.state.newSellerId
+            "new LID - ", newLawyerId, ", ",
+            "new SID - ", newSellerId
         );
     }
 
@@ -120,12 +126,12 @@ class ChangeLawSel extends Component {
                     <input type="number" id="deedId" value={ this.state.deedId } onChange={ this.handleDeedIdChange.bind(this) }/>
                     <p></p>
 
-                    <label htmlFor="newLawyerId">New Lawyer ID:</label>
-                    <input type="number" id="newLawyerId" value={ this.state.newLawyerId } onChange={ this.handleLawyerIdChange.bind(this) }/>
+                    <label htmlFor="newLawyerEmail">New Lawyer's Email:</label>
+                    <input type="text" id="newLawyerEmail" value={ this.state.newLawyerEmail } onChange={ this.handleLawyerEmailChange.bind(this) }/>
                     <p></p>
 
-                    <label htmlFor="newSellerId">New Owner ID:</label>
-                    <input type="number" id="newSellerId" value={ this.state.newSellerId } onChange={ this.handleSellerIdChange.bind(this) }/>
+                    <label htmlFor="newSellerEmail">New Owner's Email:</label>
+                    <input type="text" id="newSellerEmail" value={ this.state.newSellerEmail } onChange={ this.handleSellerEmailChange.bind(this) }/>
                     <p></p>
 
                     <input type="submit" value="Submit"/>
