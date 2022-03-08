@@ -156,6 +156,38 @@ contract Land {
         return returningDeedId;
     }
 
+    // function to get the lawyer by email
+    function findLawyerByEmail(string memory _email) public view returns (uint) {
+        uint i = 0;
+        uint returningLawyerId;
+        while (i < lawyerCount)
+        {
+            if (compareStrings(_email, Lawyersmapping[i].lawyerEmail))
+            {
+                returningLawyerId = Lawyersmapping[i].lawyerId;
+                break;
+            }
+            i++;
+        }
+        return returningLawyerId;
+    }
+
+    //function to get the seller by email
+    function findSellerByEmail(string memory _email) public view returns (uint) {
+        uint i = 0;
+        uint returningSellerId;
+        while (i < sellersCount)
+        {
+            if (compareStrings(_email, sellersMapping[i].email))
+            {
+                returningSellerId = sellersMapping[i].id;
+                break;
+            }
+            i++;
+        }
+        return returningSellerId;
+    }
+
     // function to change land deed buyer and seller
     function changeDeedBuyerAndSeller(uint _deedId, uint _assignedLawyerId, uint _assignedSellerId) public {
         
