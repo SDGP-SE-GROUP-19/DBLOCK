@@ -74,7 +74,7 @@ contract Land {
 
     constructor(){
         // initializing the admin
-        adminMapping[0] = Admin(0, "123");
+        adminMapping[adminCount] = Admin(adminCount, "123");
         adminCount++;
 
     }
