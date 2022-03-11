@@ -1,0 +1,71 @@
+.headingND{
+    background-color: black;
+    color: #f8074f;
+    font-size: 30px;
+}
+
+.deed{
+    height: 100px;
+    width: 80px; 
+  }
+
+.deedcount{
+    background-color: black;
+    color: #f8074f;
+    font-family:'Tahoma';
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.form{
+    background-color: black;
+    min-width: 350px;
+    min-height: 600px;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+.button{
+    text-transform: uppercase;
+    font-size: 15px;
+    color: white;
+    border-radius: 25px;
+    border-color: black;
+    background:linear-gradient(135deg,#0681b9,#f80759);
+    padding: 8px 40px;
+}
+
+.addressno,
+.streetname,
+.city,
+.district,
+.province,
+.lawyerid,
+.sellerid{
+    margin: 20px;
+    color: white;
+    font-size: 16px;
+}
+
+.input{
+    height: 32px;
+    font-size: 20px;
+    outline: none;
+    width: 100%;
+    height: 10%;
+    border-top-style: none;
+    border-left-style: none;
+    border-bottom-style: 2px solid black;
+    margin-bottom: 10px;
+  }
+
+  .container {
+    background: linear-gradient(135deg,#0681b9,#f80759);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+  }

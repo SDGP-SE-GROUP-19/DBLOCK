@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
+import './SearchDeed.css';
 
 class SearchDeed extends Component {
 
@@ -120,8 +121,10 @@ class SearchDeed extends Component {
 
         return (
             <div className="SearchDeed">
-
-                <h3>Deed Search</h3>
+                <div className="headingDS">
+                    <h2 className="topicDS">Deed Search</h2>
+                 </div>
+                
 
                 <form onSubmit={ this.handleSubmit }>
 

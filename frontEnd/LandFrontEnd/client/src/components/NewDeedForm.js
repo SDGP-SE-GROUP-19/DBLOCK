@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
+import './NewDeedForm.css';
+import deed from "./Images/deed.png";
 
 class NewDeedForm extends Component {
 
@@ -148,46 +150,58 @@ class NewDeedForm extends Component {
 
     return (
       <div className="NewDeedForm">
+        <div className="headingND">
+          <h2 className="topicND">New Deed</h2>
+          <img src={deed} alt="deed" className="deed"/>
+        </div>
 
-        <h3>New Deed</h3>
-
-        <div>Deed count: { this.state.storageValue }</div>
-
-        <p></p>
-
-        <form onSubmit={ this.handleSubmit }>
-
+        <div className="deedcount">Deed count: { this.state.storageValue }</div>
+        
+      <div className="container">
+        <form className="form" onSubmit={ this.handleSubmit }>
+          
+          <div className="addressno">
           <label htmlFor="no">Address No:</label>
-          <input type="text" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) }/>
-          <p></p>
+          <input className="input" type="text" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) }/>
+          </div>
 
+          <div className="streetname">
           <label htmlFor="streetname">Street:</label>
-          <input type="text" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange.bind(this) }/>
-          <p></p>
+          <input className="input" type="text" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange.bind(this) }/>
+          </div>
 
+          <div className="city">
           <label htmlFor="city">City:</label>
-          <input type="text" id="city" value={ this.state.newCity } onChange={ this.handleCityChange.bind(this) }/>
-          <p></p>
+          <input className="input" type="text" id="city" value={ this.state.newCity } onChange={ this.handleCityChange.bind(this) }/>
+          </div>
 
+          <div className="district">
           <label htmlFor="district">District:</label>
-          <input type="text" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange.bind(this) }/>
-          <p></p>
+          <input className="input" type="text" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange.bind(this) }/>
+          </div>
 
+          <div className="province">
           <label htmlFor="province">Province:</label>
-          <input type="text" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) }/>
-          <p></p>
+          <input className="input" type="text" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) }/>
+          </div>
 
+          <div className="lawyerid">
           <label htmlFor="lawyerid">ID of assigning lawyer:</label>
-          <input type="number" id="lawyerid" value={ this.state.newAssignedLawyerId } onChange={ this.handleLawyerIdChange.bind(this) }/>
-          <p></p>
+          <input className="input" type="number" id="lawyerid" value={ this.state.newAssignedLawyerId } onChange={ this.handleLawyerIdChange.bind(this) }/>
+          </div>
 
+          <div className="sellerid">
           <label htmlFor="sellerid">ID of assigning seller:</label>
-          <input type="number" id="sellerid" value={ this.state.newAssignedSellerId } onChange={ this.handleSellerIdChange.bind(this) }/>
-          <p></p>
+          <input className="input" type="number" id="sellerid" value={ this.state.newAssignedSellerId } onChange={ this.handleSellerIdChange.bind(this) }/>
+          </div>
 
-          <input type="submit" value="Submit"/>
+          <div>
+          <input type="submit" value="Submit" className="button"/>
+          </div>
 
         </form>
+        
+        </div>
 
       </div>
     );

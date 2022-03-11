@@ -1,0 +1,17 @@
+.Row{
+    background-color: black;
+    color: white;
+    font-size: 30px;
+    font-family: sans-serif;
+    padding: 5px;
+}
+
+.heading{
+    text-align: center;
+}
+
+.profile{
+    height: 100px;
+    width: 100px; 
+    padding-bottom: 10px;
+  }

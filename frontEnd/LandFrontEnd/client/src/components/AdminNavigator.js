@@ -5,6 +5,7 @@ import SearchDeed from "./SearchDeed";
 import SearchDeed2 from "./SearchDeed2";
 import ChangeLawSel from "./ChangeLawSel";
 import PageNotFound from "./PageNotFound";
+import './AdminNavigator.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 class AdminNavigator extends Component {
@@ -15,7 +16,7 @@ class AdminNavigator extends Component {
             <div className="AdminNavigator">
                 <Router>
 
-                    <nav>
+                    <nav className="navstyle">
                         <Link to="/">[Home]</Link>
                         <Link to="/NewDeedForm">[New Land Deed]</Link>
                         <Link to="/SearchDeed">[Search Deeds]</Link>

@@ -72,7 +72,7 @@ contract Land {
     uint private lawyerCount=0;
     uint private adminCount = 0;
 
-    constructor(){
+    constructor() public {
         // initializing the admin
         adminMapping[adminCount] = Admin(adminCount, "123");
         adminCount++;
