@@ -49,6 +49,7 @@ contract Land {
     struct Admin {
         // Admin instance variables
         uint id;
+        string adminPassword;
     }
 
     // mappings
@@ -57,6 +58,7 @@ contract Land {
     mapping(uint => Seller) public sellersMapping;
     mapping(uint => Lawyer) public Lawyersmapping;
     mapping(uint => Admin) public adminMapping;
+
     
     //arrays
     address[] public Buyerlist;
@@ -69,6 +71,13 @@ contract Land {
     uint private sellersCount = 0;
     uint private lawyerCount=0;
     uint private adminCount = 0;
+
+    constructor(){
+        // initializing the admin
+        adminMapping[adminCount] = Admin(adminCount, "123");
+        adminCount++;
+
+    }
 
     // getter for deed count
     function getDeedCount() public view returns (uint) {
@@ -246,9 +255,10 @@ contract Land {
     }
 
     //function to add admin
-    function addAdmin() private {
+    function addAdmin(string memory _adminPassword) private {
+        
+        adminMapping[adminCount] = Admin(adminCount, _adminPassword);
         adminCount++;
-        adminMapping[adminCount] = Admin(adminCount);
     }
     
     //function to display lawyer details
@@ -314,5 +324,15 @@ contract Land {
     // function to get the seller telephonenumber
     function getSellerTelephoneNo(uint index) public view returns (uint) {
         return sellersMapping[index].telephoneNumber;
+    }
+
+    //function to get admin id
+    function getAdminId() public view returns (uint) {
+        return adminMapping[0].id;
+    }
+
+    //function to get admin password
+    function getAdminPassword() public view returns (string memory) {
+        return adminMapping[0].adminPassword;
     }
 }
