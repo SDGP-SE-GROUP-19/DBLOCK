@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import AdminNavigator from "./components/AdminNavigator";
+import AdminSignIn from "./components/AdminSignIn";
 
 class App extends Component {
 
@@ -8,7 +9,11 @@ class App extends Component {
 
     return (
       <div className="App">
-        <AdminNavigator />
+
+        {/* <AdminNavigator /> */}
+
+        <AdminSignIn />
+
       </div>
     );
   }
