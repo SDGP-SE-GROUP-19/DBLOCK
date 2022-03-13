@@ -17,8 +17,8 @@ class AdminSignIn extends Component {
             accounts: null,
             contract: null,
 
-            enteredPassword: null,
-            actualPassword: null
+            enteredPassword: "password",
+            actualPassword: "actualPassword"
         }
     }
 
@@ -97,8 +97,7 @@ class AdminSignIn extends Component {
 
             return <div>Loading Web3, accounts, and contract...</div>;
         }
-
-        if ((this.state.actualPassword === this.state.enteredPassword))
+        else if (this.state.actualPassword === this.state.enteredPassword)
         {
             return <AdminNavigator />;
         }
