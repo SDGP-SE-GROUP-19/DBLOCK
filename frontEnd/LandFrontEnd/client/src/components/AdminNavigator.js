@@ -16,6 +16,7 @@ class AdminNavigator extends Component {
             <div className="AdminNavigator">
                 
                 <nav className="navstyle">
+                    {/* <Link to="/">[Sign In]</Link> */}
                     <Link to="/">[Home]</Link>
                     <Link to="/NewDeedForm">[New Land Deed]</Link>
                     <Link to="/SearchDeed">[Search Deeds]</Link>
@@ -24,6 +25,7 @@ class AdminNavigator extends Component {
                 </nav>
 
                 <Routes>
+                    {/* <Route path="/" element={ <AdminSignIn /> }/> */}
                     <Route path="/" element={ <AdminHome /> }/>
                     <Route path="/NewDeedForm" element={ <NewDeedForm /> }/>
                     <Route path="/SearchDeed" element={ <SearchDeed /> }/>

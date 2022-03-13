@@ -10,9 +10,9 @@ class App extends Component {
     return (
       <div className="App">
 
-        {/* <AdminNavigator /> */}
+        <AdminNavigator />
 
-        <AdminSignIn />
+        {/* <AdminSignIn /> */}
 
       </div>
     );
