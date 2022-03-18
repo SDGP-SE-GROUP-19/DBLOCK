@@ -42,7 +42,7 @@ contract Land {
         uint id;
         string adminPassword;
     }
-    
+
     // mappings
     mapping(uint => Deed) public deeds;
     mapping(uint => Seller) public sellersMapping;
@@ -55,7 +55,7 @@ contract Land {
     uint private lawyerCount = 0;
     uint private adminCount = 0;
 
-    constructor() public {
+    constructor() {
         // initializing the admin
         adminMapping[adminCount] = Admin(adminCount, "123");
         adminCount++;
