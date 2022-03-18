@@ -266,7 +266,8 @@ contract Land {
     function getSellerTelephoneNo(uint index) public view returns (uint) {
         return sellersMapping[index].telephoneNumber;
     }
-        //function to get admin id
+    
+    //function to get admin id
     function getAdminId() public view returns (uint) {
         return adminMapping[0].id;
     }
