@@ -94,7 +94,6 @@ contract Land {
         return deeds[index].deedId;
     }
 
-
     function getDeedNo(uint index) public view returns (string memory) {
         return deeds[index].no;
     }
