@@ -2,10 +2,12 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 contract Land {
+    
     // structs
     struct Deed {
         // deed instance variables
         uint deedId;
+        string ipfsHash;
         string no;
         string streetName;
         string city;
@@ -13,17 +15,6 @@ contract Land {
         string province;
         uint assignedLawyerId; // to link the relevant lawyer to the deed
         uint assignedSellerId; // to link the relevant seller to the deed
-    }
-
-    struct Buyer{
-        // Buyer instance variables
-       uint id;
-       string nic;
-       string name;
-       uint age;
-       string city;
-       string email; 
-       uint telephoneNumber;
     }
 
     struct Lawyer{
@@ -51,42 +42,36 @@ contract Land {
         uint id;
         string adminPassword;
     }
-
+    
     // mappings
     mapping(uint => Deed) public deeds;
-    mapping(uint => Buyer) public Buyersmapping;
     mapping(uint => Seller) public sellersMapping;
     mapping(uint => Lawyer) public Lawyersmapping;
     mapping(uint => Admin) public adminMapping;
-
     
-    //arrays
-    address[] public Buyerlist;
-    address[] public sellerList;
-    address[] public lawyerList;
-
     // Count tracking variables
     uint private deedCount = 0;
-    uint private buyersCount = 0;
     uint private sellersCount = 0;
-    uint private lawyerCount=0;
+    uint private lawyerCount = 0;
     uint private adminCount = 0;
 
-    constructor(){
+    constructor() public {
         // initializing the admin
         adminMapping[adminCount] = Admin(adminCount, "123");
         adminCount++;
+    }    
 
+    function getHashFromDeed(uint index) public view returns (string memory) {   
+        return deeds[index].ipfsHash;
     }
+
+    function sendHash(uint deedId, string memory x) public {
+        deeds[deedId].ipfsHash = x;
+    }     
 
     // getter for deed count
     function getDeedCount() public view returns (uint) {
         return deedCount;
-    }
-
-    // getter for buyer count
-    function getBuyersCount() public view returns(uint){
-        return buyersCount;
     }
 
     // getter for lawyer count
@@ -108,6 +93,7 @@ contract Land {
     function getDeedId(uint index) public view returns (uint) {
         return deeds[index].deedId;
     }
+
 
     function getDeedNo(uint index) public view returns (string memory) {
         return deeds[index].no;
@@ -197,73 +183,29 @@ contract Land {
         return returningSellerId;
     }
 
+
     // function to change land deed buyer and seller
     function changeDeedBuyerAndSeller(uint _deedId, uint _assignedLawyerId, uint _assignedSellerId) public {
-        
         deeds[_deedId].assignedLawyerId = _assignedLawyerId;
         deeds[_deedId].assignedSellerId = _assignedSellerId;
     }
 
-    //getter for the Buyerlist array
-    function getBuyer() public view returns( address [] memory){
-        return(Buyerlist);
-    }
-
-    //getter for the seller list array
-    function getSeller() public view returns( address [] memory){
-        return(sellerList);
-    }
-
-    //getter for the lawyerList array
-    function getLawyer() public view returns( address [] memory){
-        return(lawyerList);
-    }
-
     // function to add a new deed to the deeds mapping
     function addNewDeed(string memory _no, string memory _streetName, string memory _city, string memory _district, string memory _province, uint _assignedLawyerId, uint _assignedSellerId) public {
-        deeds[deedCount] = Deed(deedCount, _no, _streetName, _city, _district, _province, _assignedLawyerId, _assignedSellerId);
+        deeds[deedCount] = Deed(deedCount, "<IPFS#>", _no,  _streetName, _city, _district, _province, _assignedLawyerId, _assignedSellerId);
         deedCount++;
     }
 
-    //function to register new Buyer
-    function registerBuyer(string memory _nic, string memory _name, uint _age, string memory _city, string memory _email, uint _telephoneNumber) public {
-        Buyersmapping[buyersCount] = Buyer(buyersCount, _nic,  _name, _age, _city, _email, _telephoneNumber);
-        buyersCount++;
-    }
-
     //function to register a seller
-    function registerSeller(string memory _name, string memory _nic, uint _age, string memory _city, string memory _email, uint _telephoneNumber) public {
-        sellersMapping[sellersCount] = Seller(_name, sellersCount, _nic, _age, _city, _email, _telephoneNumber);
+    function registerSeller(string memory _name, uint _id, string memory _nic, uint _age, string memory _city, string memory _email, uint _telephoneNumber) public {
+        sellersMapping[sellersCount] = Seller(_name, _id, _nic, _age, _city, _email, _telephoneNumber);
         sellersCount++;
     }
 
     //function to register a new Lawyer
-    function registerLawyer(string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail) public {
-        Lawyersmapping[lawyerCount] = Lawyer(lawyerCount, _lawyerName, _lawyernic, _lawyerRegNo, _lawyerEmail);
+    function registerLawyer(uint _lawyerId, string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail) public {
+        Lawyersmapping[lawyerCount] = Lawyer(_lawyerId, _lawyerName, _lawyernic, _lawyerRegNo, _lawyerEmail);
         lawyerCount++;
-    }
-
-    //function to display buyer details
-    function displayBuyer(uint index) public view returns (uint _id, string memory _nic, string memory _name, uint _age, string memory _city, string memory _email, uint _telephoneNumber){
-        return(Buyersmapping[index].id, Buyersmapping[index].nic,Buyersmapping[index].name,Buyersmapping[index].age,Buyersmapping[index].city,Buyersmapping[index].email,Buyersmapping[index].telephoneNumber);
-
-    } 
-
-    //function to display seller details
-    function displaySeller(uint index) public view returns (string memory _name, uint _id, string memory _nic, uint _age, string memory _city, string memory _email, uint _telephoneNumber){
-        return(sellersMapping[index].name, sellersMapping[index].id, sellersMapping[index].nic, sellersMapping[index].age, sellersMapping[index].city, sellersMapping[index].email, sellersMapping[index].telephoneNumber);
-    }
-
-    //function to add admin
-    function addAdmin(string memory _adminPassword) private {
-        
-        adminMapping[adminCount] = Admin(adminCount, _adminPassword);
-        adminCount++;
-    }
-    
-    //function to display lawyer details
-    function displayLawyer(uint index) public view returns (uint _lawyerId, string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail){
-        return(Lawyersmapping[index].lawyerId, Lawyersmapping[index].lawyerName, Lawyersmapping[index].lawyernic, Lawyersmapping[index].lawyerRegNo, Lawyersmapping[index].lawyerEmail);
     }
 
     // function to get the lawyer id
@@ -325,8 +267,7 @@ contract Land {
     function getSellerTelephoneNo(uint index) public view returns (uint) {
         return sellersMapping[index].telephoneNumber;
     }
-
-    //function to get admin id
+        //function to get admin id
     function getAdminId() public view returns (uint) {
         return adminMapping[0].id;
     }
