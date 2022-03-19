@@ -94,7 +94,7 @@ class ChangeLawSel extends Component {
         const newSellerId = await contract.methods.findSellerByEmail(this.state.newSellerEmail).call();
     
         // Calling addNewDeed method from the smart contract
-        await contract.methods.changeDeedBuyerAndSeller(
+        await contract.methods.changeDeedLawyerAndSeller(
           this.state.deedId,
           newLawyerId,
           newSellerId

@@ -184,7 +184,7 @@ contract Land {
 
 
     // function to change land deed buyer and seller
-    function changeDeedBuyerAndSeller(uint _deedId, uint _assignedLawyerId, uint _assignedSellerId) public {
+    function changeDeedLawyerAndSeller(uint _deedId, uint _assignedLawyerId, uint _assignedSellerId) public {
         deeds[_deedId].assignedLawyerId = _assignedLawyerId;
         deeds[_deedId].assignedSellerId = _assignedSellerId;
     }
