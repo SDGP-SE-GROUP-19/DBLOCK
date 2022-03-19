@@ -5,6 +5,7 @@ import SearchDeed from "./SearchDeed";
 import SearchDeed2 from "./SearchDeed2";
 import ChangeLawSel from "./ChangeLawSel";
 import PageNotFound from "./PageNotFound";
+import UserSignUp from "./UserSignUp";
 import './AdminNavigator.css';
 import { Routes, Route, Link } from 'react-router-dom';
 
@@ -21,6 +22,7 @@ class AdminNavigator extends Component {
                     <button className="Navbtn"><Link to="/SearchDeed" style={{ textDecoration: 'none', color: 'white'}}>Search Deeds</Link></button>
                     <button className="Navbtn"><Link to="/SearchDeed2" style={{ textDecoration: 'none', color: 'white'}}>Search Deeds By Address</Link></button>
                     <button className="Navbtn"><Link to="/ChangeLawSel" style={{ textDecoration: 'none', color: 'white'}}>Change Lawyer And Owner</Link></button>
+                    <button className="Navbtn"><Link to="/UserSignUp" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></button>
                 </nav>
 
                 <Routes>
@@ -29,6 +31,7 @@ class AdminNavigator extends Component {
                     <Route path="/SearchDeed" element={ <SearchDeed /> }/>
                     <Route path="/SearchDeed2" element={ <SearchDeed2 /> }/>
                     <Route path="/ChangeLawSel" element={ <ChangeLawSel /> }/>
+                    <Route path="/UserSignUp" element={ <UserSignUp /> }/>
                     <Route path="*" element={ <PageNotFound /> }/>
                 </Routes>
 
