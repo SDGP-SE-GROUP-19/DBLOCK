@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
-import web3 from "../web3";
-import ipfs from "../ipfs";
-import './NewDeedForm.css';
-import deed from "./Images/deed.png";
+import './UserSignUp.css';
+import sign from "./Images/sign.png";
 
 class UserSignUp extends Component {
 
@@ -27,7 +25,7 @@ class UserSignUp extends Component {
       age:"",
       city:"",
       email:"",
-      telephoneNumber:","
+      telephoneNumber:""
 
 
     }
@@ -166,15 +164,15 @@ class UserSignUp extends Component {
 
     return (
       <div className="Sign Up">
-        <div className="headingND">
-          <h2 className="topicND">New User</h2>
-          <img src={deed} alt="deed" className="deed"/>
+        <div className="headingS">
+          <h2 className="topicS">New User</h2>
+          <img src={sign} alt="sign" className="sign"/>
         </div>
 
         <div className="Sellercount">Seller count: { this.state.storageValue }</div>
         
-      <div className="container">
-        <form className="form" onSubmit={ this.handleSubmit }>
+      <div className="containerS">
+        <form className="formS" onSubmit={ this.handleSubmit }>
           
           <div className="name">
           <label htmlFor="name">Name:</label>
@@ -202,7 +200,7 @@ class UserSignUp extends Component {
           </div>
 
           <div className="telephone">
-          <label htmlFor="telephone">telephoneNumber:</label>
+          <label htmlFor="telephone">Telephone Number:</label>
           <input className="input" type="text" id="telephonenumber" value={ this.state.telephoneNumber } onChange={ this.handletelephoneNumberChange.bind(this) }/>
           </div>
 
@@ -211,7 +209,7 @@ class UserSignUp extends Component {
 
 
           <div>
-          <input type="submit" value="Submit" className="button"/>
+          <input type="submit" value="Submit" className="buttonS"/>
           </div>
 
         </form>
