@@ -20,6 +20,13 @@ function SendSMS() {
 
     );
 
+    const body = result.json();
+    console.log(body);
+
+    alert(body.StatusCode === 0
+      ? 'Message sent!'
+      : 'Something went wrong. Check dev console.');
+
   }
 
   return (
