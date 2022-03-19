@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import AdminNavigator from "./components/AdminNavigator";
+import LawyerSignUp from "./components/LawyerSignUp";
 
 class App extends Component {
 
@@ -10,7 +11,9 @@ class App extends Component {
       <>
       <div className="header">
 
-        {<AdminNavigator />}
+      {/* <AdminNavigator /> */}
+
+      <LawyerSignUp />
 
       </div>
       
