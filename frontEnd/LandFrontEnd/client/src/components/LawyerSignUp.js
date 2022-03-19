@@ -19,7 +19,8 @@ class LawyerSignUp extends Component {
             enteredLawyerName: "",
             enteredLawyerNic: "",
             enteredLawyerRegNo: "",
-            enteredLawyerEmail: ""
+            enteredLawyerEmail: "",
+            enteredLawyerTelNo: 0
         }
     }
 
@@ -33,6 +34,7 @@ class LawyerSignUp extends Component {
           this.handleNicChange = this.handleNicChange.bind(this);
           this.handleRegNoChange = this.handleRegNoChange.bind(this);
           this.handleEmailChange = this.handleEmailChange.bind(this);
+          this.handleTelNoChange = this.handleTelNoChange.bind(this);
     
           // Get network provider and web3 instance.
           const web3 = await getWeb3();
@@ -87,6 +89,12 @@ class LawyerSignUp extends Component {
         this.setState({ enteredLawyerEmail: event.target.value });
     }
 
+    handleTelNoChange(event) {
+
+        // Set the state enteredLawyerTelNo with input
+        this.setState({ enteredLawyerTelNo: event.target.value });
+    }
+
     async handleSubmit(event) {
 
         // prevent auto refresh on submit
@@ -100,7 +108,8 @@ class LawyerSignUp extends Component {
             this.state.enteredLawyerName,
             this.state.enteredLawyerNic,
             this.state.enteredLawyerRegNo,
-            this.state.enteredLawyerEmail
+            this.state.enteredLawyerEmail,
+            this.state.enteredLawyerTelNo
         ).send({ from: accounts[0] });
 
         // get the number of lawyers added so far fron the blockchain using getLawyerCount method in smart contract
@@ -111,6 +120,11 @@ class LawyerSignUp extends Component {
     }
 
     render() {
+
+        if (!this.state.web3) {
+
+            return <div>Loading Web3, accounts, and contract...</div>;
+        }
 
         return (
             <div className="LawyerSignUp">
@@ -132,6 +146,9 @@ class LawyerSignUp extends Component {
 
                     <label htmlFor="email">Email:</label>
                     <input type="text" id="email" value={ this.state.enteredLawyerEmail } onChange={ this.handleEmailChange.bind(this) }/>
+
+                    <label htmlFor="email">Telephone:</label>
+                    <input type="number" id="email" value={ this.state.enteredLawyerTelNo } onChange={ this.handleTelNoChange.bind(this) }/>
 
                     <div>
                         <input type="submit" value="Submit" />

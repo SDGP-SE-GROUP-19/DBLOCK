@@ -19,6 +19,7 @@ class SearchDeed2 extends Component {
       lawyerNic: "",
       lawyerRegNo: "",
       lawyerEmail: "",
+      lawyerTelNo: 0,
 
       ownerId: 0,
       ownerName: "",
@@ -137,6 +138,7 @@ class SearchDeed2 extends Component {
     const lawyerNicVar = await contract.methods.getLawyerNic(lawyerIndex).call();
     const lawyerRegNoVar = await contract.methods.getLawyerRegNo(lawyerIndex).call();
     const lawyerEmailVar = await contract.methods.getLawyerEmail(lawyerIndex).call();
+    const lawyerTelNoVar = await contract.methods.getLawyerTelephoneNumber(lawyerIndex).call();
 
     // getting the owners index
     const ownerIndex = await contract.methods.getSellerIdOfDeed(deedIndex).call();
@@ -160,6 +162,7 @@ class SearchDeed2 extends Component {
       ", Lawyer NIC :", lawyerNicVar,
       ", Lawyer Registration No :", lawyerRegNoVar,
       ", Lawyer Email :", lawyerEmailVar,
+      ", Lawyer Tel No :", lawyerTelNoVar,
 
       ", Owner ID :", ownerIdVar,
       ", Owner Name :", ownerNameVar,
@@ -180,6 +183,7 @@ class SearchDeed2 extends Component {
       lawyerNic: lawyerNicVar, 
       lawyerRegNo: lawyerRegNoVar,
       lawyerEmail: lawyerEmailVar,
+      lawyerTelNo: lawyerTelNoVar,
 
       ownerId: ownerIdVar,
       ownerName: ownerNameVar,
@@ -256,6 +260,9 @@ class SearchDeed2 extends Component {
             <p></p>
 
             <div>Lawyer Email: { this.state.lawyerEmail }</div>
+            <p></p>
+
+            <div>Lawyer Telephone Number: { this.state.lawyerTelNo }</div>
             <p></p>
 
           </fieldset>

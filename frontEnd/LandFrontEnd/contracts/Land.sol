@@ -24,6 +24,7 @@ contract Land {
         string lawyernic;
         string lawyerRegNo;
         string lawyerEmail;
+        uint lawyerTelephoneNumber;
     }
 
     struct Seller {
@@ -182,6 +183,7 @@ contract Land {
         return returningSellerId;
     }
 
+
     // function to change land deed buyer and seller
     function changeDeedLawyerAndSeller(uint _deedId, uint _assignedLawyerId, uint _assignedSellerId) public {
         deeds[_deedId].assignedLawyerId = _assignedLawyerId;
@@ -201,8 +203,8 @@ contract Land {
     }
 
     //function to register a new Lawyer
-    function registerLawyer(string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail) public {
-        Lawyersmapping[lawyerCount] = Lawyer(lawyerCount, _lawyerName, _lawyernic, _lawyerRegNo, _lawyerEmail);
+    function registerLawyer(string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail, uint _lawyerTelephoneNumber) public {
+        Lawyersmapping[lawyerCount] = Lawyer(lawyerCount, _lawyerName, _lawyernic, _lawyerRegNo, _lawyerEmail, _lawyerTelephoneNumber);
         lawyerCount++;
     }
 
@@ -229,6 +231,11 @@ contract Land {
     // function to get the lawyer email
     function getLawyerEmail(uint index) public view returns (string memory) {
         return Lawyersmapping[index].lawyerEmail;
+    }
+
+    // function to get the lawyer email
+    function getLawyerTelephoneNumber(uint index) public view returns (uint) {
+        return Lawyersmapping[index].lawyerTelephoneNumber;
     }
 
     // function to get the seller id
