@@ -1,0 +1,45 @@
+.headingSD2{
+    background-color: black;
+    color: #f8074f;
+    font-size: 30px;
+}
+
+.searchdeed2{
+    height: 100px;
+    width: 110px; 
+  }
+
+.getDeedInfo{
+    color: white;
+    padding-top: 20px;
+    font-weight: bolder;
+}
+
+.variableSD2{
+    color: white;
+    background-color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.submitSD2{
+    background-color: rgb(0, 224, 75);
+    border-radius: 80px;
+    width:100px;
+    height:20px;
+    color: white;
+    border: none;
+}
+
+.btnSD2{
+    padding-top: 10px;
+    font-weight: bolder;
+}
+
+.displayLawyerInfo{
+    color: white;
+}
+
+.displayOwnerInfo{
+    color: white;
+}

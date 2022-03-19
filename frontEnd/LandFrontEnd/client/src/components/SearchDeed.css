@@ -3,3 +3,54 @@
     color: #f8074f;
     font-size: 30px;
 }
+
+.DSVDbtn{
+    background-color: rgb(19, 206, 44);
+    border-radius: 80px;
+    width:100px;
+    height:20px;
+    color: white;
+    border: none;
+}
+
+.DeedIdtext{
+    font-size: 20px;
+}
+
+.containerDS{
+    background: linear-gradient(135deg,#0681b9,#f80759);
+    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.formDS{
+    background-color: black;
+    min-width: 500px;
+    min-height: 400px;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+.addressnoDS,
+.streetnameDS,
+.cityDS,
+.districtDS,
+.provinceDS,
+.lawyeridDS,
+.selleridDS{
+    margin: 20px;
+    color: white;
+    font-size: 16px;
+    text-align: left;
+}
+
+.searchdeed{
+    height: 100px;
+    width: 100px; 
+  }

@@ -1,21 +1,25 @@
 import React, { Component } from "react";
 import "./App.css";
 import AdminNavigator from "./components/AdminNavigator";
-import AdminSignIn from "./components/AdminSignIn";
 
 class App extends Component {
 
   render() {
 
     return (
-      <div className="App">
+      <>
+      <div className="header">
 
-        {/* <AdminNavigator /> */}
-
-        <AdminSignIn />
+        {<AdminNavigator />}
 
       </div>
-    );
+      
+        <div className="footer">
+          <p>Developed by <b>INNOVSOLVES</b> | Contact us :<b>+94*********</b></p>
+        </div>
+        
+        </>
+      );
   }
 }
 

@@ -1,10 +1,12 @@
-.navstyle{
-    background-color: black;
-    color: white;
+.AdminNavigator{
     background:linear-gradient(135deg,#0681b9,#f80759);
     padding-top: 10px;
-    padding-bottom: 10px;
     font-family: sans-serif;
-    color: white;
     list-style: none;
 }
+
+.Navbtn{
+    background-color: rgb(19, 206, 44);
+}
+
+
