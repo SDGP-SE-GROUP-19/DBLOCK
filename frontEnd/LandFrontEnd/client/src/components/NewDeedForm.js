@@ -26,8 +26,8 @@ class NewDeedForm extends Component {
       newCity: "",
       newDistrict: "",
       newProvince: "",
-      newAssignedLawyerId: 0,
-      newAssignedSellerId: 0,
+      newAssignedLawyerEmail: "",
+      newAssignedSellerEmail: "",
 
       ipfsHash: null,
       buffer: '',
@@ -80,8 +80,8 @@ class NewDeedForm extends Component {
       this.handleCityChange = this.handleCityChange.bind(this);
       this.handleDistrictChange = this.handleDistrictChange.bind(this);
       this.handleProvinceChange = this.handleProvinceChange.bind(this);
-      this.handleLawyerIdChange = this.handleLawyerIdChange.bind(this);
-      this.handleSellerIdChange = this.handleSellerIdChange.bind(this);
+      this.handleLawyerEmailChange = this.handleLawyerEmailChange.bind(this);
+      this.handleSellerEmailChange = this.handleSellerEmailChange.bind(this);
 
       // Get network provider and web3 instance.
       const web3 = await getWeb3();
@@ -142,16 +142,16 @@ class NewDeedForm extends Component {
     this.setState({ newProvince: event.target.value });
   }
 
-  handleLawyerIdChange(event) {
+  handleLawyerEmailChange(event) {
 
-    // Set the state newAssignedLawyerId with input
-    this.setState({ newAssignedLawyerId: event.target.value });
+    // Set the state newAssignedLawyerEmail with input
+    this.setState({ newAssignedLawyerEmail: event.target.value });
   }
 
-  handleSellerIdChange(event) {
+  handleSellerEmailChange(event) {
 
-    // Set the state newAssignedSellerId with input
-    this.setState({ newAssignedSellerId: event.target.value });
+    // Set the state newAssignedSellerEmail with input
+    this.setState({ newAssignedSellerEmail: event.target.value });
   }
 
   async handleSubmit(event) {
@@ -162,7 +162,9 @@ class NewDeedForm extends Component {
     // Initialize account and contract variables from state
     const { accounts, contract } = this.state;
 
-  
+    // get the lawyer and sellers ID using the search by email function
+    const newLawyerID = await contract.methods.findLawyerByEmail(this.state.newAssignedLawyerEmail).call();
+    const newSellerID = await contract.methods.findSellerByEmail(this.state.newAssignedSellerEmail).call();
 
     // Calling addNewDeed method from the smart contract
     await contract.methods.addNewDeed(
@@ -171,8 +173,8 @@ class NewDeedForm extends Component {
       this.state.newCity,
       this.state.newDistrict,
       this.state.newProvince,
-      this.state.newAssignedLawyerId,
-      this.state.newAssignedSellerId
+      newLawyerID,
+      newSellerID
     ).send({ from: accounts[0] });
 
 
@@ -249,13 +251,13 @@ class NewDeedForm extends Component {
           </div>
 
           <div className="lawyerid">
-          <label htmlFor="lawyerid">ID of assigning lawyer:</label>
-          <input className="input" type="number" id="lawyerid" value={ this.state.newAssignedLawyerId } onChange={ this.handleLawyerIdChange.bind(this) }/>
+          <label htmlFor="lawyeremail">Email of assigning lawyer:</label>
+          <input className="input" type="text" id="lawyeremail" value={ this.state.newAssignedLawyerEmail } onChange={ this.handleLawyerEmailChange.bind(this) }/>
           </div>
 
           <div className="sellerid">
-          <label htmlFor="sellerid">ID of assigning seller:</label>
-          <input className="input" type="number" id="sellerid" value={ this.state.newAssignedSellerId } onChange={ this.handleSellerIdChange.bind(this) }/>
+          <label htmlFor="selleremail">Email of assigning seller:</label>
+          <input className="input" type="text" id="selleremail" value={ this.state.newAssignedSellerEmail } onChange={ this.handleSellerEmailChange.bind(this) }/>
           </div>
 
           <form className="buttonCF" onSubmit={this.onSubmit} >
