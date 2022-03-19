@@ -18,6 +18,16 @@
           <button>Send Message</button>
         </form>
       </section>
+      <script>
+        async function QuickEasySMS() {
+          event.preventDefault();
+          const form = event.target;
+          const to = form.querySelector('[name=to]').value;
+          const msg = form.querySelector('[name=msg]').value;
+
+        }
+          
+      </script>
      
 </body>
 </html>
