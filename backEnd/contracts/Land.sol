@@ -197,14 +197,14 @@ contract Land {
     }
 
     //function to register a seller
-    function registerSeller(string memory _name, uint _id, string memory _nic, uint _age, string memory _city, string memory _email, uint _telephoneNumber) public {
-        sellersMapping[sellersCount] = Seller(_name, _id, _nic, _age, _city, _email, _telephoneNumber);
+    function registerSeller(string memory _name, string memory _nic, uint _age, string memory _city, string memory _email, uint _telephoneNumber) public {
+        sellersMapping[sellersCount] = Seller(_name, sellersCount, _nic, _age, _city, _email, _telephoneNumber);
         sellersCount++;
     }
 
     //function to register a new Lawyer
-    function registerLawyer(uint _lawyerId, string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail, uint _lawyerTelephoneNumber) public {
-        Lawyersmapping[lawyerCount] = Lawyer(_lawyerId, _lawyerName, _lawyernic, _lawyerRegNo, _lawyerEmail, _lawyerTelephoneNumber);
+    function registerLawyer(string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail, uint _lawyerTelephoneNumber) public {
+        Lawyersmapping[lawyerCount] = Lawyer(lawyerCount, _lawyerName, _lawyernic, _lawyerRegNo, _lawyerEmail, _lawyerTelephoneNumber);
         lawyerCount++;
     }
 
@@ -231,6 +231,11 @@ contract Land {
     // function to get the lawyer email
     function getLawyerEmail(uint index) public view returns (string memory) {
         return Lawyersmapping[index].lawyerEmail;
+    }
+
+    // function to get the lawyer email
+    function getLawyerTelephoneNumber(uint index) public view returns (uint) {
+        return Lawyersmapping[index].lawyerTelephoneNumber;
     }
 
     // function to get the seller id
