@@ -24,6 +24,7 @@ contract Land {
         string lawyernic;
         string lawyerRegNo;
         string lawyerEmail;
+        uint lawyerTelephoneNumber;
     }
 
     struct Seller {
@@ -202,8 +203,8 @@ contract Land {
     }
 
     //function to register a new Lawyer
-    function registerLawyer(uint _lawyerId, string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail) public {
-        Lawyersmapping[lawyerCount] = Lawyer(_lawyerId, _lawyerName, _lawyernic, _lawyerRegNo, _lawyerEmail);
+    function registerLawyer(uint _lawyerId, string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail, uint _lawyerTelephoneNumber) public {
+        Lawyersmapping[lawyerCount] = Lawyer(_lawyerId, _lawyerName, _lawyernic, _lawyerRegNo, _lawyerEmail, _lawyerTelephoneNumber);
         lawyerCount++;
     }
 
