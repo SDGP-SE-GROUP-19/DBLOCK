@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
 import './SearchDeed.css';
+import searchdeed from "./Images/searchdeed.png";
 
 class SearchDeed extends Component {
 
@@ -12,6 +13,7 @@ class SearchDeed extends Component {
         this.state = {
 
             searchedNo: "",
+            ipfsHash:"",
             searchedStreetName: "",
             searchedCity: "",
             searchedDistrict: "",
@@ -86,11 +88,13 @@ class SearchDeed extends Component {
         const deedProvinceResponse = await contract.methods.getDeedProvince(searchingDeedId).call();
         const deedLawyerResponse = await contract.methods.getLawyerIdOfDeed(searchingDeedId).call();
         const deedSellerResponse = await contract.methods.getSellerIdOfDeed(searchingDeedId).call();
+        const ipfsHash = await contract.methods.getHashFromDeed(searchingDeedId).call();
 
         // log variables
         console.log(
             "Deed Info: ",
             deedNoResponse,", ",
+            ipfsHash,", ",
             deedStreetResponse,", ",
             deedCityResponse,", ",
             deedDistrictResponse,", ",
@@ -103,6 +107,7 @@ class SearchDeed extends Component {
         this.setState({
 
             searchedNo: deedNoResponse,
+            ipfsHash: ipfsHash,
             searchedStreetName: deedStreetResponse,
             searchedCity: deedCityResponse,
             searchedDistrict: deedDistrictResponse,
@@ -123,34 +128,63 @@ class SearchDeed extends Component {
             <div className="SearchDeed">
                 <div className="headingDS">
                     <h2 className="topicDS">Deed Search</h2>
-                 </div>
+                    <img src={searchdeed} alt="searchdeed" className="searchdeed"/>
+
+                    <form onSubmit={ this.handleSubmit }>
+
+                        <label className="DeedIdtext">Deed ID:</label>
+                        <input type="number" id="deedid" value={ this.state.searchingDeedId } onChange={ this.handleSearchingDeedIdChange.bind(this) }/>
+                        <div>
+                            <input type="submit" value="Submit" className="DSVDbtn"/>
+                        </div>
+                    </form>
+                </div>
+                 
+
                 
 
-                <form onSubmit={ this.handleSubmit }>
+                <div className="containerDS">
 
-                    <label htmlFor="deedid">Deed ID:</label>
-                    <input type="number" id="deedid" value={ this.state.searchingDeedId } onChange={ this.handleSearchingDeedIdChange.bind(this) }/>
-                    <p></p>
-
-                    <input type="submit" value="Submit"/>
-
-                </form>
-
-                <div>
-
+                    <form className="formDS">
+                    
+                    <div className="addressnoDS">
                     <p><b>No: </b>{ this.state.searchedNo }</p>
-
+                    </div>
+                    
+                    <div className="streetnameDS">
                     <p><b>Street: </b>{ this.state.searchedStreetName }</p>
+                    </div>
 
+                    <div className="cityDS">
                     <p><b>City: </b>{ this.state.searchedCity }</p>
+                    </div>
 
+                    <div className="districtDS">
                     <p><b>District: </b>{ this.state.searchedDistrict }</p>
+                    </div>
 
+                    <div className="provinceDS">
                     <p><b>Province: </b>{ this.state.searchedProvince }</p>
+                    </div>
 
+                    <div className="lawyeridDS">
                     <p><b>Assigned Lawyer ID: </b>{ this.state.searchedLawyerId }</p>
+                    </div>
 
+                    <div className="selleridDS">
                     <p><b>Assigned Seller ID: </b>{ this.state.searchedSellerId }</p>
+                    </div>
+
+                    <button
+                        type="button"
+                        className="DSVDbtn"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = `https://ipfs.io/ipfs/${this.state.ipfsHash}`;
+                        }}>Deed image
+                    </button>
+
+                    </form>
 
                 </div>
                 

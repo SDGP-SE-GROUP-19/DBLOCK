@@ -16,16 +16,14 @@ class AdminNavigator extends Component {
             <div className="AdminNavigator">
                 
                 <nav className="navstyle">
-                    {/* <Link to="/">[Sign In]</Link> */}
-                    <Link to="/">[Home]</Link>
-                    <Link to="/NewDeedForm">[New Land Deed]</Link>
-                    <Link to="/SearchDeed">[Search Deeds]</Link>
-                    <Link to="/SearchDeed2">[Search Deeds By Address]</Link>
-                    <Link to="/ChangeLawSel">[Change Lawyer And Owner]</Link>
+                    <button className="Navbtn"><Link to="/" style={{ textDecoration: 'none', color: 'white'}}>Home</Link></button>
+                    <button className="Navbtn"><Link to="/NewDeedForm" style={{ textDecoration: 'none', color: 'white'}}>New Land Deed</Link></button>
+                    <button className="Navbtn"><Link to="/SearchDeed" style={{ textDecoration: 'none', color: 'white'}}>Search Deeds</Link></button>
+                    <button className="Navbtn"><Link to="/SearchDeed2" style={{ textDecoration: 'none', color: 'white'}}>Search Deeds By Address</Link></button>
+                    <button className="Navbtn"><Link to="/ChangeLawSel" style={{ textDecoration: 'none', color: 'white'}}>Change Lawyer And Owner</Link></button>
                 </nav>
 
                 <Routes>
-                    {/* <Route path="/" element={ <AdminSignIn /> }/> */}
                     <Route path="/" element={ <AdminHome /> }/>
                     <Route path="/NewDeedForm" element={ <NewDeedForm /> }/>
                     <Route path="/SearchDeed" element={ <SearchDeed /> }/>

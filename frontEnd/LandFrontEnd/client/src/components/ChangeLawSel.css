@@ -1,23 +1,15 @@
-.Row{
+.headingC{
     background-color: black;
-    color: white;
+    color: #f8074f;
     font-size: 30px;
-    font-family: sans-serif;
-    padding: 5px;
-    max-width: 100%;
 }
 
-.heading{
-    text-align: center;
-}
-
-.profile{
+.transfer{
     height: 100px;
     width: 100px; 
-    padding-bottom: 10px;
   }
 
-.containerH{
+.containerC{
     background: linear-gradient(135deg,#0681b9,#f80759);
     width: 100%;
     min-height: 50vh;
@@ -28,20 +20,41 @@
     padding-bottom: 20px;
 }
 
-.formH{
+.formC{
     background-color: black;
-    min-width: 500px;
-    min-height: 200px;
+    min-width: 350px;
+    min-height: 400px;
     padding: 30px;
     box-sizing: border-box;
     border-radius: 30px;
 }
 
-.AdminHomebtn{
+.deedId,
+.newLawyerEmail,
+.newSellerEmail{
+    margin: 20px;
+    color: white;
+    font-size: 16px;
+}
+
+.inputC{
+    height: 32px;
+    font-size: 20px;
+    outline: none;
+    width: 100%;
+    height: 10%;
+    border-top-style: none;
+    border-left-style: none;
+    border-bottom-style: 2px solid black;
+    margin-bottom: 10px;
+}
+
+.buttonC{
+    text-transform: uppercase;
     font-size: 15px;
     color: white;
     border-radius: 25px;
     border-color: black;
     background:linear-gradient(135deg,#0681b9,#f80759);
-    padding: px 20px;
+    padding: 8px 40px;
 }

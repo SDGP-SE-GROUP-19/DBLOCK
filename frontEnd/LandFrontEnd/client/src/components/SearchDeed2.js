@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
+import './SearchDeed2.css';
+import searchdeed2 from "./Images/searchdeed2.png"
 
 class SearchDeed2 extends Component {
 
@@ -198,44 +200,43 @@ class SearchDeed2 extends Component {
 
     return (
       <div className="SearchDeed2">
+        <div className="headingSD2">
+          <h2 className="topicSD2">Deed Search By Address</h2>
+          <img src={searchdeed2} alt="searchdeed2" className="searchdeed2" />
+        </div>
+        <div className="variableSD2"><b>Deed ID:</b> { this.state.storageValue }</div> 
+        
 
-        <h3>Deed Search By Address</h3>
-
-        <p></p>
-
-        <form onSubmit={ this.handleSubmit }>
+      
+      <form onSubmit={ this.handleSubmit }>
 
           <fieldset className="getDeedInfo">
 
             <label htmlFor="no">Address No:</label>
             <input type="text" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) }/>
-            <p></p>
+            
 
             <label htmlFor="streetname">Street:</label>
             <input type="text" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange.bind(this) }/>
-            <p></p>
+            
 
             <label htmlFor="city">City:</label>
             <input type="text" id="city" value={ this.state.newCity } onChange={ this.handleCityChange.bind(this) }/>
-            <p></p>
+            
 
             <label htmlFor="district">District:</label>
             <input type="text" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange.bind(this) }/>
-            <p></p>
+            
 
             <label htmlFor="province">Province:</label>
             <input type="text" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) }/>
-            <p></p>
-
-            <input type="submit" value="Submit"/>
+              
+            <div className="btn">
+            <input type="submit" value="Submit" className="submitSD2"/>
+            </div>
 
           </fieldset>
 
-          <p></p>
-
-          <div>Deed ID: { this.state.storageValue }</div>
-
-          <p></p>
 
           <fieldset className="displayLawyerInfo">
 

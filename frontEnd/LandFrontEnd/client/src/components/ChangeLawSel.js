@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
+import './ChangeLawSel.css'
+import transfer from "./Images/transfer.png";
 
 class ChangeLawSel extends Component {
 
@@ -115,28 +117,38 @@ class ChangeLawSel extends Component {
 
         return (
             <div className="ChangeLawSel">
+                <div className="headingC">
+                <h2 className="topicC">Change Lawyer And Owner</h2>
+                <img src={transfer} alt="transfer" className="transfer"/>
+            </div>
+        
 
-                <h3>Change Lawyer And Owner</h3>
-
-                <p></p>
-
-                <form onSubmit={ this.handleSubmit }>
-
+                
+            <div className="containerC">
+                <form className="formC" onSubmit={ this.handleSubmit }>
+                    
+                    <div className="deedId">
                     <label htmlFor="deedId">Deed ID:</label>
-                    <input type="number" id="deedId" value={ this.state.deedId } onChange={ this.handleDeedIdChange.bind(this) }/>
-                    <p></p>
+                    <input className="inputC" type="number" id="deedId" value={ this.state.deedId } onChange={ this.handleDeedIdChange.bind(this) }/>
+                    </div>
 
+                    <div className="newLawyerEmail">
                     <label htmlFor="newLawyerEmail">New Lawyer's Email:</label>
-                    <input type="text" id="newLawyerEmail" value={ this.state.newLawyerEmail } onChange={ this.handleLawyerEmailChange.bind(this) }/>
-                    <p></p>
+                    <input className="inputC" type="text" id="newLawyerEmail" value={ this.state.newLawyerEmail } onChange={ this.handleLawyerEmailChange.bind(this) }/>
+                    </div>
 
+                    <div className="newSellerEmail">
                     <label htmlFor="newSellerEmail">New Owner's Email:</label>
-                    <input type="text" id="newSellerEmail" value={ this.state.newSellerEmail } onChange={ this.handleSellerEmailChange.bind(this) }/>
-                    <p></p>
+                    <input className="inputC" type="text" id="newSellerEmail" value={ this.state.newSellerEmail } onChange={ this.handleSellerEmailChange.bind(this) }/>
+                    </div>
 
-                    <input type="submit" value="Submit"/>
+                    <div>
+                    <input  type="submit" value="Submit" className="buttonC"/>
+                    </div>
 
                 </form>
+
+                </div>
 
             </div>
         );

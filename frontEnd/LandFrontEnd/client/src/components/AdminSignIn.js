@@ -1,8 +1,8 @@
 import React, {Component, useCallback} from "react";
 import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
-import AdminNavigator from "./AdminNavigator";
 import './AdminSignIn.css';
+//import { useNavigate } from 'react-router-dom';
 import profile from "./Images/admin.png";
 
 class AdminSignIn extends Component {
@@ -17,7 +17,7 @@ class AdminSignIn extends Component {
             accounts: null,
             contract: null,
 
-            enteredPassword: "password",
+            enteredPassword: "enteredPassword",
             actualPassword: "actualPassword"
         }
     }
@@ -78,12 +78,14 @@ class AdminSignIn extends Component {
         this.setState({ actualPassword: actualAdminPassword });
 
         // just showing the actual password from the state. MUST BE REMOVED ! 
-        //console.log("Password from state " + this.state.actualPassword); // remove after testing
+        console.log("Password from state " + this.state.actualPassword); // remove after testing
 
         // compare the entered password with the actual password
         if (this.state.enteredPassword === actualAdminPassword) {
 
             console.log("Password is correct");
+            //const navigate = useNavigate();
+            //const handleOnClick = useCallback(() => navigate('/AdminHome',{replace: true}), [navigate]);
         }
         else
         {
@@ -93,48 +95,43 @@ class AdminSignIn extends Component {
 
     render() {
 
-        if (!this.state.web3) {
+        return (
+            <div className="AdminSignIn">
 
-            return <div>Loading Web3, accounts, and contract...</div>;
-        }
-        else if (this.state.actualPassword === this.state.enteredPassword)
-        {
-            return <AdminNavigator />;
-        }
-        else
-        {
-            return (
-                <div className="AdminSignIn">
-    
-                    <div className="sub-main">
-    
-                        <form onSubmit={ this.handleSubmit }>
-    
-                            <div className="img">
-                                <div className="container-image">
-                                    <img src={profile} alt="profile" className="profile"/>
-                                </div>
+                <div className="sub-main">
+
+                    <form onSubmit={ this.handleSubmit }>
+
+                        <div className="img">
+                            <div className="container-image">
+                                <img src={profile} alt="profile" className="profile"/>
                             </div>
-    
-                            <div className="admin-name">
-                                <p>ADMIN LOGIN</p>
-                            </div>
-    
-                            <div className="password">
-                                <input type="text" placeholder="PASSWORD" className="PASSWORD" value={ this.state.enteredPassword } onChange={ this.handleEnteredPasswordChange.bind(this) } />
-                            </div>
-    
-                            <div className="button-holder">
-                                <input type="submit" value="Check" className="button" />
-                            </div>
-    
-                        </form>
-    
-                    </div>
-          
+                        </div>
+
+                        <div className="admin-name">
+                            <p>ADMIN LOGIN</p>
+                        </div>
+
+                        <div className="password">
+                            <input type="text" placeholder="PASSWORD" className="PASSWORD" value={ this.state.enteredPassword } onChange={ this.handleEnteredPasswordChange.bind(this) } />
+                        </div>
+
+                        <div className="button-holder">
+                            <input type="submit" value="Check" className="button" />
+                        </div>
+
+                        {/* <div className="button-holder">
+                            <button type="button" onClick={() => this.handleOnClick}>
+                                SignIn
+                            </button>
+                        </div> */} 
+                        
+                    </form>
+
                 </div>
-            );
-        }
+      
+            </div>
+        );
     }
 }
 
