@@ -1,0 +1,65 @@
+.headingS{
+    background-color: black;
+    color: #f8074f;
+    font-size: 30px;
+}
+
+.sign{
+    height: 100px;
+    width: 120px; 
+  }
+
+.Sellercount{
+    background-color: black;
+    color: #f8074f;
+    font-family:'Tahoma';
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.containerS{
+    background: linear-gradient(135deg,#0681b9,#f80759);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;  
+}
+
+.formS{
+    background-color: black;
+    min-width: 350px;
+    min-height: 600px;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+.name,
+.Nic,
+.Age,
+.City,
+.Email,
+.telephone{
+    margin: 20px;
+    color: white;
+    font-size: 16px;
+}
+
+.buttonS{
+    text-transform: uppercase;
+    font-size: 15px;
+    color: white;
+    border-radius: 25px;
+    border-color: black;
+    background:linear-gradient(135deg,#0681b9,#f80759);
+    padding: 8px 40px;
+}
+
+.input{
+    border-radius: 10px;
+    background-color: rgb(56, 56, 55);
+    color: white;
+}
