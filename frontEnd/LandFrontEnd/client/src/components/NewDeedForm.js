@@ -269,7 +269,7 @@ class NewDeedForm extends Component {
           <br></br>
 
           <div>
-          <input type="submit" value="Submit" className="button"/>
+            <input type="submit" value="Submit" className="button"/>
           </div>
 
         </form>

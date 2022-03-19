@@ -10,7 +10,7 @@ class App extends Component {
       <>
       <div className="header">
 
-        {<AdminNavigator />}
+      <AdminNavigator />
 
       </div>
       
