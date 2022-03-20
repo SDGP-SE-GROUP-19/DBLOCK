@@ -136,50 +136,62 @@ contract Land {
     }
 
     // function to get the deed by the land address for searching purposes
-    function findDeedByAddress(string memory _no, string memory _streetName, string memory _city, string memory _district, string memory _province) public view returns (uint) {
+    function findDeedByAddress(string memory _no, string memory _streetName, string memory _city, string memory _district, string memory _province) public view returns (int) {
+
         uint i = 0;
-        uint returningDeedId;
+        int returningDeedId = -1;
+
         while (i < deedCount)
         {
             if (compareStrings(_no, deeds[i].no) && compareStrings(_streetName, deeds[i].streetName) && compareStrings(_city, deeds[i].city) && compareStrings(_district, deeds[i].district) && compareStrings(_province, deeds[i].province))
             {
-                returningDeedId = deeds[i].deedId;
+                returningDeedId = int(deeds[i].deedId);
                 break;
             }
+
             i++;
         }
+
         return returningDeedId;
     }
 
     // function to get the lawyer by email
-    function findLawyerByEmail(string memory _email) public view returns (uint) {
+    function findLawyerByEmail(string memory _email) public view returns (int) {
+
         uint i = 0;
-        uint returningLawyerId;
+        int returningLawyerId = -1;
+
         while (i < lawyerCount)
         {
             if (compareStrings(_email, Lawyersmapping[i].lawyerEmail))
             {
-                returningLawyerId = Lawyersmapping[i].lawyerId;
+                returningLawyerId = int(Lawyersmapping[i].lawyerId);
                 break;
             }
+
             i++;
         }
+
         return returningLawyerId;
     }
 
     //function to get the seller by email
-    function findSellerByEmail(string memory _email) public view returns (uint) {
+    function findSellerByEmail(string memory _email) public view returns (int) {
+
         uint i = 0;
-        uint returningSellerId;
+        int returningSellerId = -1;
+
         while (i < sellersCount)
         {
             if (compareStrings(_email, sellersMapping[i].email))
             {
-                returningSellerId = sellersMapping[i].id;
+                returningSellerId = int(sellersMapping[i].id);
                 break;
             }
+
             i++;
         }
+
         return returningSellerId;
     }
 
