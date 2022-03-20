@@ -13,6 +13,7 @@ class SearchDeed2 extends Component {
     this.state = {
 
       storageValue: 0, // Deed ID
+      addressAlert: "", // will change if the deed does not exist
 
       lawyerId: 0,
       lawyerName: "",
@@ -129,70 +130,99 @@ class SearchDeed2 extends Component {
       this.state.newProvince
     ).call();
 
-    // getting the lawyers index 
-    const lawyerIndex = await contract.methods.getLawyerIdOfDeed(deedIndex).call();
+    if (parseInt(deedIndex) === -1)
+    {
+      console.log("deedIndex: " + deedIndex + " is invalid!");
 
-    // getting the lawyers info
-    const lawyerIdVar = await contract.methods.getLawyerId(lawyerIndex).call();
-    const lawyerNameVar = await contract.methods.getLawyerName(lawyerIndex).call();
-    const lawyerNicVar = await contract.methods.getLawyerNic(lawyerIndex).call();
-    const lawyerRegNoVar = await contract.methods.getLawyerRegNo(lawyerIndex).call();
-    const lawyerEmailVar = await contract.methods.getLawyerEmail(lawyerIndex).call();
-    const lawyerTelNoVar = await contract.methods.getLawyerTelephoneNumber(lawyerIndex).call();
+      this.setState({ 
+        
+        storageValue: deedIndex,
+        addressAlert: "INVALID ADDRESS!",
 
-    // getting the owners index
-    const ownerIndex = await contract.methods.getSellerIdOfDeed(deedIndex).call();
+        lawyerId: "",
+        lawyerName: "", 
+        lawyerNic: "", 
+        lawyerRegNo: "",
+        lawyerEmail: "",
+        lawyerTelNo: "",
 
-    // getting the owners info
-    const ownerIdVar = await contract.methods.getSellerId(ownerIndex).call();
-    const ownerNameVar = await contract.methods.getSellerName(ownerIndex).call();
-    const ownerNicVar = await contract.methods.getSellerNic(ownerIndex).call();
-    const ownerAgeVar = await contract.methods.getSellerAge(ownerIndex).call();
-    const ownerCityVar = await contract.methods.getSellerCity(ownerIndex).call();
-    const ownerEmailVar = await contract.methods.getSellerEmail(ownerIndex).call();
-    const ownerTeleNoVar = await contract.methods.getSellerTelephoneNo(ownerIndex).call();
+        ownerId: "",
+        ownerName: "",
+        ownerNic: "",
+        ownerAge: "",
+        ownerCity: "",
+        ownerTeleNo: "",
+        ownerEmail: ""
+      });
+    }
+    else
+    {
+      // getting the lawyers index 
+      const lawyerIndex = await contract.methods.getLawyerIdOfDeed(deedIndex).call();
 
-    // Log variables
-    console.log(
+      // getting the lawyers info
+      const lawyerIdVar = await contract.methods.getLawyerId(lawyerIndex).call();
+      const lawyerNameVar = await contract.methods.getLawyerName(lawyerIndex).call();
+      const lawyerNicVar = await contract.methods.getLawyerNic(lawyerIndex).call();
+      const lawyerRegNoVar = await contract.methods.getLawyerRegNo(lawyerIndex).call();
+      const lawyerEmailVar = await contract.methods.getLawyerEmail(lawyerIndex).call();
+      const lawyerTelNoVar = await contract.methods.getLawyerTelephoneNumber(lawyerIndex).call();
 
-      "Deed ID :", deedIndex,
+      // getting the owners index
+      const ownerIndex = await contract.methods.getSellerIdOfDeed(deedIndex).call();
 
-      ", Lawyer ID :", lawyerIdVar,
-      ", Lawyer Name :", lawyerNameVar,
-      ", Lawyer NIC :", lawyerNicVar,
-      ", Lawyer Registration No :", lawyerRegNoVar,
-      ", Lawyer Email :", lawyerEmailVar,
-      ", Lawyer Tel No :", lawyerTelNoVar,
+      // getting the owners info
+      const ownerIdVar = await contract.methods.getSellerId(ownerIndex).call();
+      const ownerNameVar = await contract.methods.getSellerName(ownerIndex).call();
+      const ownerNicVar = await contract.methods.getSellerNic(ownerIndex).call();
+      const ownerAgeVar = await contract.methods.getSellerAge(ownerIndex).call();
+      const ownerCityVar = await contract.methods.getSellerCity(ownerIndex).call();
+      const ownerEmailVar = await contract.methods.getSellerEmail(ownerIndex).call();
+      const ownerTeleNoVar = await contract.methods.getSellerTelephoneNo(ownerIndex).call();
 
-      ", Owner ID :", ownerIdVar,
-      ", Owner Name :", ownerNameVar,
-      ", Owner NIC :", ownerNicVar,
-      ", Owner Age :", ownerAgeVar,
-      ", Owner City :", ownerCityVar,
-      ", Owner Email :", ownerEmailVar,
-      ", Owner Telephone No :", ownerTeleNoVar
-    );
+      // Log variables
+      console.log(
 
-    // Set the state with the variables
-    this.setState({
+        "Deed ID :", deedIndex,
 
-      storageValue: deedIndex,
+        ", Lawyer ID :", lawyerIdVar,
+        ", Lawyer Name :", lawyerNameVar,
+        ", Lawyer NIC :", lawyerNicVar,
+        ", Lawyer Registration No :", lawyerRegNoVar,
+        ", Lawyer Email :", lawyerEmailVar,
+        ", Lawyer Tel No :", lawyerTelNoVar,
 
-      lawyerId: lawyerIdVar,
-      lawyerName: lawyerNameVar, 
-      lawyerNic: lawyerNicVar, 
-      lawyerRegNo: lawyerRegNoVar,
-      lawyerEmail: lawyerEmailVar,
-      lawyerTelNo: lawyerTelNoVar,
+        ", Owner ID :", ownerIdVar,
+        ", Owner Name :", ownerNameVar,
+        ", Owner NIC :", ownerNicVar,
+        ", Owner Age :", ownerAgeVar,
+        ", Owner City :", ownerCityVar,
+        ", Owner Email :", ownerEmailVar,
+        ", Owner Telephone No :", ownerTeleNoVar
+      );
 
-      ownerId: ownerIdVar,
-      ownerName: ownerNameVar,
-      ownerNic: ownerNicVar,
-      ownerAge: ownerAgeVar,
-      ownerCity: ownerCityVar,
-      ownerTeleNo: ownerTeleNoVar,
-      ownerEmail: ownerEmailVar
-    });
+      // Set the state with the variables
+      this.setState({
+
+        storageValue: deedIndex,
+        addressAlert: "",
+
+        lawyerId: lawyerIdVar,
+        lawyerName: lawyerNameVar, 
+        lawyerNic: lawyerNicVar, 
+        lawyerRegNo: lawyerRegNoVar,
+        lawyerEmail: lawyerEmailVar,
+        lawyerTelNo: lawyerTelNoVar,
+
+        ownerId: ownerIdVar,
+        ownerName: ownerNameVar,
+        ownerNic: ownerNicVar,
+        ownerAge: ownerAgeVar,
+        ownerCity: ownerCityVar,
+        ownerTeleNo: ownerTeleNoVar,
+        ownerEmail: ownerEmailVar
+      });
+    }
   }
 
   render() {
@@ -234,6 +264,12 @@ class SearchDeed2 extends Component {
 
             <label htmlFor="province">Province:</label>
             <input type="text" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) }/>
+
+            <br></br>
+            <br></br>
+            <br></br>
+            <div>{ this.state.addressAlert }</div>
+            <br></br>
               
             <div className="btn">
             <input type="submit" value="Submit" className="submitSD2"/>
