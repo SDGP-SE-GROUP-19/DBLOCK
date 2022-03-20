@@ -12,6 +12,8 @@ class SearchDeed extends Component {
 
         this.state = {
 
+            deedIndexAlert: "",
+
             searchedNo: "",
             ipfsHash:"",
             searchedStreetName: "",
@@ -79,42 +81,67 @@ class SearchDeed extends Component {
     
         // Initialize contract variables from state
         const { contract, searchingDeedId } = this.state;
-    
-        // get the relevant deed data
-        const deedNoResponse = await contract.methods.getDeedNo(searchingDeedId).call();
-        const deedStreetResponse = await contract.methods.getDeedStreetName(searchingDeedId).call();
-        const deedCityResponse = await contract.methods.getDeedCity(searchingDeedId).call();
-        const deedDistrictResponse = await contract.methods.getDeedDistrict(searchingDeedId).call();
-        const deedProvinceResponse = await contract.methods.getDeedProvince(searchingDeedId).call();
-        const deedLawyerResponse = await contract.methods.getLawyerIdOfDeed(searchingDeedId).call();
-        const deedSellerResponse = await contract.methods.getSellerIdOfDeed(searchingDeedId).call();
-        const ipfsHash = await contract.methods.getHashFromDeed(searchingDeedId).call();
 
-        // log variables
-        console.log(
-            "Deed Info: ",
-            deedNoResponse,", ",
-            ipfsHash,", ",
-            deedStreetResponse,", ",
-            deedCityResponse,", ",
-            deedDistrictResponse,", ",
-            deedProvinceResponse,", LID[",
-            deedLawyerResponse,"], SID[",
-            deedSellerResponse,"]"
-        );
+        // getting the deed count
+        const deedCount = await contract.methods.getDeedCount().call();
 
-        // setting the state with relevant info
-        this.setState({
+        if (searchingDeedId >= parseInt(deedCount))
+        {
+            // setting the state with relevant info
+            this.setState({
 
-            searchedNo: deedNoResponse,
-            ipfsHash: ipfsHash,
-            searchedStreetName: deedStreetResponse,
-            searchedCity: deedCityResponse,
-            searchedDistrict: deedDistrictResponse,
-            searchedProvince: deedProvinceResponse,
-            searchedLawyerId: deedLawyerResponse,
-            searchedSellerId: deedSellerResponse
-        });
+                deedIndexAlert: "INVALID DEED INDEX!",
+
+                searchedNo: "",
+                ipfsHash: "",
+                searchedStreetName: "",
+                searchedCity: "",
+                searchedDistrict: "",
+                searchedProvince: "",
+                searchedLawyerId: -1,
+                searchedSellerId: -1
+            });
+        }
+        else
+        {
+            // get the relevant deed data
+            const deedNoResponse = await contract.methods.getDeedNo(searchingDeedId).call();
+            const deedStreetResponse = await contract.methods.getDeedStreetName(searchingDeedId).call();
+            const deedCityResponse = await contract.methods.getDeedCity(searchingDeedId).call();
+            const deedDistrictResponse = await contract.methods.getDeedDistrict(searchingDeedId).call();
+            const deedProvinceResponse = await contract.methods.getDeedProvince(searchingDeedId).call();
+            const deedLawyerResponse = await contract.methods.getLawyerIdOfDeed(searchingDeedId).call();
+            const deedSellerResponse = await contract.methods.getSellerIdOfDeed(searchingDeedId).call();
+            const ipfsHash = await contract.methods.getHashFromDeed(searchingDeedId).call();
+
+            // log variables
+            console.log(
+                "Deed Info: ",
+                deedNoResponse,", ",
+                ipfsHash,", ",
+                deedStreetResponse,", ",
+                deedCityResponse,", ",
+                deedDistrictResponse,", ",
+                deedProvinceResponse,", LID[",
+                deedLawyerResponse,"], SID[",
+                deedSellerResponse,"]"
+            );
+
+            // setting the state with relevant info
+            this.setState({
+
+                deedIndexAlert: "",
+
+                searchedNo: deedNoResponse,
+                ipfsHash: ipfsHash,
+                searchedStreetName: deedStreetResponse,
+                searchedCity: deedCityResponse,
+                searchedDistrict: deedDistrictResponse,
+                searchedProvince: deedProvinceResponse,
+                searchedLawyerId: deedLawyerResponse,
+                searchedSellerId: deedSellerResponse
+            });
+        }
     }
 
     render() {
@@ -133,7 +160,14 @@ class SearchDeed extends Component {
                     <form onSubmit={ this.handleSubmit }>
 
                         <label className="DeedIdtext">Deed ID:</label>
-                        <input type="number" id="deedid" value={ this.state.searchingDeedId } onChange={ this.handleSearchingDeedIdChange.bind(this) }/>
+                        <input type="number" min="0" id="deedid" value={ this.state.searchingDeedId } onChange={ this.handleSearchingDeedIdChange.bind(this) }/>
+
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <div>{ this.state.deedIndexAlert }</div>
+                        <br></br>
+
                         <div>
                             <input type="submit" value="Submit" className="DSVDbtn"/>
                         </div>
