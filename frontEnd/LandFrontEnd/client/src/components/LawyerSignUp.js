@@ -10,6 +10,7 @@ class LawyerSignUp extends Component {
 
         this.state = {
 
+            alertMessage: "",
             lawyerCount: 0,
 
             web3: null,
@@ -103,20 +104,31 @@ class LawyerSignUp extends Component {
         // Initialize account and contract variables from state
         const { accounts, contract } = this.state;
 
-        // Calling registerLawyer method from the smart contract
-        await contract.methods.registerLawyer(
-            this.state.enteredLawyerName,
-            this.state.enteredLawyerNic,
-            this.state.enteredLawyerRegNo,
-            this.state.enteredLawyerEmail,
-            this.state.enteredLawyerTelNo
-        ).send({ from: accounts[0] });
+        // get the lawyer id by searching the lawyer's email
+        const lawyerId = await contract.methods.findLawyerByEmail(this.state.enteredLawyerEmail).call();
 
-        // get the number of lawyers added so far fron the blockchain using getLawyerCount method in smart contract
-        const lawyerCountVar = await contract.methods.getLawyerCount().call();
+        if (parseInt(lawyerId) === -1)
+        {
+            // Calling registerLawyer method from the smart contract
+            await contract.methods.registerLawyer(
+                this.state.enteredLawyerName,
+                this.state.enteredLawyerNic,
+                this.state.enteredLawyerRegNo,
+                this.state.enteredLawyerEmail,
+                this.state.enteredLawyerTelNo
+            ).send({ from: accounts[0] });
 
-        // set the state with the new lawyer count
-        this.setState({ lawyerCount: lawyerCountVar });
+            // get the number of lawyers added so far fron the blockchain using getLawyerCount method in smart contract
+            const lawyerCountVar = await contract.methods.getLawyerCount().call();
+
+            // set the state with the new lawyer count
+            this.setState({ lawyerCount: lawyerCountVar, alertMessage: "" });
+        }
+        else
+        {
+            this.setState({ alertMessage: "Email already exists!" });
+            console.log("Email already exists!");
+        }
     }
 
     render() {
@@ -139,16 +151,17 @@ class LawyerSignUp extends Component {
                     <input type="text" id="name" value={ this.state.enteredLawyerName } onChange={ this.handleNameChange.bind(this) }/>
 
                     <label htmlFor="nic">NIC:</label>
-                    <input type="text" id="nic" value={ this.state.enteredLawyerNic } onChange={ this.handleNicChange.bind(this) }/>
+                    <input type="text" minLength="12"  maxLength="12" id="nic" value={ this.state.enteredLawyerNic } onChange={ this.handleNicChange.bind(this) }/>
 
                     <label htmlFor="regno">Registration Number:</label>
                     <input type="text" id="regno" value={ this.state.enteredLawyerRegNo } onChange={ this.handleRegNoChange.bind(this) }/>
 
                     <label htmlFor="email">Email:</label>
-                    <input type="text" id="email" value={ this.state.enteredLawyerEmail } onChange={ this.handleEmailChange.bind(this) }/>
+                    <input type="email" id="email" value={ this.state.enteredLawyerEmail } onChange={ this.handleEmailChange.bind(this) }/>
+                    <div>{ this.state.alertMessage }</div>
 
-                    <label htmlFor="email">Telephone:</label>
-                    <input type="number" id="email" value={ this.state.enteredLawyerTelNo } onChange={ this.handleTelNoChange.bind(this) }/>
+                    <label htmlFor="telNo">Telephone:</label>
+                    <input type="number" min="0" id="telNo" value={ this.state.enteredLawyerTelNo } onChange={ this.handleTelNoChange.bind(this) }/>
 
                     <div>
                         <input type="submit" value="Submit" />

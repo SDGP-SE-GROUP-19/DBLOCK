@@ -166,7 +166,7 @@ class ChangeLawSel extends Component {
                     </div>
 
                     <br></br>
-                    <p>{ this.state.emailAlert }</p>
+                    <h3>{ this.state.emailAlert }</h3>
                     <br></br>
 
                     <div>
