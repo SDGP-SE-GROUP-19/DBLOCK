@@ -12,6 +12,8 @@ class ChangeLawSel extends Component {
 
         this.state = {
 
+            emailAlert:"",
+
             web3: null,
             accounts: null,
             contract: null,
@@ -92,20 +94,41 @@ class ChangeLawSel extends Component {
 
         // get the seller id by searching the seller's email
         const newSellerId = await contract.methods.findSellerByEmail(this.state.newSellerEmail).call();
-    
-        // Calling addNewDeed method from the smart contract
-        await contract.methods.changeDeedLawyerAndSeller(
-          this.state.deedId,
-          newLawyerId,
-          newSellerId
-        ).send({ from: accounts[0] });
-    
-        // Log reaction
-        console.log(
-            "Deed ID - ", this.state.deedId, ", ",
-            "new LID - ", newLawyerId, ", ",
-            "new SID - ", newSellerId
-        );
+
+        // getting the deed count
+        const deedCount = await contract.methods.getDeedCount().call();
+
+        if (this.state.deedId >= parseInt(deedCount))
+        {
+            console.log("Invalid deed ID!");
+            this.setState({ emailAlert: "INVALID DEED ID DETECTED!" });
+        }
+        else
+        {
+            if ((parseInt(newLawyerId) === -1) || (parseInt(newSellerId) === -1))
+            {
+                console.log("Invalid lawyer or seller email!");
+                this.setState({ emailAlert: "INVALID EMAIL DETECTED!" });
+            }
+            else
+            {
+                // Calling addNewDeed method from the smart contract
+                await contract.methods.changeDeedLawyerAndSeller(
+                this.state.deedId,
+                newLawyerId,
+                newSellerId
+                ).send({ from: accounts[0] });
+            
+                // Log reaction
+                console.log(
+                    "Deed ID - ", this.state.deedId, ", ",
+                    "new LID - ", newLawyerId, ", ",
+                    "new SID - ", newSellerId
+                );
+
+                this.setState({ emailAlert: "" });
+            }
+        }
     }
 
     render() {
@@ -129,7 +152,7 @@ class ChangeLawSel extends Component {
                     
                     <div className="deedId">
                     <label htmlFor="deedId">Deed ID:</label>
-                    <input className="inputC" type="number" id="deedId" value={ this.state.deedId } onChange={ this.handleDeedIdChange.bind(this) }/>
+                    <input className="inputC" type="number" min="0" id="deedId" value={ this.state.deedId } onChange={ this.handleDeedIdChange.bind(this) }/>
                     </div>
 
                     <div className="newLawyerEmail">
@@ -141,6 +164,10 @@ class ChangeLawSel extends Component {
                     <label htmlFor="newSellerEmail">New Owner's Email:</label>
                     <input className="inputC" type="text" id="newSellerEmail" value={ this.state.newSellerEmail } onChange={ this.handleSellerEmailChange.bind(this) }/>
                     </div>
+
+                    <br></br>
+                    <p>{ this.state.emailAlert }</p>
+                    <br></br>
 
                     <div>
                     <input  type="submit" value="Submit" className="buttonC"/>
