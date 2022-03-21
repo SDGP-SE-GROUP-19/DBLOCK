@@ -18,6 +18,9 @@ class ChangeLawSel extends Component {
             accounts: null,
             contract: null,
 
+            oldLawyerTelNo: "",
+            oldSellerTelNo: "",
+
             deedId: 0,
             newLawyerEmail: "",
             newSellerEmail: ""
@@ -89,10 +92,10 @@ class ChangeLawSel extends Component {
         // Initialize account and contract variables from state
         const { accounts, contract } = this.state;
 
-        // get the lawyer id by searching the lawyer's email
+        // get the new lawyer id by searching the lawyer's email
         const newLawyerId = await contract.methods.findLawyerByEmail(this.state.newLawyerEmail).call();
 
-        // get the seller id by searching the seller's email
+        // get the new seller id by searching the seller's email
         const newSellerId = await contract.methods.findSellerByEmail(this.state.newSellerEmail).call();
 
         // getting the deed count
@@ -105,6 +108,23 @@ class ChangeLawSel extends Component {
         }
         else
         {
+            // get the current lawyer id and seller id
+            const currentLawyerId = await contract.methods.getLawyerIdOfDeed(this.state.deedId).call();
+            const currentSellerId = await contract.methods.getSellerIdOfDeed(this.state.deedId).call();
+
+            // get the current lawyers and sellers phone number
+            const currentLawyerTelNo = await contract.methods.getLawyerTelephoneNumber(currentLawyerId).call(); 
+            const currentSellerTelNo = await contract.methods.getSellerTelephoneNo(currentSellerId).call();
+
+            const currentLawyerTelNoString = ("0" + currentLawyerTelNo.toString());
+            const currentSellerTelNoString = ("0" + currentSellerTelNo.toString());
+            
+            // convert to string and append zero
+            console.log(
+                "oldLawyerTelNoString: " + currentLawyerTelNoString +
+                ", oldSellerTelNoString: " + currentSellerTelNoString
+            );
+
             if ((parseInt(newLawyerId) === -1) || (parseInt(newSellerId) === -1))
             {
                 console.log("Invalid lawyer or seller email!");
@@ -126,7 +146,11 @@ class ChangeLawSel extends Component {
                     "new SID - ", newSellerId
                 );
 
-                this.setState({ emailAlert: "" });
+                this.setState({ 
+                    emailAlert: "",
+                    oldLawyerTelNo: currentLawyerTelNoString, 
+                    oldSellerTelNo: currentSellerTelNoString
+                });
             }
         }
     }
