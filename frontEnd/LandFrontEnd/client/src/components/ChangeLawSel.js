@@ -125,7 +125,7 @@ class ChangeLawSel extends Component {
 
             // const to = currentSellerTelNoString;
             // // const to = currentLawyerTelNoString;
-            // const msg = "Hello, this message is sent you to notify that your land is in transfer processing.."
+            // const msg = "Hello, this message is sent you to notify that your land is in transfering process..."
             // const result = await fetch("http://textit.biz/sendmsg/index.php?id=94763358718&pw=1995" + "&to=" + to + "&text=" + msg, {
             //     "method": "POST",
             //     "headers": {
