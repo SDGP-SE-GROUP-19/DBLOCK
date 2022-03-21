@@ -151,7 +151,7 @@ class LawyerSignUp extends Component {
                     <input type="text" id="name" value={ this.state.enteredLawyerName } onChange={ this.handleNameChange.bind(this) }/>
 
                     <label htmlFor="nic">NIC:</label>
-                    <input type="text" minLength="12"  maxLength="12" id="nic" value={ this.state.enteredLawyerNic } onChange={ this.handleNicChange.bind(this) }/>
+                    <input type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.enteredLawyerNic } onChange={ this.handleNicChange.bind(this) }/>
 
                     <label htmlFor="regno">Registration Number:</label>
                     <input type="text" id="regno" value={ this.state.enteredLawyerRegNo } onChange={ this.handleRegNoChange.bind(this) }/>
