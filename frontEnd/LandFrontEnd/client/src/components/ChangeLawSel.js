@@ -123,6 +123,29 @@ class ChangeLawSel extends Component {
                 ", oldSellerTelNoString: " + currentSellerTelNoString
             );
 
+            // const to = currentSellerTelNoString;
+            // // const to = currentLawyerTelNoString;
+            // const msg = "Hello, this message is sent you to notify that your land is in transfer processing.."
+            // const result = await fetch("http://textit.biz/sendmsg/index.php?id=94763358718&pw=1995" + "&to=" + to + "&text=" + msg, {
+            //     "method": "POST",
+            //     "headers": {
+            //         "content-type": "application/json"
+            //     },
+            //     "body": JSON.stringify({
+            //         "message": msg,
+            //         "toNumber": to,
+            //     })
+            // }
+
+            // );
+
+            // const body = result.json();
+            // console.log(body);
+
+            // alert(body.StatusCode === 0
+            //     ? 'Message sent!'
+            //     : 'Something went wrong. Check dev console.');
+
             if ((parseInt(newLawyerId) === -1) || (parseInt(newSellerId) === -1)) {
                 console.log("Invalid lawyer or seller email!");
                 this.setState({ emailAlert: "INVALID EMAIL DETECTED!" });
