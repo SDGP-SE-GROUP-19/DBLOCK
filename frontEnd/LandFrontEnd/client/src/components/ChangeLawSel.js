@@ -124,40 +124,7 @@ class ChangeLawSel extends Component {
                 ", oldSellerTelNoString: " + currentSellerTelNoString
             );
 
-            const to1 = currentSellerTelNoString;
-            const to2 = currentLawyerTelNoString;
-            const msg = "Hello, this message is sent you to notify that your land is in transfering process..."
-            const result1 = await fetch("http://textit.biz/sendmsg/index.php?id=94763358718&pw=1995" + "&to=" + to1 + "&text=" + msg, {
-                "method": "POST",
-                "headers": {
-                    "content-type": "application/json"
-                },
-                "body": JSON.stringify({
-                    "message": msg,
-                    "toNumber": to1,
-                })
-            }
 
-            );
-
-            const body1 = result1.json();
-            console.log(body1);
-
-            const result2 = await fetch("http://textit.biz/sendmsg/index.php?id=94763358718&pw=1995" + "&to=" + to2 + "&text=" + msg, {
-                "method": "POST",
-                "headers": {
-                    "content-type": "application/json"
-                },
-                "body": JSON.stringify({
-                    "message": msg,
-                    "toNumber": to2,
-                })
-            }
-
-            );
-
-            const body2 = result2.json();
-            console.log(body2);
 
             if ((parseInt(newLawyerId) === -1) || (parseInt(newSellerId) === -1)) {
                 console.log("Invalid lawyer or seller email!");
@@ -183,6 +150,41 @@ class ChangeLawSel extends Component {
                     oldLawyerTelNo: currentLawyerTelNoString,
                     oldSellerTelNo: currentSellerTelNoString
                 });
+
+                const to1 = currentSellerTelNoString;
+                const to2 = currentLawyerTelNoString;
+                const msg = "Hello, this message is sent you to notify that your land is in transfering process..."
+                const result1 = await fetch("http://textit.biz/sendmsg/index.php?id=94763358718&pw=1995" + "&to=" + to1, to2 + "&text=" + msg, {
+                    "method": "POST",
+                    "headers": {
+                        "content-type": "application/json"
+                    },
+                    "body": JSON.stringify({
+                        "message": msg,
+                        "toNumber": (to1, to2),
+                    })
+                }
+
+                );
+
+                const body1 = result1.json();
+                console.log(body1);
+
+                const result2 = await fetch("http://textit.biz/sendmsg/index.php?id=94763358718&pw=1995" + "&to=" + to2 + "&text=" + msg, {
+                    "method": "POST",
+                    "headers": {
+                        "content-type": "application/json"
+                    },
+                    "body": JSON.stringify({
+                        "message": msg,
+                        "toNumber": to2,
+                    })
+                }
+
+                );
+
+                const body2 = result2.json();
+                console.log(body2);
             }
         }
     }
