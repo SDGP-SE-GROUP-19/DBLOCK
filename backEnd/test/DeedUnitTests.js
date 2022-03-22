@@ -31,4 +31,13 @@ contract("Land", account => {
 
         assert.equal(deedStreetName, "Temple Lane");
     });
+
+    it("Getting the lawyer email address after register a lawyer", async () => {
+
+        await instance.registerLawyer("Sarath", "570511041v", "20200187", "sarath@gmail.com", "0771234567");
+
+        const lawyerEmail = await instance.getLawyerEmail(0);
+
+        assert.equal(lawyerEmail, "sarath@gmail.com");
+    });
 });
