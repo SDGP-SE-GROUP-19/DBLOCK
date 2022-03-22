@@ -43,3 +43,9 @@
 .displayOwnerInfo{
     color: white;
 }
+
+.addressalert{
+    color: #ff0000;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

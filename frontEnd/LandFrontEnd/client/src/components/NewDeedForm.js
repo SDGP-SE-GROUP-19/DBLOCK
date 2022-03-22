@@ -16,6 +16,7 @@ class NewDeedForm extends Component {
 
       storageValue: 0,
       alertMessage: "",
+      alertsuccess: "",
 
       web3: null,
       accounts: null,
@@ -179,17 +180,17 @@ class NewDeedForm extends Component {
     if (parseInt(deedIdIfExistent) > -1) // if the deed already exists
     {
       console.log("Deed already exists!");
-      this.setState({ alertMessage: "Deed already exists!" });
+      this.setState({ alertMessage: "Deed already exists!", alertsuccess: "" });
     }
     else if (parseInt(newLawyerID) === -1) // if the lawyer for the relevant email does not exits
     {
       console.log("Lawyer of that email address does not exists!");
-      this.setState({ alertMessage: "Lawyer of that email address does not exists!" });
+      this.setState({ alertMessage: "Lawyer of that email address does not exists!", alertsuccess: "" });
     }
     else if (parseInt(newSellerID) === -1) // if the seller for the relevant email does not exits
     {
       console.log("Seller of that email address does not exists!");
-      this.setState({ alertMessage: "Seller of that email address does not exists!" });
+      this.setState({ alertMessage: "Seller of that email address does not exists!", alertsuccess: "" });
     }
     else
     {
@@ -232,7 +233,7 @@ class NewDeedForm extends Component {
       console.log(response);
 
       // Set the state storageValue with the variable
-      this.setState({ storageValue: response, stateDeedId: deedId, alertMessage: "" });
+      this.setState({ storageValue: response, stateDeedId: deedId, alertMessage: "", alertsuccess:"Deed Registered successfully" });
     }
   }
 
@@ -253,59 +254,57 @@ class NewDeedForm extends Component {
         <div className="deedcount">Deed count: { this.state.storageValue }</div>
         
       <div className="container">
-        <form className="form" onSubmit={ this.handleSubmit }>
-          
-          <div className="addressno">
-          <label htmlFor="no">Address No:</label>
-          <input className="input" type="text" minLength="1" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) }/>
-          </div>
+          <form className="form" onSubmit={ this.handleSubmit }>
+            
+            <div className="addressno">
+            <label htmlFor="no">Address No:</label>
+            <input className="input" type="text" minLength="1" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) }/>
+            </div>
 
-          <div className="streetname">
-          <label htmlFor="streetname">Street:</label>
-          <input className="input" type="text" minLength="1" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange.bind(this) }/>
-          </div>
+            <div className="streetname">
+            <label htmlFor="streetname">Street:</label>
+            <input className="input" type="text" minLength="1" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange.bind(this) }/>
+            </div>
 
-          <div className="city">
-          <label htmlFor="city">City:</label>
-          <input className="input" type="text" minLength="1" id="city" value={ this.state.newCity } onChange={ this.handleCityChange.bind(this) }/>
-          </div>
+            <div className="city">
+            <label htmlFor="city">City:</label>
+            <input className="input" type="text" minLength="1" id="city" value={ this.state.newCity } onChange={ this.handleCityChange.bind(this) }/>
+            </div>
 
-          <div className="district">
-          <label htmlFor="district">District:</label>
-          <input className="input" type="text" minLength="1" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange.bind(this) }/>
-          </div>
+            <div className="district">
+            <label htmlFor="district">District:</label>
+            <input className="input" type="text" minLength="1" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange.bind(this) }/>
+            </div>
 
-          <div className="province">
-          <label htmlFor="province">Province:</label>
-          <input className="input" type="text" minLength="1" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) }/>
-          </div>
+            <div className="province">
+            <label htmlFor="province">Province:</label>
+            <input className="input" type="text" minLength="1" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) }/>
+            </div>
 
-          <div className="lawyerid">
-          <label htmlFor="lawyeremail">Email of assigning lawyer:</label>
-          <input className="input" type="email" id="lawyeremail" value={ this.state.newAssignedLawyerEmail } onChange={ this.handleLawyerEmailChange.bind(this) }/>
-          </div>
+            <div className="lawyerid">
+            <label htmlFor="lawyeremail">Email of assigning lawyer:</label>
+            <input className="input" type="email" id="lawyeremail" value={ this.state.newAssignedLawyerEmail } onChange={ this.handleLawyerEmailChange.bind(this) }/>
+            </div>
 
-          <div className="sellerid">
-          <label htmlFor="selleremail">Email of assigning seller:</label>
-          <input className="input" type="email" id="selleremail" value={ this.state.newAssignedSellerEmail } onChange={ this.handleSellerEmailChange.bind(this) }/>
-          </div>
+            <div className="sellerid">
+            <label htmlFor="selleremail">Email of assigning seller:</label>
+            <input className="input" type="email" id="selleremail" value={ this.state.newAssignedSellerEmail } onChange={ this.handleSellerEmailChange.bind(this) }/>
+            </div>
 
-          <form className="buttonCF" onSubmit={this.onSubmit} >
-            <input type="file" onChange={this.captureFile} />
-            {/* <input type='submit' className="button"/> */}
+            <form className="buttonCF" onSubmit={this.onSubmit} >
+              <input type="file" onChange={this.captureFile} />
+              {/* <input type='submit' className="button"/> */}
+            </form>
+
+            <div className="deedduplicateval">{ this.state.alertMessage }</div>
+            <div className="successval">{ this.state.alertsuccess }</div>
+            
+
+            <div>
+              <input type="submit" value="Submit" className="button"/>
+            </div>
+
           </form>
-
-          <br></br>
-          <br></br>
-          <div>{ this.state.alertMessage }</div>
-          <br></br>
-          <br></br>
-
-          <div>
-            <input type="submit" value="Submit" className="button"/>
-          </div>
-
-        </form>
         
         </div>
 
