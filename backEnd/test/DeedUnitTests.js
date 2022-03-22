@@ -22,4 +22,13 @@ contract("Land", account => {
 
         assert.equal(adminPassword, "123");
     });
+
+    it("Getting the deed street name after adding a deed", async () => {
+
+        await instance.addNewDeed("20", "Temple Lane", "Kolpity", "Colombo", "West", 0, 0);
+
+        const deedStreetName = await instance.getDeedStreetName(0);
+
+        assert.equal(deedStreetName, "Temple Lane");
+    });
 });
