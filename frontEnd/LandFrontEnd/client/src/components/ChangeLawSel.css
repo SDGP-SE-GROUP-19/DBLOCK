@@ -58,3 +58,7 @@
     background:linear-gradient(135deg,#0681b9,#f80759);
     padding: 8px 40px;
 }
+
+.changelawyeremailalert{
+    color: red;
+}
