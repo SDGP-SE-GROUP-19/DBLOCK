@@ -55,5 +55,12 @@ contract("Land", account => {
 
         assert.equal(deedNo, "20");
     });
+
+    it("Getting the deed city after add a deed", async () => {
+
+        const deedCity = await instance.getDeedCity(0);
+
+        assert.equal(deedCity, "Kolpity");
+    });
     
 });
