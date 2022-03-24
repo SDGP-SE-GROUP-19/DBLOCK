@@ -62,5 +62,12 @@ contract("Land", account => {
 
         assert.equal(deedCity, "Kolpity");
     });
+
+    it("Getting the deed district after add a deed", async () => {
+
+        const deedDistrict = await instance.getDeedDistrict(0);
+
+        assert.equal(deedDistrict, "Colombo");
+    });
     
 });
