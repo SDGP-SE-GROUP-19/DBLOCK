@@ -166,23 +166,6 @@ class ChangeLawSel extends Component {
                 {
                     console.log(e);
                 }
-                
-                // console.log(body2);
-                // const result2 = await fetch("http://textit.biz/sendmsg/index.php?id=94763358718&pw=1995" + "&to=" + to2 + "&text=" + msg, {
-                //     "method": "POST",
-                //     "headers": {
-                //         "content-type": "application/json"
-                //     },
-                //     "body": JSON.stringify({
-                //         "message": msg,
-                //         "toNumber": to2,
-                //     })
-                // }
-
-                // );
-
-                // const body2 = result2.json();
-                // console.log(body2);
             }
         }
     }
