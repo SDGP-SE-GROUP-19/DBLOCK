@@ -89,4 +89,11 @@ contract("Land", account => {
         assert.equal(lawyerEmail, "sarath@gmail.com");
     });
 
+    it("Getting the lawyer id after registering a lawyer", async () => {
+
+        const LawyerId = await instance.getLawyerId(0);
+
+        assert.equal(LawyerId, 0);
+    });
+
 });
