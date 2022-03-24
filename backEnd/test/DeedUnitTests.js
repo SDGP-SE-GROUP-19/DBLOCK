@@ -70,4 +70,10 @@ contract("Land", account => {
         assert.equal(deedDistrict, "Colombo");
     });
     
+    it("Getting the deed province after add a deed", async () => {
+
+        const deedProvince = await instance.getDeedProvince(0);
+
+        assert.equal(deedProvince, "West");
+    });
 });
