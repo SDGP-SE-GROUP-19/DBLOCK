@@ -9,6 +9,7 @@ contract("Land", account => {
         instance = await Land.deployed();
         await instance.addNewDeed("20", "Temple Lane", "Kolpity", "Colombo", "West", 0, 0);
         await instance.registerLawyer("Sarath", "570511041v", "20200187", "sarath@gmail.com", 0771234567);
+        await instance.registerSeller("Chris", "278987876v", "26","Kandy", "chris@gmail.com", 0761421615);
 
     });
 
