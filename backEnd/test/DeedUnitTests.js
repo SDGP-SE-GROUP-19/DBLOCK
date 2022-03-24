@@ -147,6 +147,13 @@ contract("Land", account => {
 
         assert.equal(SellerName, Chris);
     });
+     
+    //unit testing part of the seller nic
+    it("Getting the seller nic after registering a seller", async () => {
+        const SellerNic = await instance.getSellerNic(0);
+
+        assert.equal(SellerNic, "278987876v");
+    });
 
 
 });
