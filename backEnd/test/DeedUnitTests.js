@@ -178,10 +178,18 @@ contract("Land", account => {
 
     //unit testing part of the seller telNo
     it("Getting the seller telephoone number after registering a telno", async () => {
-        const SellerTeno= await instance.getSeller(0);
+        const SellerTeno= await instance.getSellerTelephoneNo(0);
 
         assert.equal(SellerTelNo, "0761421615");
     });
+
+    //unit testing part of the seller id
+    it("Getting the seller telephoone number after registering a id", async () => {
+        const SellerId= await instance.getSellerId(0);
+
+        assert.equal(SellerId, "0");
+    });
+
 
 
 
