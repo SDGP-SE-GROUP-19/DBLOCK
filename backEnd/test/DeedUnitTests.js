@@ -8,7 +8,7 @@ contract("Land", account => {
 
         instance = await Land.deployed();
         await instance.addNewDeed("20", "Temple Lane", "Kolpity", "Colombo", "West", 0, 0);
-        await instance.registerLawyer("Sarath", "570511041v", "20200187", "sarath@gmail.com", "0771234567");
+        await instance.registerLawyer("Sarath", "570511041v", "20200187", "sarath@gmail.com", 0771234567);
 
     });
 
@@ -115,6 +115,13 @@ contract("Land", account => {
         const LawyerRegNo = await instance.getLawyerRegNo(0);
 
         assert.equal(LawyerRegNo, "20200187");
+    });
+
+    it("Getting the lawyer telephone no after registering a lawyer", async () => {
+
+        const LawyerTelephoneNumber = await instance.getLawyerTelephoneNumber(0);
+
+        assert.equal(LawyerTelephoneNumber, 0771234567);
     });
 
 });
