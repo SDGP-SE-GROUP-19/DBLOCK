@@ -169,7 +169,12 @@ contract("Land", account => {
         assert.equal(SellerCity, "Kandy");
     });
 
+    //unit testing part of the seller email
+    it("Getting the seller email after registering a seller", async () => {
+        const SellerEmail = await instance.getSellerEmail(0);
 
+        assert.equal(SellerEmail, "chris@gmail.com");
+    });
 
 
 
