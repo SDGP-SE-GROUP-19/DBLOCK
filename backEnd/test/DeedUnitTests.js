@@ -82,6 +82,7 @@ contract("Land", account => {
         assert.equal(sellerIdOfDeed, 0);
     });
 
+    //Unit testing part of Lawyer ID
     it("Getting the lawyer id after registering a lawyer", async () => {
 
         const LawyerId = await instance.getLawyerId(0);
@@ -89,6 +90,7 @@ contract("Land", account => {
         assert.equal(LawyerId, 0);
     });
 
+    //Unit testing part of Lawyer Name
     it("Getting the lawyer name after registering a lawyer", async () => {
 
         const LawyerName = await instance.getLawyerName(0);
@@ -96,6 +98,7 @@ contract("Land", account => {
         assert.equal(LawyerName, "Sarath");
     });
 
+    //Unit testing part of Lawyer NIC
     it("Getting the lawyer NIC no after registering a lawyer", async () => {
 
         const LawyerNic = await instance.getLawyerNic(0);
@@ -103,6 +106,7 @@ contract("Land", account => {
         assert.equal(LawyerNic, "570511041v");
     });
 
+    //Unit testing part of Lawyer registration number
     it("Getting the lawyer registration no after registering a lawyer", async () => {
 
         const LawyerRegNo = await instance.getLawyerRegNo(0);
@@ -110,6 +114,7 @@ contract("Land", account => {
         assert.equal(LawyerRegNo, "20200187");
     });
 
+    //Unit testing part of Lawyer email address
     it("Getting the lawyer email address after register a lawyer", async () => {
 
         const lawyerEmail = await instance.getLawyerEmail(0);
@@ -117,6 +122,7 @@ contract("Land", account => {
         assert.equal(lawyerEmail, "sarath@gmail.com");
     });
 
+    //Unit testing part of Lawyer telephone number
     it("Getting the lawyer telephone no after registering a lawyer", async () => {
 
         const LawyerTelephoneNumber = await instance.getLawyerTelephoneNumber(0);
