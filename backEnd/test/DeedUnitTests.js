@@ -110,4 +110,11 @@ contract("Land", account => {
         assert.equal(LawyerNic, "570511041v");
     });
 
+    it("Getting the lawyer registration no after registering a lawyer", async () => {
+
+        const LawyerRegNo = await instance.getLawyerRegNo(0);
+
+        assert.equal(LawyerRegNo, "20200187");
+    });
+
 });
