@@ -83,4 +83,11 @@ contract("Land", account => {
 
         assert.equal(lawyerIdOfDeed, 0);
     });
+
+    it("Getting the deed seller id of the deed after add a deed", async () => {
+
+        const sellerIdOfDeed = await instance.getSellerIdOfDeed(0);
+
+        assert.equal(sellerIdOfDeed, 0);
+    });
 });
