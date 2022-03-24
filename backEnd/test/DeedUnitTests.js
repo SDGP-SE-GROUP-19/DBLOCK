@@ -155,5 +155,13 @@ contract("Land", account => {
         assert.equal(SellerNic, "278987876v");
     });
 
+    //unit testing part of the seller age
+    it("Getting the seller age after registering a seller", async () => {
+        const SellerAge = await instance.getSellerAge(0);
+
+        assert.equal(SellerAge, "26");
+    });
+
+
 
 });
