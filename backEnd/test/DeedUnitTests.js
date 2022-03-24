@@ -162,6 +162,15 @@ contract("Land", account => {
         assert.equal(SellerAge, "26");
     });
 
+    //unit testing part of the seller city
+    it("Getting the seller city after registering a seller", async () => {
+        const SellerCity = await instance.getSellerCity(0);
+
+        assert.equal(SellerCity, "Kandy");
+    });
+
+
+
 
 
 });
