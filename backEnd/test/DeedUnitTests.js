@@ -7,6 +7,7 @@ contract("Land", account => {
     beforeEach("should setup the contract instance", async () => {
 
         instance = await Land.deployed();
+        await instance.addNewDeed("20", "Temple Lane", "Kolpity", "Colombo", "West", 0, 0);
     });
 
     it("should return the admin id as 0", async () => {
@@ -25,7 +26,7 @@ contract("Land", account => {
 
     it("Getting the deed street name after adding a deed", async () => {
 
-        await instance.addNewDeed("20", "Temple Lane", "Kolpity", "Colombo", "West", 0, 0);
+        
 
         const deedStreetName = await instance.getDeedStreetName(0);
 
@@ -43,12 +44,16 @@ contract("Land", account => {
 
     it("Getting the deed id after add a deed", async () => {
 
-        await instance.getDeedId("0");
-
         const deedId = await instance.getDeedId(0);
 
-        assert.equal(deedId, "0");
+        assert.equal(deedId, 0);
     });
 
+    it("Getting the deed no after add a deed", async () => {
+
+        const deedNo = await instance.getDeedNo(0);
+
+        assert.equal(deedNo, "20");
+    });
     
 });
