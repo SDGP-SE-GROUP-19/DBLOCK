@@ -15,6 +15,7 @@ class NewDeedForm extends Component {
     this.state = {
 
       storageValue: 0,
+      alertMessage: "",
 
       web3: null,
       accounts: null,
@@ -166,44 +167,73 @@ class NewDeedForm extends Component {
     const newLawyerID = await contract.methods.findLawyerByEmail(this.state.newAssignedLawyerEmail).call();
     const newSellerID = await contract.methods.findSellerByEmail(this.state.newAssignedSellerEmail).call();
 
-    // Calling addNewDeed method from the smart contract
-    await contract.methods.addNewDeed(
+    // get the deed id for the entered address
+    const deedIdIfExistent = await contract.methods.findDeedByAddress(
       this.state.newNo,
       this.state.newStreetName,
       this.state.newCity,
       this.state.newDistrict,
-      this.state.newProvince,
-      newLawyerID,
-      newSellerID
-    ).send({ from: accounts[0] });
+      this.state.newProvince
+    ).call();
+
+    if (parseInt(deedIdIfExistent) > -1) // if the deed already exists
+    {
+      console.log("Deed already exists!");
+      this.setState({ alertMessage: "Deed already exists!" });
+    }
+    else if (parseInt(newLawyerID) === -1) // if the lawyer for the relevant email does not exits
+    {
+      console.log("Lawyer of that email address does not exists!");
+      this.setState({ alertMessage: "Lawyer of that email address does not exists!" });
+    }
+    else if (parseInt(newSellerID) === -1) // if the seller for the relevant email does not exits
+    {
+      console.log("Seller of that email address does not exists!");
+      this.setState({ alertMessage: "Seller of that email address does not exists!" });
+    }
+    else
+    {
+      console.log("OK");
+
+      // Calling addNewDeed method from the smart contract
+      await contract.methods.addNewDeed(
+        this.state.newNo,
+        this.state.newStreetName,
+        this.state.newCity,
+        this.state.newDistrict,
+        this.state.newProvince,
+        newLawyerID,
+        newSellerID
+      ).send({ from: accounts[0] });
 
 
-    await ipfs.add(this.state.buffer, (err, ipfsHash) => {
-      console.log(err, ipfsHash);
+      await ipfs.add(this.state.buffer, (err, ipfsHash) => {
+        console.log(err, ipfsHash);
 
-      //setState by setting ipfsHash to ipfsHash[0].hash        
-      this.setState({ ipfsHash: ipfsHash[0].hash });
+        //setState by setting ipfsHash to ipfsHash[0].hash        
+        this.setState({ ipfsHash: ipfsHash[0].hash });
 
-      // call Ethereum contract method "sendHash" and .send IPFS hash to etheruem contract
-      //return the transaction hash from the ethereum contract        
-      contract.methods.sendHash(this.state.stateDeedId, this.state.ipfsHash).send({
-        from: accounts[0]
-      }, (error, transactionHash) => {
-        console.log(transactionHash);
-        this.setState({ transactionHash });
-      });
-    })
-    // getting the deed count
-    const response = await contract.methods.getDeedCount().call();
+        // call Ethereum contract method "sendHash" and .send IPFS hash to etheruem contract
+        //return the transaction hash from the ethereum contract        
+        contract.methods.sendHash(this.state.stateDeedId, this.state.ipfsHash).send({
+          from: accounts[0]
+        }, (error, transactionHash) => {
+          console.log(transactionHash);
+          this.setState({ transactionHash });
+        });
+      })
+      // getting the deed count
+      const response = await contract.methods.getDeedCount().call();
 
-    // getting the deed ID
-    const deedId = (response - 1);
+      // getting the deed ID
+      const deedId = (response - 1);
 
-    // Log variable
-    console.log(response);
+      // Log variable
+      console.log(response);
 
-    // Set the state storageValue with the variable
-    this.setState({ storageValue: response, stateDeedId: deedId });
+      // Set the state storageValue with the variable
+      this.setState({ storageValue: response, stateDeedId: deedId, alertMessage: "" });
+    }
   }
 
   render() {
@@ -227,37 +257,37 @@ class NewDeedForm extends Component {
           
           <div className="addressno">
           <label htmlFor="no">Address No:</label>
-          <input className="input" type="text" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) }/>
+          <input className="input" type="text" minLength="1" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) }/>
           </div>
 
           <div className="streetname">
           <label htmlFor="streetname">Street:</label>
-          <input className="input" type="text" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange.bind(this) }/>
+          <input className="input" type="text" minLength="1" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange.bind(this) }/>
           </div>
 
           <div className="city">
           <label htmlFor="city">City:</label>
-          <input className="input" type="text" id="city" value={ this.state.newCity } onChange={ this.handleCityChange.bind(this) }/>
+          <input className="input" type="text" minLength="1" id="city" value={ this.state.newCity } onChange={ this.handleCityChange.bind(this) }/>
           </div>
 
           <div className="district">
           <label htmlFor="district">District:</label>
-          <input className="input" type="text" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange.bind(this) }/>
+          <input className="input" type="text" minLength="1" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange.bind(this) }/>
           </div>
 
           <div className="province">
           <label htmlFor="province">Province:</label>
-          <input className="input" type="text" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) }/>
+          <input className="input" type="text" minLength="1" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) }/>
           </div>
 
           <div className="lawyerid">
           <label htmlFor="lawyeremail">Email of assigning lawyer:</label>
-          <input className="input" type="text" id="lawyeremail" value={ this.state.newAssignedLawyerEmail } onChange={ this.handleLawyerEmailChange.bind(this) }/>
+          <input className="input" type="email" id="lawyeremail" value={ this.state.newAssignedLawyerEmail } onChange={ this.handleLawyerEmailChange.bind(this) }/>
           </div>
 
           <div className="sellerid">
           <label htmlFor="selleremail">Email of assigning seller:</label>
-          <input className="input" type="text" id="selleremail" value={ this.state.newAssignedSellerEmail } onChange={ this.handleSellerEmailChange.bind(this) }/>
+          <input className="input" type="email" id="selleremail" value={ this.state.newAssignedSellerEmail } onChange={ this.handleSellerEmailChange.bind(this) }/>
           </div>
 
           <form className="buttonCF" onSubmit={this.onSubmit} >
@@ -267,6 +297,7 @@ class NewDeedForm extends Component {
 
           <br></br>
           <br></br>
+          <div>{ this.state.alertMessage }</div>
           <br></br>
           <br></br>
 

@@ -116,6 +116,7 @@ class ChangeLawSel extends Component {
 
             const currentLawyerTelNoString = ("0" + currentLawyerTelNo.toString());
             const currentSellerTelNoString = ("0" + currentSellerTelNo.toString());
+            // const tpnumber = "0779184927"
 
             // convert to string and append zero
             console.log(
@@ -123,28 +124,7 @@ class ChangeLawSel extends Component {
                 ", oldSellerTelNoString: " + currentSellerTelNoString
             );
 
-            // const to = currentSellerTelNoString;
-            // // const to = currentLawyerTelNoString;
-            // const msg = "Hello, this message is sent you to notify that your land is in transfering process..."
-            // const result = await fetch("http://textit.biz/sendmsg/index.php?id=94763358718&pw=1995" + "&to=" + to + "&text=" + msg, {
-            //     "method": "POST",
-            //     "headers": {
-            //         "content-type": "application/json"
-            //     },
-            //     "body": JSON.stringify({
-            //         "message": msg,
-            //         "toNumber": to,
-            //     })
-            // }
 
-            // );
-
-            // const body = result.json();
-            // console.log(body);
-
-            // alert(body.StatusCode === 0
-            //     ? 'Message sent!'
-            //     : 'Something went wrong. Check dev console.');
 
             if ((parseInt(newLawyerId) === -1) || (parseInt(newSellerId) === -1)) {
                 console.log("Invalid lawyer or seller email!");
@@ -170,10 +150,30 @@ class ChangeLawSel extends Component {
                     oldLawyerTelNo: currentLawyerTelNoString,
                     oldSellerTelNo: currentSellerTelNoString
                 });
+
+                //set variables
+                const to1 = currentSellerTelNoString;
+                const to2 = currentLawyerTelNoString;
+                const msg = "Hello, this message is sent you to notify that your land is in transfering process...";
+
+
+                //try catch handling to fix the type error
+                try
+                {
+                    const result = await fetch("http://textit.biz/sendmsg/index.php?id=94763358718&pw=1995" + "&to=" + [to1, to2] + "&text=" + msg);
+
+                    const body = result.json();
+                    console.log(body);
+                }
+                catch(e)
+                {
+                    console.log(e);
+                }
             }
         }
     }
 
+    //define the structure of HTML
     render() {
 
         if (!this.state.web3) {
