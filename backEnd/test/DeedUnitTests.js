@@ -82,13 +82,6 @@ contract("Land", account => {
         assert.equal(sellerIdOfDeed, 0);
     });
 
-    it("Getting the lawyer email address after register a lawyer", async () => {
-
-        const lawyerEmail = await instance.getLawyerEmail(0);
-
-        assert.equal(lawyerEmail, "sarath@gmail.com");
-    });
-
     it("Getting the lawyer id after registering a lawyer", async () => {
 
         const LawyerId = await instance.getLawyerId(0);
@@ -115,6 +108,13 @@ contract("Land", account => {
         const LawyerRegNo = await instance.getLawyerRegNo(0);
 
         assert.equal(LawyerRegNo, "20200187");
+    });
+
+    it("Getting the lawyer email address after register a lawyer", async () => {
+
+        const lawyerEmail = await instance.getLawyerEmail(0);
+
+        assert.equal(lawyerEmail, "sarath@gmail.com");
     });
 
     it("Getting the lawyer telephone no after registering a lawyer", async () => {
