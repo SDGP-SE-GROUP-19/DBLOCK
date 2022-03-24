@@ -176,6 +176,14 @@ contract("Land", account => {
         assert.equal(SellerEmail, "chris@gmail.com");
     });
 
+    //unit testing part of the seller telNo
+    it("Getting the seller telephoone number after registering a telno", async () => {
+        const SellerTeno= await instance.getSeller(0);
+
+        assert.equal(SellerTelNo, "0761421615");
+    });
+
+
 
 
 });
