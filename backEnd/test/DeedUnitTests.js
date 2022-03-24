@@ -7,6 +7,7 @@ contract("Land", account => {
     beforeEach("should setup the contract instance", async () => {
 
         instance = await Land.deployed();
+        await instance.addNewDeed("20", "Temple Lane", "Kolpity", "Colombo", "West", 0, 0);
     });
 
     it("should return the admin id as 0", async () => {
@@ -25,7 +26,7 @@ contract("Land", account => {
 
     it("Getting the deed street name after adding a deed", async () => {
 
-        await instance.addNewDeed("20", "Temple Lane", "Kolpity", "Colombo", "West", 0, 0);
+        
 
         const deedStreetName = await instance.getDeedStreetName(0);
 
@@ -39,5 +40,40 @@ contract("Land", account => {
         const lawyerEmail = await instance.getLawyerEmail(0);
 
         assert.equal(lawyerEmail, "sarath@gmail.com");
+    });
+
+    it("Getting the deed id after add a deed", async () => {
+
+        const deedId = await instance.getDeedId(0);
+
+        assert.equal(deedId, 0);
+    });
+
+    it("Getting the deed no after add a deed", async () => {
+
+        const deedNo = await instance.getDeedNo(0);
+
+        assert.equal(deedNo, "20");
+    });
+
+    it("Getting the deed city after add a deed", async () => {
+
+        const deedCity = await instance.getDeedCity(0);
+
+        assert.equal(deedCity, "Kolpity");
+    });
+
+    it("Getting the deed district after add a deed", async () => {
+
+        const deedDistrict = await instance.getDeedDistrict(0);
+
+        assert.equal(deedDistrict, "Colombo");
+    });
+    
+    it("Getting the deed province after add a deed", async () => {
+
+        const deedProvince = await instance.getDeedProvince(0);
+
+        assert.equal(deedProvince, "West");
     });
 });
