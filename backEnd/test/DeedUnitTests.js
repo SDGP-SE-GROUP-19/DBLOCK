@@ -141,4 +141,12 @@ contract("Land", account => {
         assert.equal(LawyerTelephoneNumber, 0771234567);
     });
 
+    //unit testing part of seller name
+    it("Getting the seller name after registering a seller", async () => {
+        const SellerName = await instance.getSellerName(0);
+
+        assert.equal(SellerName, Chris);
+    });
+
+
 });
