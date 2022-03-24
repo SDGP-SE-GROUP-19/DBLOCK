@@ -12,6 +12,7 @@ contract("Land", account => {
 
     });
 
+    //Unit test for admin id
     it("should return the admin id as 0", async () => {
 
         const adminId = await instance.getAdminId();
@@ -19,6 +20,7 @@ contract("Land", account => {
         assert.equal(adminId, 0);
     });
 
+    //Unit test for admin password
     it("should return the admin password as 123", async () => {
 
         const adminPassword = await instance.getAdminPassword();
@@ -26,6 +28,7 @@ contract("Land", account => {
         assert.equal(adminPassword, "123");
     });
 
+    //Unit test for deed id
     it("Getting the deed id after add a deed", async () => {
 
         const deedId = await instance.getDeedId(0);
@@ -33,6 +36,7 @@ contract("Land", account => {
         assert.equal(deedId, 0);
     });
 
+    //Unit test for deed no
     it("Getting the deed no after add a deed", async () => {
 
         const deedNo = await instance.getDeedNo(0);
@@ -40,6 +44,7 @@ contract("Land", account => {
         assert.equal(deedNo, "20");
     });
 
+    //Unit test for deed street name
     it("Getting the deed street name after adding a deed", async () => {
 
         const deedStreetName = await instance.getDeedStreetName(0);
@@ -47,6 +52,7 @@ contract("Land", account => {
         assert.equal(deedStreetName, "Temple Lane");
     });
 
+    //Unit test for deed city
     it("Getting the deed city after add a deed", async () => {
 
         const deedCity = await instance.getDeedCity(0);
@@ -54,6 +60,7 @@ contract("Land", account => {
         assert.equal(deedCity, "Kolpity");
     });
 
+    //Unit test for deed district
     it("Getting the deed district after add a deed", async () => {
 
         const deedDistrict = await instance.getDeedDistrict(0);
@@ -61,6 +68,7 @@ contract("Land", account => {
         assert.equal(deedDistrict, "Colombo");
     });
     
+    //Unit test for deed province
     it("Getting the deed province after add a deed", async () => {
 
         const deedProvince = await instance.getDeedProvince(0);
@@ -68,6 +76,7 @@ contract("Land", account => {
         assert.equal(deedProvince, "West");
     });
 
+    //Unit test for deed lawyer id
     it("Getting the deed lawyer id of the deed after add a deed", async () => {
 
         const lawyerIdOfDeed = await instance.getLawyerIdOfDeed(0);
@@ -75,6 +84,7 @@ contract("Land", account => {
         assert.equal(lawyerIdOfDeed, 0);
     });
 
+    //Unit test for deed seller id
     it("Getting the deed seller id of the deed after add a deed", async () => {
 
         const sellerIdOfDeed = await instance.getSellerIdOfDeed(0);
