@@ -40,4 +40,15 @@ contract("Land", account => {
 
         assert.equal(lawyerEmail, "sarath@gmail.com");
     });
+
+    it("Getting the deed id after add a deed", async () => {
+
+        await instance.getDeedId("0");
+
+        const deedId = await instance.getDeedId(0);
+
+        assert.equal(deedId, "0");
+    });
+
+    
 });
