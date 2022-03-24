@@ -145,7 +145,7 @@ contract("Land", account => {
     it("Getting the seller name after registering a seller", async () => {
         const SellerName = await instance.getSellerName(0);
 
-        assert.equal(SellerName, Chris);
+        assert.equal(SellerName, "Chris");
     });
      
     //unit testing part of the seller nic
@@ -178,7 +178,7 @@ contract("Land", account => {
 
     //unit testing part of the seller telNo
     it("Getting the seller telephoone number after registering a telno", async () => {
-        const SellerTeno= await instance.getSellerTelephoneNo(0);
+        const SellerTelno= await instance.getSellerTelephoneNo(0);
 
         assert.equal(SellerTelNo, "0761421615");
     });
