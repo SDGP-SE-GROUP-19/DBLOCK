@@ -265,11 +265,9 @@ class SearchDeed2 extends Component {
             <label htmlFor="province">Province:</label>
             <input type="text" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) }/>
 
-            <br></br>
-            <br></br>
-            <br></br>
-            <div>{ this.state.addressAlert }</div>
-            <br></br>
+            
+            <div className="addressalert">{ this.state.addressAlert }</div>
+            
               
             <div className="btn">
             <input type="submit" value="Submit" className="submitSD2"/>

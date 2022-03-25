@@ -9,6 +9,7 @@ contract("Land", account => {
         instance = await Land.deployed();
         await instance.addNewDeed("20", "Temple Lane", "Kolpity", "Colombo", "West", 0, 0);
         await instance.registerLawyer("Sarath", "570511041v", "20200187", "sarath@gmail.com", 0771234567);
+        await instance.registerSeller("Chris", "278987876v", "26","Kandy", "chris@gmail.com", 0761421615);
 
     });
 
@@ -139,5 +140,58 @@ contract("Land", account => {
 
         assert.equal(LawyerTelephoneNumber, 0771234567);
     });
+
+    //unit testing part of seller name
+    it("Getting the seller name after registering a seller", async () => {
+        const SellerName = await instance.getSellerName(0);
+
+        assert.equal(SellerName, "Chris");
+    });
+     
+    //unit testing part of the seller nic
+    it("Getting the seller nic after registering a seller", async () => {
+        const SellerNic = await instance.getSellerNic(0);
+
+        assert.equal(SellerNic, "278987876v");
+    });
+
+    //unit testing part of the seller age
+    it("Getting the seller age after registering a seller", async () => {
+        const SellerAge = await instance.getSellerAge(0);
+
+        assert.equal(SellerAge, "26");
+    });
+
+    //unit testing part of the seller city
+    it("Getting the seller city after registering a seller", async () => {
+        const SellerCity = await instance.getSellerCity(0);
+
+        assert.equal(SellerCity, "Kandy");
+    });
+
+    //unit testing part of the seller email
+    it("Getting the seller email after registering a seller", async () => {
+        const SellerEmail = await instance.getSellerEmail(0);
+
+        assert.equal(SellerEmail, "chris@gmail.com");
+    });
+
+    //unit testing part of the seller telNo
+    it("Getting the seller telephone number after registering a telno", async () => {
+        const SellerTelNo= await instance.getSellerTelephoneNo(0);
+
+        assert.equal(SellerTelNo, 0761421615);
+    });
+
+    //unit testing part of the seller id
+    it("Getting the seller id after registering a id", async () => {
+        const SellerId= await instance.getSellerId(0);
+
+        assert.equal(SellerId, 0);
+    });
+
+
+
+
 
 });
