@@ -150,16 +150,16 @@ class ChangeLawSel extends Component {
                     oldLawyerTelNo: currentLawyerTelNoString,
                     oldSellerTelNo: currentSellerTelNoString
                 });
-
-                //set variables
+                
+                //set variables for send sms
                 const to1 = currentSellerTelNoString;
                 const to2 = currentLawyerTelNoString;
                 const msg = "Hello, this message is sent you to notify that your land is in transfering process...";
 
-
                 //try catch handling to fix the type error
                 try
                 {
+                    //Sending SMS
                     const result = await fetch("http://textit.biz/sendmsg/index.php?id=94763358718&pw=1995" + "&to=" + [to1, to2] + "&text=" + msg);
 
                     const body = result.json();
@@ -167,6 +167,7 @@ class ChangeLawSel extends Component {
                 }
                 catch(e)
                 {
+                    //print the error in console
                     console.log(e);
                 }
             }
