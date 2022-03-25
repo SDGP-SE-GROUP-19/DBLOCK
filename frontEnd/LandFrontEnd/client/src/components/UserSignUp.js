@@ -11,7 +11,8 @@ class UserSignUp extends Component {
     super(props);
 
     this.state = {
-
+      alertMessage: "",
+      sellerCount: 0,
       storageValue: 0,
 
       web3: null,
@@ -124,36 +125,36 @@ class UserSignUp extends Component {
 
     // Initialize account and contract variables from state
     const { accounts, contract } = this.state;
+    const sellerId = await contract.methods.findSellerByEmail(this.state.email).call();
 
-  
+    if (parseInt(sellerId) === -1)
+    {
+        // Calling registerLawyer method from the smart contract
+        await contract.methods.registerSeller(
+            this.state.name,
+            
+            this.state.nic,
+            this.state.age,
+            this.state.city,
+            this.state.email,
+            this.state.telephoneNumber
+        ).send({ from: accounts[0] });
 
-    // Calling addNewDeed method from the smart contract
-    await contract.methods.registerSeller(
-      this.state.name,
-      this.state.nic,
-      this.state.age,
-      this.state.city,
-      this.state.email,
-      this.state.telephoneNumber
-    ).send({ from: accounts[0] });
-    
+        // get the number of lawyers added so far fron the blockchain using getLawyerCount method in smart contract
+        const sellerCountVar = await contract.methods.getSellersCount().call();
 
-    
-
+        // set the state with the new lawyer count
+        this.setState({ sellerCount: sellerCountVar, alertMessage: "" });
+    }
+    else
+    {
+        this.setState({ alertMessage: "Email already exists!" });
+        console.log("Email already exists!");
+    }
 
 
-    // getting the deed count
-    const response = await contract.methods.getSellersCount().call();
-
-    // getting the deed ID
-    const sellerId = (response - 1);
-
-    // Log variable
-    console.log(response);
-
-    // Set the state storageValue with the variable
-    this.setState({ storageValue: response, stateid: sellerId });
   }
+  
 
   render() {
 
@@ -181,7 +182,7 @@ class UserSignUp extends Component {
 
           <div className="Nic">
           <label htmlFor="Nic">Nic:</label>
-          <input className="input" type="text" id="nic" value={ this.state.nic } onChange={ this.handlenicChange.bind(this) }/>
+          <input className="input" type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.nic } onChange={ this.handlenicChange.bind(this) }/>
           </div>
 
           <div className="Age">
@@ -196,12 +197,13 @@ class UserSignUp extends Component {
 
           <div className="Email">
           <label htmlFor="Email">Email:</label>
-          <input className="input" type="text" id="Email" value={ this.state.email } onChange={ this.handleemailChange.bind(this) }/>
+          <input className="input" type="email" id="Email" value={ this.state.email } onChange={ this.handleemailChange.bind(this) }/>
           </div>
+          <div>{ this.state.alertMessage }</div>
 
           <div className="telephone">
           <label htmlFor="telephone">Telephone Number:</label>
-          <input className="input" type="text" id="telephonenumber" value={ this.state.telephoneNumber } onChange={ this.handletelephoneNumberChange.bind(this) }/>
+          <input className="input" type="number" min="0" id="telephonenumber" value={ this.state.telephoneNumber } onChange={ this.handletelephoneNumberChange.bind(this) }/>
           </div>
 
 
