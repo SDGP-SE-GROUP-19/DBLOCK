@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
+import './LawyerSignUp.css'
 
 class LawyerSignUp extends Component {
 
@@ -140,35 +141,49 @@ class LawyerSignUp extends Component {
 
         return (
             <div className="LawyerSignUp">
+                <div className="headingLS">
+                    <h2 className="topicLS">Lawyer Sign Up</h2>
+                    {/* Add Image */}
+                </div>
 
-                <h2>Lawyer Sign Up</h2>
+                    <div className="lawyercount">Lawyer Count: { this.state.lawyerCount }</div>
 
-                <div>Lawyer Count: { this.state.lawyerCount }</div>
+                <div className="containerLS">
+                    <form className="formLS" onSubmit={ this.handleSubmit }>
 
-                <form onSubmit={ this.handleSubmit }>
-
+                    <div className="nameLS">
                     <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" value={ this.state.enteredLawyerName } onChange={ this.handleNameChange.bind(this) }/>
+                    <input className="inputLS" type="text" id="name" value={ this.state.enteredLawyerName } onChange={ this.handleNameChange.bind(this) }/>
+                    </div>
 
+                    <div className="nicLS">
                     <label htmlFor="nic">NIC:</label>
-                    <input type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.enteredLawyerNic } onChange={ this.handleNicChange.bind(this) }/>
+                    <input className="inputLS" type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.enteredLawyerNic } onChange={ this.handleNicChange.bind(this) }/>
+                    </div>
 
+                    <div className="registrationLS">
                     <label htmlFor="regno">Registration Number:</label>
-                    <input type="text" id="regno" value={ this.state.enteredLawyerRegNo } onChange={ this.handleRegNoChange.bind(this) }/>
+                    <input className="inputLS" type="text" id="regno" value={ this.state.enteredLawyerRegNo } onChange={ this.handleRegNoChange.bind(this) }/>
+                    </div>
 
+                    <div className="emailLS">
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" value={ this.state.enteredLawyerEmail } onChange={ this.handleEmailChange.bind(this) }/>
-                    <div>{ this.state.alertMessage }</div>
+                    <input className="inputLS" type="email" id="email" value={ this.state.enteredLawyerEmail } onChange={ this.handleEmailChange.bind(this) }/>
+                    <div className="emailval">{ this.state.alertMessage }</div>
+                    </div>
 
+                    <div className="telephoneLS">
                     <label htmlFor="telNo">Telephone:</label>
-                    <input type="number" min="0" id="telNo" value={ this.state.enteredLawyerTelNo } onChange={ this.handleTelNoChange.bind(this) }/>
+                    <input className="inputLS" type="number" min="0" id="telNo" value={ this.state.enteredLawyerTelNo } onChange={ this.handleTelNoChange.bind(this) }/>
+                    </div>
 
                     <div>
-                        <input type="submit" value="Submit" />
+                        <input type="submit" value="Submit" className="buttonLS"/>
                     </div>
 
                 </form>
 
+                </div>
             </div>
         );
     }

@@ -209,7 +209,7 @@ class ChangeLawSel extends Component {
                         </div>
 
                         <br></br>
-                        <h3>{this.state.emailAlert}</h3>
+                        <h3 className="changelawyeremailalert">{this.state.emailAlert}</h3>
                         <br></br>
 
                         <div>
