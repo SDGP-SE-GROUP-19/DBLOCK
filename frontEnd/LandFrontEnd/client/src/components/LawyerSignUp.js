@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
 import './LawyerSignUp.css'
+import lawyer from "./Images/lawyer.png"
 
 class LawyerSignUp extends Component {
 
@@ -143,7 +144,7 @@ class LawyerSignUp extends Component {
             <div className="LawyerSignUp">
                 <div className="headingLS">
                     <h2 className="topicLS">Lawyer Sign Up</h2>
-                    {/* Add Image */}
+                    <img src={lawyer} alt="lawyer" className="lawyer"/>
                 </div>
 
                     <div className="lawyercount">Lawyer Count: { this.state.lawyerCount }</div>
