@@ -219,7 +219,7 @@ class ChangeLawSel extends Component {
 
                         <div>
                         <form className="refresh" onSubmit={ this.refreshpage }>
-                            <button className="refreshbtnCLS">Refresh Form</button>
+                            <button className="refreshbtnCLS">Clear Form</button>
                         </form>
                         </div>
 
