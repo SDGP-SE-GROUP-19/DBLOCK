@@ -182,6 +182,12 @@ class LawyerSignUp extends Component {
                         <input type="submit" value="Submit" className="buttonLS"/>
                     </div>
 
+                    <div>
+                        <form className="refresh" onSubmit={ this.refreshpage }>
+                        <button className="refreshbtnLS">Clear Form</button>
+                        </form>
+                    </div>
+
                 </form>
 
                 </div>
