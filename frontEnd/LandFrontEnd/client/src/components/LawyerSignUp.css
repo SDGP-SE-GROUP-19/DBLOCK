@@ -75,3 +75,17 @@
     height: 120px;
     width: 100px; 
   }
+
+  .refreshbtnLS{
+    text-transform: uppercase;
+    font-size: 15px;
+    color: white;
+    border-radius: 25px;
+    border-color: black;
+    background:linear-gradient(135deg,#0681b9,#f80759);
+    padding: 8px 25px;
+}
+
+.refresh{
+    padding-top: 15px;
+}
