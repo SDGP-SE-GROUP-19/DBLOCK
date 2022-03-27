@@ -217,6 +217,12 @@ class ChangeLawSel extends Component {
                             <input type="submit" value="Submit" className="buttonC" />
                         </div>
 
+                        <div>
+                        <form className="refresh" onSubmit={ this.refreshpage }>
+                            <button className="refreshbtnCLS">Refresh Form</button>
+                        </form>
+                        </div>
+
                     </form>
 
                 </div>

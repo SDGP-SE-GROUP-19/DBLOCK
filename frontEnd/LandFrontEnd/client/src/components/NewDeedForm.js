@@ -310,10 +310,10 @@ class NewDeedForm extends Component {
 
             <div>
               <form className="refresh" onSubmit={ this.refreshpage }>
-                <button className="refreshbtn">Refresh Form</button>
+                <button className="refreshbtn">Clear Form</button>
               </form>
             </div>
-
+ 
           </form>
         
         </div>
