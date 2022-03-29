@@ -225,6 +225,10 @@ class SearchDeed2 extends Component {
     }
   }
 
+  async refreshpage(_event) {
+    window.location.reload(false);
+  }
+
   render() {
 
     if (!this.state.web3) {
@@ -271,6 +275,12 @@ class SearchDeed2 extends Component {
               
             <div className="btn">
             <input type="submit" value="Submit" className="submitSD2"/>
+            </div>
+
+            <div>
+              <form className="refresh" onSubmit={ this.refreshpage }>
+                <button className="refreshbtn">Refresh Form</button>
+              </form>
             </div>
 
           </fieldset>

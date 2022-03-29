@@ -154,6 +154,10 @@ class UserSignUp extends Component {
 
 
   }
+
+  async refreshpage(_event) {
+    window.location.reload(false);
+  }
   
 
   render() {
@@ -212,6 +216,12 @@ class UserSignUp extends Component {
 
           <div>
           <input type="submit" value="Submit" className="buttonS"/>
+          </div>
+
+          <div>
+            <form className="refresh" onSubmit={ this.refreshpage }>
+              <button className="refreshbtnUS">Clear Form</button>
+            </form>
           </div>
 
         </form>

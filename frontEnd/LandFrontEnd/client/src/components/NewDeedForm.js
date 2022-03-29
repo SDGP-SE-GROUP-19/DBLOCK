@@ -237,6 +237,10 @@ class NewDeedForm extends Component {
     }
   }
 
+  async refreshpage(_event) {
+    window.location.reload(false);
+  }
+
   render() {
 
     if (!this.state.web3) {
@@ -304,6 +308,12 @@ class NewDeedForm extends Component {
               <input type="submit" value="Submit" className="button"/>
             </div>
 
+            <div>
+              <form className="refresh" onSubmit={ this.refreshpage }>
+                <button className="refreshbtn">Clear Form</button>
+              </form>
+            </div>
+ 
           </form>
         
         </div>
