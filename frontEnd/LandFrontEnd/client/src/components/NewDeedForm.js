@@ -249,17 +249,20 @@ class NewDeedForm extends Component {
     }
 
     return (
+      // description about the new deed form page
       <div className="NewDeedForm">
         <div className="headingND">
           <h2 className="topicND">New Deed</h2>
           <img src={deed} alt="deed" className="deed"/>
         </div>
 
+        {/* Displays the current amount of deeds stored */}
         <div className="deedcount">Deed count: { this.state.storageValue }</div>
         
       <div className="container">
           <form className="form" onSubmit={ this.handleSubmit }>
             
+            {/* Form that inputs data in regard of a new deed */}
             <div className="addressno">
             <label htmlFor="no">Address No:</label>
             <input className="input" type="text" minLength="1" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) }/>
