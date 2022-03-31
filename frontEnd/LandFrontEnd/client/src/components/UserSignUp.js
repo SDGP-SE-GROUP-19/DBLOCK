@@ -168,17 +168,18 @@ class UserSignUp extends Component {
     }
 
     return (
+      // displays details about the new user sign up page
       <div className="Sign Up">
         <div className="headingS">
           <h2 className="topicS">New User</h2>
           <img src={sign} alt="sign" className="sign"/>
         </div>
-
+        {/* displays the current seller count */}
         <div className="Sellercount">Seller count: { this.state.storageValue }</div>
         
       <div className="containerS">
         <form className="formS" onSubmit={ this.handleSubmit }>
-          
+          {/* form used to take input about the user's information */}
           <div className="name">
           <label htmlFor="name">Name:</label>
           <input className="input" type="text" id="no" value={ this.state.name } onChange={ this.handleNameChange.bind(this) }/>
