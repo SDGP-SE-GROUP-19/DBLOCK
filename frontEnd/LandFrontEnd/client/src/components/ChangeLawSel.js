@@ -181,6 +181,7 @@ class ChangeLawSel extends Component {
         }
 
         return (
+            // holds the data which describes about the page
             <div className="ChangeLawSel">
                 <div className="headingC">
                     <h2 className="topicC">Change Lawyer And Owner</h2>
@@ -188,7 +189,7 @@ class ChangeLawSel extends Component {
                 </div>
 
 
-
+                {/* The form related to the change in lawyer and owner page */}
                 <div className="containerC">
                     <form className="formC" onSubmit={this.handleSubmit}>
 
@@ -223,6 +224,7 @@ class ChangeLawSel extends Component {
                             <input type="submit" value="Submit" className="buttonC" />
                         </div>
 
+                        {/* button to clear fields of the page by refreshing */}
                         <div>
                         <form className="refresh" onSubmit={ this.refreshpage }>
                             <button className="refreshbtnCLS">Clear Form</button>
