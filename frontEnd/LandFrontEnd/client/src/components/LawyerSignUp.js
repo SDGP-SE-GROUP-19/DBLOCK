@@ -141,14 +141,17 @@ class LawyerSignUp extends Component {
         }
 
         return (
+            // holds data which describes about the lawyer sign up page
             <div className="LawyerSignUp">
                 <div className="headingLS">
                     <h2 className="topicLS">Lawyer Sign Up</h2>
                     <img src={lawyer} alt="lawyer" className="lawyer"/>
                 </div>
 
+                {/* Displays the current amount of lawyers */}
                     <div className="lawyercount">Lawyer Count: { this.state.lawyerCount }</div>
 
+                {/* The form related to signing up a lawyer to the blockchain */}
                 <div className="containerLS">
                     <form className="formLS" onSubmit={ this.handleSubmit }>
 
