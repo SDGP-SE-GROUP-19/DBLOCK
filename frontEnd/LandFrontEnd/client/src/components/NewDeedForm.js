@@ -194,6 +194,7 @@ class NewDeedForm extends Component {
     else
     {
       console.log("OK");
+      // Referred from https://www.freecodecamp.org/news/hands-on-get-started-with-infura-and-ipfs-on-ethereum-b63635142af0/
 
       // Calling addNewDeed method from the smart contract
       await contract.methods.addNewDeed(
