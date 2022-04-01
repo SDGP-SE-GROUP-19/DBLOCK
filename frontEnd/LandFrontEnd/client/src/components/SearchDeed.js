@@ -3,7 +3,7 @@ import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
 import './SearchDeed.css';
 import searchdeed from "./Images/searchdeed.png";
-
+//https://www.youtube.com/watch?v=KkjAktAA4M4&t=494s
 class SearchDeed extends Component {
 
     constructor(props) {
