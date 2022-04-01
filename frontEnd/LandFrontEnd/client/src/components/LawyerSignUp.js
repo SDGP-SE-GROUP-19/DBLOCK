@@ -157,28 +157,28 @@ class LawyerSignUp extends Component {
 
                     <div className="nameLS">
                     <label htmlFor="name">Name:</label>
-                    <input className="inputLS" type="text" id="name" value={ this.state.enteredLawyerName } onChange={ this.handleNameChange.bind(this) }/>
+                    <input className="inputLS" type="text" id="name" value={ this.state.enteredLawyerName } onChange={ this.handleNameChange.bind(this) } required/>
                     </div>
 
                     <div className="nicLS">
                     <label htmlFor="nic">NIC:</label>
-                    <input className="inputLS" type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.enteredLawyerNic } onChange={ this.handleNicChange.bind(this) }/>
+                    <input className="inputLS" type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.enteredLawyerNic } onChange={ this.handleNicChange.bind(this) } required/>
                     </div>
 
                     <div className="registrationLS">
                     <label htmlFor="regno">Registration Number:</label>
-                    <input className="inputLS" type="text" id="regno" value={ this.state.enteredLawyerRegNo } onChange={ this.handleRegNoChange.bind(this) }/>
+                    <input className="inputLS" type="text" id="regno" value={ this.state.enteredLawyerRegNo } onChange={ this.handleRegNoChange.bind(this) } required/>
                     </div>
 
                     <div className="emailLS">
                     <label htmlFor="email">Email:</label>
-                    <input className="inputLS" type="email" id="email" value={ this.state.enteredLawyerEmail } onChange={ this.handleEmailChange.bind(this) }/>
+                    <input className="inputLS" type="email" id="email" value={ this.state.enteredLawyerEmail } onChange={ this.handleEmailChange.bind(this) } required/>
                     <div className="emailval">{ this.state.alertMessage }</div>
                     </div>
 
                     <div className="telephoneLS">
                     <label htmlFor="telNo">Telephone:</label>
-                    <input className="inputLS" type="number" min="0" id="telNo" value={ this.state.enteredLawyerTelNo } onChange={ this.handleTelNoChange.bind(this) }/>
+                    <input className="inputLS" type="number" min="0" id="telNo" value={ this.state.enteredLawyerTelNo } onChange={ this.handleTelNoChange.bind(this) } required/>
                     </div>
 
                     <div>

@@ -3,7 +3,7 @@ import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
 import './SearchDeed.css';
 import searchdeed from "./Images/searchdeed.png";
-
+//https://www.youtube.com/watch?v=KkjAktAA4M4&t=494s
 class SearchDeed extends Component {
 
     constructor(props) {
@@ -21,7 +21,9 @@ class SearchDeed extends Component {
             searchedDistrict: "",
             searchedProvince: "",
             searchedLawyerId: 0,
+            searchedLawyerEmail: "",
             searchedSellerId: 0,
+            searchedSellerEmail: "",
 
             web3: null,
             accounts: null,
@@ -99,7 +101,9 @@ class SearchDeed extends Component {
                 searchedDistrict: "",
                 searchedProvince: "",
                 searchedLawyerId: -1,
-                searchedSellerId: -1
+                searchedLawyerEmail: "", 
+                searchedSellerId: -1,
+                searchedSellerEmail: ""
             });
         }
         else
@@ -113,6 +117,10 @@ class SearchDeed extends Component {
             const deedLawyerResponse = await contract.methods.getLawyerIdOfDeed(searchingDeedId).call();
             const deedSellerResponse = await contract.methods.getSellerIdOfDeed(searchingDeedId).call();
             const ipfsHash = await contract.methods.getHashFromDeed(searchingDeedId).call();
+
+            // get lawyer and seller emails
+            const lawyerEmailVar = await contract.methods.getLawyerEmail(deedLawyerResponse).call();
+            const sellerEmailVar = await contract.methods.getSellerEmail(deedSellerResponse).call();
 
             // log variables
             console.log(
@@ -139,7 +147,9 @@ class SearchDeed extends Component {
                 searchedDistrict: deedDistrictResponse,
                 searchedProvince: deedProvinceResponse,
                 searchedLawyerId: deedLawyerResponse,
-                searchedSellerId: deedSellerResponse
+                searchedLawyerEmail: lawyerEmailVar,
+                searchedSellerId: deedSellerResponse,
+                searchedSellerEmail: sellerEmailVar
             });
         }
     }
@@ -162,7 +172,7 @@ class SearchDeed extends Component {
 
                         <label className="DeedIdtext">Deed ID:</label>
                         {/* asking for user to enter deed id to display deed details */}
-                        <input type="number" min="0" id="deedid" value={ this.state.searchingDeedId } onChange={ this.handleSearchingDeedIdChange.bind(this) }/>
+                        <input type="number" min="0" id="deedid" value={ this.state.searchingDeedId } onChange={ this.handleSearchingDeedIdChange.bind(this) } required/>
                         {/* Error handeling of search deed */}
                         <br></br>
                         <br></br>
@@ -204,11 +214,11 @@ class SearchDeed extends Component {
                     </div>
 
                     <div className="lawyeridDS">
-                    <p><b>Assigned Lawyer ID: </b>{ this.state.searchedLawyerId }</p>
+                    <p><b>Assigned Lawyer ID: </b>{ this.state.searchedLawyerId } ( { this.state.searchedLawyerEmail } )</p>
                     </div>
 
                     <div className="selleridDS">
-                    <p><b>Assigned Seller ID: </b>{ this.state.searchedSellerId }</p>
+                    <p><b>Assigned Seller ID: </b>{ this.state.searchedSellerId } ( { this.state.searchedSellerEmail } )</p>
                     </div>
 
                     <button
