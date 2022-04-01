@@ -162,7 +162,7 @@ class SearchDeed extends Component {
 
                         <label className="DeedIdtext">Deed ID:</label>
                         {/* asking for user to enter deed id to display deed details */}
-                        <input type="number" min="0" id="deedid" value={ this.state.searchingDeedId } onChange={ this.handleSearchingDeedIdChange.bind(this) }/>
+                        <input type="number" min="0" id="deedid" value={ this.state.searchingDeedId } onChange={ this.handleSearchingDeedIdChange.bind(this) } required/>
                         {/* Error handeling of search deed */}
                         <br></br>
                         <br></br>
