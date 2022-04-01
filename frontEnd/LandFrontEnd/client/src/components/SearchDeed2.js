@@ -225,6 +225,10 @@ class SearchDeed2 extends Component {
     }
   }
 
+  async refreshpage(_event) {
+    window.location.reload(false);
+  }
+
   render() {
 
     if (!this.state.web3) {
@@ -233,11 +237,13 @@ class SearchDeed2 extends Component {
     }
 
     return (
+      // displays details regarding the search deed by address
       <div className="SearchDeed2">
         <div className="headingSD2">
           <h2 className="topicSD2">Deed Search By Address</h2>
           <img src={searchdeed2} alt="searchdeed2" className="searchdeed2" />
         </div>
+        {/* shows the deed id */}
         <div className="variableSD2"><b>Deed ID:</b> { this.state.storageValue }</div> 
         
 
@@ -245,7 +251,7 @@ class SearchDeed2 extends Component {
       <form onSubmit={ this.handleSubmit }>
 
           <fieldset className="getDeedInfo">
-
+            {/* takes user input to search for a deed */}
             <label htmlFor="no">Address No:</label>
             <input type="text" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) }/>
             
@@ -265,21 +271,25 @@ class SearchDeed2 extends Component {
             <label htmlFor="province">Province:</label>
             <input type="text" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) }/>
 
-            <br></br>
-            <br></br>
-            <br></br>
-            <div>{ this.state.addressAlert }</div>
-            <br></br>
+            
+            <div className="addressalert">{ this.state.addressAlert }</div>
+            
               
             <div className="btn">
             <input type="submit" value="Submit" className="submitSD2"/>
+            </div>
+
+            <div>
+              <form className="refresh" onSubmit={ this.refreshpage }>
+                <button className="refreshbtn">Refresh Form</button>
+              </form>
             </div>
 
           </fieldset>
 
 
           <fieldset className="displayLawyerInfo">
-
+            {/* display relevant lawyer details in regard of that deed */}
             <h4>Relevant Lawyer's Info</h4>
             <p></p>
 
@@ -306,7 +316,7 @@ class SearchDeed2 extends Component {
           <p></p>
 
           <fieldset className="displayOwnerInfo">
-
+            {/* display owners information in regard of that deed */}
             <h4>Relevant Owner's Info</h4>
             <p></p>
 

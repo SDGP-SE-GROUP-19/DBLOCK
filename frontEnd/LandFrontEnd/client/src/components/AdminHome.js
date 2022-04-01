@@ -9,7 +9,7 @@ class AdminHome extends Component {
 
         return (
             <>
-            
+            {/* column which holds the description of what this page is about */}
                 <div className="Row">
                     <div className="Column">
                         <h3 className="heading">Welcome Admin !</h3>
@@ -21,6 +21,7 @@ class AdminHome extends Component {
                         </div>
                     </div>
 
+                    {/* Container which holds a set of buttons that relate to the functionalities of the administrator */}
                     <div className="containerH">
                         <form className="formH">
                         <div>

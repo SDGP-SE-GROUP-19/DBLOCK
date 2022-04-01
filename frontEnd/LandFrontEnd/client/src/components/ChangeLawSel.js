@@ -147,26 +147,25 @@ class ChangeLawSel extends Component {
 
                 this.setState({
                     emailAlert: "",
-                    oldLawyerTelNo: currentLawyerTelNoString,
-                    oldSellerTelNo: currentSellerTelNoString
+                    oldSellerTelNo: "SMS sent to the existing user under " + currentSellerTelNoString,
+                    oldLawyerTelNo: "SMS sent to the existing lawyer under " + currentLawyerTelNoString
                 });
 
-                //set variables
+                //set variables for send sms
                 const to1 = currentSellerTelNoString;
                 const to2 = currentLawyerTelNoString;
                 const msg = "Hello, this message is sent you to notify that your land is in transfering process...";
 
-
                 //try catch handling to fix the type error
-                try
-                {
+                try {
+                    //Sending SMS
                     const result = await fetch("http://textit.biz/sendmsg/index.php?id=94763358718&pw=1995" + "&to=" + [to1, to2] + "&text=" + msg);
 
                     const body = result.json();
                     console.log(body);
                 }
-                catch(e)
-                {
+                catch (e) {
+                    //print the error in console
                     console.log(e);
                 }
             }
@@ -182,6 +181,7 @@ class ChangeLawSel extends Component {
         }
 
         return (
+            // holds the data which describes about the page
             <div className="ChangeLawSel">
                 <div className="headingC">
                     <h2 className="topicC">Change Lawyer And Owner</h2>
@@ -189,7 +189,7 @@ class ChangeLawSel extends Component {
                 </div>
 
 
-
+                {/* The form related to the change in lawyer and owner page */}
                 <div className="containerC">
                     <form className="formC" onSubmit={this.handleSubmit}>
 
@@ -209,11 +209,26 @@ class ChangeLawSel extends Component {
                         </div>
 
                         <br></br>
-                        <h3>{this.state.emailAlert}</h3>
+                        <h3 className="changelawyeremailalert">{this.state.emailAlert}</h3>
                         <br></br>
+
+                        <div className="changelawyeremailalert">
+                            {this.state.oldSellerTelNo}
+                        </div>
+
+                        <div className="changelawyeremailalert">
+                            {this.state.oldLawyerTelNo}
+                        </div>
 
                         <div>
                             <input type="submit" value="Submit" className="buttonC" />
+                        </div>
+
+                        {/* button to clear fields of the page by refreshing */}
+                        <div>
+                        <form className="refresh" onSubmit={ this.refreshpage }>
+                            <button className="refreshbtnCLS">Clear Form</button>
+                        </form>
                         </div>
 
                     </form>

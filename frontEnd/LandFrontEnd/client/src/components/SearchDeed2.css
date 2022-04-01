@@ -1,3 +1,4 @@
+/* search deed by address css */
 .headingSD2{
     background-color: black;
     color: #f8074f;
@@ -42,4 +43,10 @@
 
 .displayOwnerInfo{
     color: white;
+}
+
+.addressalert{
+    color: #ff0000;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

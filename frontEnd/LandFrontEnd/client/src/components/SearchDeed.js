@@ -152,6 +152,7 @@ class SearchDeed extends Component {
         }
 
         return (
+            // describes about the search deed page
             <div className="SearchDeed">
                 <div className="headingDS">
                     <h2 className="topicDS">Deed Search</h2>
@@ -160,8 +161,9 @@ class SearchDeed extends Component {
                     <form onSubmit={ this.handleSubmit }>
 
                         <label className="DeedIdtext">Deed ID:</label>
+                        {/* asking for user to enter deed id to display deed details */}
                         <input type="number" min="0" id="deedid" value={ this.state.searchingDeedId } onChange={ this.handleSearchingDeedIdChange.bind(this) }/>
-
+                        {/* Error handeling of search deed */}
                         <br></br>
                         <br></br>
                         <br></br>
@@ -180,7 +182,7 @@ class SearchDeed extends Component {
                 <div className="containerDS">
 
                     <form className="formDS">
-                    
+                    {/* container which displays search deed data */}
                     <div className="addressnoDS">
                     <p><b>No: </b>{ this.state.searchedNo }</p>
                     </div>

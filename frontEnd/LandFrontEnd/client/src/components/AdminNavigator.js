@@ -16,7 +16,7 @@ class AdminNavigator extends Component {
 
         return (
             <div className="AdminNavigator">
-                
+                {/* The navigation bar that routes through pages on a click of a button */}
                 <nav className="navstyle">
                     <button className="Navbtn"><Link to="/" style={{ textDecoration: 'none', color: 'white'}}>Home</Link></button>
                     <button className="Navbtn"><Link to="/NewDeedForm" style={{ textDecoration: 'none', color: 'white'}}>New Land Deed</Link></button>
@@ -27,6 +27,7 @@ class AdminNavigator extends Component {
                     <button className="Navbtn"><Link to="/LawyerSignUp" style={{ textDecoration: 'none', color: 'white'}}>Lawyer Sign up</Link></button>
                 </nav>
 
+                {/* The naming and defining of the route paths */}
                 <Routes>
                     <Route path="/" element={ <AdminHome /> }/>
                     <Route path="/NewDeedForm" element={ <NewDeedForm /> }/>
