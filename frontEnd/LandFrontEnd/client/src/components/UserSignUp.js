@@ -18,7 +18,6 @@ class UserSignUp extends Component {
       web3: null,
       accounts: null,
       contract: null,
-    
 
       name:"",
       id:0,
@@ -27,7 +26,6 @@ class UserSignUp extends Component {
       city:"",
       email:"",
       telephoneNumber:""
-
 
     }
   }
@@ -129,10 +127,9 @@ class UserSignUp extends Component {
 
     if (parseInt(sellerId) === -1)
     {
-        // Calling registerLawyer method from the smart contract
+        // Calling register seller (user) method from the smart contract
         await contract.methods.registerSeller(
             this.state.name,
-            
             this.state.nic,
             this.state.age,
             this.state.city,
@@ -140,10 +137,10 @@ class UserSignUp extends Component {
             this.state.telephoneNumber
         ).send({ from: accounts[0] });
 
-        // get the number of lawyers added so far fron the blockchain using getLawyerCount method in smart contract
+        // get the number of users added so far fron the blockchain using getLawyerCount method in smart contract
         const sellerCountVar = await contract.methods.getSellersCount().call();
 
-        // set the state with the new lawyer count
+        // set the state with the new user count
         this.setState({ sellerCount: sellerCountVar, alertMessage: "" });
     }
     else
@@ -210,10 +207,6 @@ class UserSignUp extends Component {
           <label htmlFor="telephone">Telephone Number:</label>
           <input className="input" type="number" min="0" id="telephonenumber" value={ this.state.telephoneNumber } onChange={ this.handletelephoneNumberChange.bind(this) }/>
           </div>
-
-
-
-
 
           <div>
           <input type="submit" value="Submit" className="buttonS"/>
