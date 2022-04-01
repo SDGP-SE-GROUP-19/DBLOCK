@@ -309,4 +309,19 @@ contract Land {
     function getAdminPassword() public view returns (string memory) {
         return adminMapping[0].adminPassword;
     }
+
+    // function to get the deedId from the history
+    function getDeedIdFromHistory(uint frontendCounter) public view returns (uint) {
+        return deedsVersionHistory[frontendCounter].deedIdLink;
+    }
+
+    // function to get the lawyerId from the history
+    function getOldLawyerIdFromHistory(uint frontendCounter) public view returns (uint) {
+        return deedsVersionHistory[frontendCounter].oldLawyerId;
+    }
+
+    // function to get the sellerId from the history
+    function getOldSellerIdFromHistory(uint frontendCounter) public view returns (uint) {
+        return deedsVersionHistory[frontendCounter].oldSellerId;
+    }
 }

@@ -9,8 +9,9 @@ contract("Land", account => {
         instance = await Land.deployed();
         await instance.addNewDeed("20", "Temple Lane", "Kolpity", "Colombo", "West", 0, 0);
         await instance.registerLawyer("Sarath", "570511041v", "20200187", "sarath@gmail.com", 0771234567);
+        await instance.registerLawyer("Basil", "570535104v", "20278187", "basil@gmail.com", 0741233567);
         await instance.registerSeller("Chris", "278987876v", "26","Kandy", "chris@gmail.com", 0761421615);
-
+        await instance.registerSeller("Udaya", "290987276v", "25","Kandy", "udaya@gmail.com", 0762423675);
     });
 
     //Unit test for admin id
@@ -190,6 +191,37 @@ contract("Land", account => {
         assert.equal(SellerId, 0);
     });
 
+    // unit test to change the current lawyer and seller
+    it("should change the lawyer for a deed", async () => {
 
+        await instance.changeDeedLawyerAndSeller(0, 1, 0);
+        const lawyerIdOfDeed = await instance.getLawyerIdOfDeed(0);
 
+        assert.equal(lawyerIdOfDeed, 1);
+    });
+
+    // unit test to change the current lawyer and seller
+    it("should change the seller for a deed", async () => {
+
+        await instance.changeDeedLawyerAndSeller(0, 1, 1);
+        const sellerIdOfDeed = await instance.getSellerIdOfDeed(0);
+
+        assert.equal(sellerIdOfDeed, 1);
+    });
+
+    // unit test to get the old lawyer ID from the history
+    it("should get the old lawyer id from history", async () => {
+
+        const oldLawyerId = await instance.getOldLawyerIdFromHistory(0);
+
+        assert.equal(oldLawyerId, 0);
+    });
+
+    // unit test to get the old seller ID from the history
+    it("should get the old seller id from history", async () => {
+
+        const oldsellerId = await instance.getOldSellerIdFromHistory(0);
+
+        assert.equal(oldsellerId, 0);
+    });
 });
