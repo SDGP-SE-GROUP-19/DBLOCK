@@ -266,37 +266,37 @@ class NewDeedForm extends Component {
             {/* Form that inputs data in regard of a new deed */}
             <div className="addressno">
             <label htmlFor="no">Address No:</label>
-            <input className="input" type="text" minLength="1" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) }/>
+            <input className="input" type="text" minLength="1" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) } required/>
             </div>
 
             <div className="streetname">
             <label htmlFor="streetname">Street:</label>
-            <input className="input" type="text" minLength="1" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange.bind(this) }/>
+            <input className="input" type="text" minLength="1" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange.bind(this) } required/>
             </div>
 
             <div className="city">
             <label htmlFor="city">City:</label>
-            <input className="input" type="text" minLength="1" id="city" value={ this.state.newCity } onChange={ this.handleCityChange.bind(this) }/>
+            <input className="input" type="text" minLength="1" id="city" value={ this.state.newCity } onChange={ this.handleCityChange.bind(this) } required/>
             </div>
 
             <div className="district">
             <label htmlFor="district">District:</label>
-            <input className="input" type="text" minLength="1" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange.bind(this) }/>
+            <input className="input" type="text" minLength="1" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange.bind(this) } required/>
             </div>
 
             <div className="province">
             <label htmlFor="province">Province:</label>
-            <input className="input" type="text" minLength="1" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) }/>
+            <input className="input" type="text" minLength="1" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) } required/>
             </div>
 
             <div className="lawyerid">
             <label htmlFor="lawyeremail">Email of assigning lawyer:</label>
-            <input className="input" type="email" id="lawyeremail" value={ this.state.newAssignedLawyerEmail } onChange={ this.handleLawyerEmailChange.bind(this) }/>
+            <input className="input" type="email" id="lawyeremail" value={ this.state.newAssignedLawyerEmail } onChange={ this.handleLawyerEmailChange.bind(this) } required/>
             </div>
 
             <div className="sellerid">
             <label htmlFor="selleremail">Email of assigning seller:</label>
-            <input className="input" type="email" id="selleremail" value={ this.state.newAssignedSellerEmail } onChange={ this.handleSellerEmailChange.bind(this) }/>
+            <input className="input" type="email" id="selleremail" value={ this.state.newAssignedSellerEmail } onChange={ this.handleSellerEmailChange.bind(this) } required/>
             </div>
 
             <form className="buttonCF" onSubmit={this.onSubmit} >
