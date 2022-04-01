@@ -60,11 +60,13 @@ contract Land {
         // initializing the admin
         adminMapping[adminCount] = Admin(adminCount, "123");
         adminCount++;
-    }    
+    }
+    // function to get the IPFS hash from the deed    
 
     function getHashFromDeed(uint index) public view returns (string memory) {   
         return deeds[index].ipfsHash;
     }
+    //function to set the IPFS hash 
 
     function sendHash(uint deedId, string memory x) public {
         deeds[deedId].ipfsHash = x;
