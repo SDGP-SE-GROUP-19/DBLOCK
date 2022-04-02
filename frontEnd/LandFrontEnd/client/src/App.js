@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router } from 'react-router-dom';
 import "./App.css";
 import AdminNavigator from "./components/AdminNavigator";
 
@@ -9,8 +10,9 @@ class App extends Component {
     return (
       <>
       <div className="header">
-
-      <AdminNavigator />
+      <Router>
+        <AdminNavigator />
+      </Router>
 
       </div>
       
