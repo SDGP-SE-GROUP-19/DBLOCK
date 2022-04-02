@@ -32,6 +32,8 @@ class ChangeLawSel extends Component {
         try {
 
             // Binding for scope
+            this.getDate = this.getDate.bind(this);
+            this.getTime = this.getTime.bind(this);
             this.handleSubmit = this.handleSubmit.bind(this);
             this.handleDeedIdChange = this.handleDeedIdChange.bind(this);
             this.handleLawyerEmailChange = this.handleLawyerEmailChange.bind(this);
@@ -84,6 +86,25 @@ class ChangeLawSel extends Component {
         this.setState({ newSellerEmail: event.target.value });
     }
 
+    getDate()
+    {
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0');
+        let yyyy = today.getFullYear();
+        let date = (dd + '/' + mm + '/' + yyyy);
+
+        return date;
+    }
+
+    getTime()
+    {
+        let today = new Date();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+        return time;
+    }
+
     async handleSubmit(event) {
 
         // prevent auto refresh on submit
@@ -131,6 +152,12 @@ class ChangeLawSel extends Component {
                 this.setState({ emailAlert: "INVALID EMAIL DETECTED!" });
             }
             else {
+                // get the date
+                const date = this.getDate();
+
+                // get the time
+                const time = this.getTime();
+
                 // Calling addNewDeed method from the smart contract
                 await contract.methods.changeDeedLawyerAndSeller(
                     this.state.deedId,
@@ -142,7 +169,8 @@ class ChangeLawSel extends Component {
                 console.log(
                     "Deed ID - ", this.state.deedId, ", ",
                     "new LID - ", newLawyerId, ", ",
-                    "new SID - ", newSellerId
+                    "new SID - ", newSellerId, ", ",
+                    "Date/Time Stamp - ", date, " ; ", time
                 );
 
                 this.setState({
