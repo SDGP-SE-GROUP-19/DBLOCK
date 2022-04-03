@@ -194,7 +194,7 @@ contract("Land", account => {
     // unit test to change the current lawyer and seller
     it("should change the lawyer for a deed", async () => {
 
-        await instance.changeDeedLawyerAndSeller(0, 1, 0);
+        await instance.changeDeedLawyerAndSeller(0, 1, 0, "03/04/2022", "08:53");
         const lawyerIdOfDeed = await instance.getLawyerIdOfDeed(0);
 
         assert.equal(lawyerIdOfDeed, 1);
@@ -203,7 +203,7 @@ contract("Land", account => {
     // unit test to change the current lawyer and seller
     it("should change the seller for a deed", async () => {
 
-        await instance.changeDeedLawyerAndSeller(0, 1, 1);
+        await instance.changeDeedLawyerAndSeller(0, 1, 1, "04/04/2022", "09:00");
         const sellerIdOfDeed = await instance.getSellerIdOfDeed(0);
 
         assert.equal(sellerIdOfDeed, 1);
@@ -223,5 +223,21 @@ contract("Land", account => {
         const oldsellerId = await instance.getOldSellerIdFromHistory(0);
 
         assert.equal(oldsellerId, 0);
+    });
+
+    // unit test to get the date for deedId=0 and counter=0 from the history
+    it("should get the date for from history", async () => {
+
+        const date = await instance.getDateStampFromHistory(0);
+
+        assert.equal(date, "03/04/2022");
+    });
+
+    // unit test to get the time for deedId=0 and counter=0 from the history
+    it("should get the time from history", async () => {
+
+        const time = await instance.getTimeStampFromHistory(0);
+
+        assert.equal(time, "08:53");
     });
 });

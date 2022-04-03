@@ -9,6 +9,8 @@ contract Land {
         uint deedIdLink; // to link the relevant deed
         uint oldLawyerId;
         uint oldSellerId;
+        string dateStamp;
+        string timeStamp;
     }
 
     struct Deed {
@@ -205,11 +207,11 @@ contract Land {
     }
 
     // function to change land deed buyer and seller
-    function changeDeedLawyerAndSeller(uint _deedId, uint _assignedLawyerId, uint _assignedSellerId) public {
+    function changeDeedLawyerAndSeller(uint _deedId, uint _assignedLawyerId, uint _assignedSellerId, string memory _dateStamp, string memory _timeStamp) public {
         // saving the previous lawyer and seller in the history
         uint _oldLawyerId = deeds[_deedId].assignedLawyerId;
         uint _oldSellerId = deeds[_deedId].assignedSellerId;
-        deedsVersionHistory[deedsVersionHistoryCount] = LawyerIdSellerId(_deedId, _oldLawyerId, _oldSellerId);
+        deedsVersionHistory[deedsVersionHistoryCount] = LawyerIdSellerId(_deedId, _oldLawyerId, _oldSellerId, _dateStamp, _timeStamp);
         deedsVersionHistoryCount++;
 
         // assigning the new lawyer and seller
@@ -323,5 +325,15 @@ contract Land {
     // function to get the sellerId from the history
     function getOldSellerIdFromHistory(uint frontendCounter) public view returns (uint) {
         return deedsVersionHistory[frontendCounter].oldSellerId;
+    }
+    
+    // function to get the dateStamp from the history
+    function getDateStampFromHistory(uint frontendCounter) public view returns (string memory) {
+        return deedsVersionHistory[frontendCounter].dateStamp;
+    }
+
+    // function to get the timeStamp from the history
+    function getTimeStampFromHistory(uint frontendCounter) public view returns (string memory) {
+        return deedsVersionHistory[frontendCounter].timeStamp;
     }
 }
