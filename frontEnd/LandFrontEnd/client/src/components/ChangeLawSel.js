@@ -162,7 +162,9 @@ class ChangeLawSel extends Component {
                 await contract.methods.changeDeedLawyerAndSeller(
                     this.state.deedId,
                     newLawyerId,
-                    newSellerId
+                    newSellerId,
+                    date,
+                    time
                 ).send({ from: accounts[0] });
 
                 // Log reaction

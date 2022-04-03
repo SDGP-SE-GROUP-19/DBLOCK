@@ -7,6 +7,7 @@ import ChangeLawSel from "./ChangeLawSel";
 import PageNotFound from "./PageNotFound";
 import UserSignUp from "./UserSignUp";
 import LawyerSignUp from "./LawyerSignUp";
+import DeedHistory from "./DeedHistory";
 import './AdminNavigator.css';
 import { Routes, Route, Link } from 'react-router-dom';
 
@@ -25,6 +26,7 @@ class AdminNavigator extends Component {
                     <button className="Navbtn"><Link to="/ChangeLawSel" style={{ textDecoration: 'none', color: 'white'}}>Change Lawyer And Owner</Link></button>
                     <button className="Navbtn"><Link to="/UserSignUp" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></button>
                     <button className="Navbtn"><Link to="/LawyerSignUp" style={{ textDecoration: 'none', color: 'white'}}>Lawyer Sign up</Link></button>
+                    <button className="Navbtn"><Link to="/DeedHistory" style={{ textDecoration: 'none', color: 'white'}}>Deed History</Link></button>
                 </nav>
 
                 {/* The naming and defining of the route paths */}
@@ -36,6 +38,7 @@ class AdminNavigator extends Component {
                     <Route path="/ChangeLawSel" element={ <ChangeLawSel /> }/>
                     <Route path="/UserSignUp" element={ <UserSignUp /> }/>
                     <Route path="/LawyerSignUp" element={ <LawyerSignUp /> }/>
+                    <Route path="/DeedHistory" element={ <DeedHistory /> }/>
                     <Route path="*" element={ <PageNotFound /> }/>
                 </Routes>
 

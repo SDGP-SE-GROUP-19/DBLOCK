@@ -4,6 +4,15 @@ pragma solidity >=0.4.22 <0.9.0;
 contract Land {
     
     // structs
+    struct LawyerIdSellerId {
+
+        uint deedIdLink; // to link the relevant deed
+        uint oldLawyerId;
+        uint oldSellerId;
+        string dateStamp;
+        string timeStamp;
+    }
+
     struct Deed {
         // deed instance variables
         uint deedId;
@@ -46,12 +55,14 @@ contract Land {
 
     // mappings
     mapping(uint => Deed) public deeds;
+    mapping(uint => LawyerIdSellerId) public deedsVersionHistory;
     mapping(uint => Seller) public sellersMapping;
     mapping(uint => Lawyer) public Lawyersmapping;
     mapping(uint => Admin) public adminMapping;
     
     // Count tracking variables
     uint private deedCount = 0;
+    uint private deedsVersionHistoryCount = 0;
     uint private sellersCount = 0;
     uint private lawyerCount = 0;
     uint private adminCount = 0;
@@ -60,13 +71,11 @@ contract Land {
         // initializing the admin
         adminMapping[adminCount] = Admin(adminCount, "123");
         adminCount++;
-    }
-    // function to get the IPFS hash from the deed    
+    }    
 
     function getHashFromDeed(uint index) public view returns (string memory) {   
         return deeds[index].ipfsHash;
     }
-    //function to set the IPFS hash 
 
     function sendHash(uint deedId, string memory x) public {
         deeds[deedId].ipfsHash = x;
@@ -197,9 +206,15 @@ contract Land {
         return returningSellerId;
     }
 
-
     // function to change land deed buyer and seller
-    function changeDeedLawyerAndSeller(uint _deedId, uint _assignedLawyerId, uint _assignedSellerId) public {
+    function changeDeedLawyerAndSeller(uint _deedId, uint _assignedLawyerId, uint _assignedSellerId, string memory _dateStamp, string memory _timeStamp) public {
+        // saving the previous lawyer and seller in the history
+        uint _oldLawyerId = deeds[_deedId].assignedLawyerId;
+        uint _oldSellerId = deeds[_deedId].assignedSellerId;
+        deedsVersionHistory[deedsVersionHistoryCount] = LawyerIdSellerId(_deedId, _oldLawyerId, _oldSellerId, _dateStamp, _timeStamp);
+        deedsVersionHistoryCount++;
+
+        // assigning the new lawyer and seller
         deeds[_deedId].assignedLawyerId = _assignedLawyerId;
         deeds[_deedId].assignedSellerId = _assignedSellerId;
     }
@@ -295,5 +310,30 @@ contract Land {
     //function to get admin password
     function getAdminPassword() public view returns (string memory) {
         return adminMapping[0].adminPassword;
+    }
+
+    // function to get the deedId from the history
+    function getDeedIdFromHistory(uint frontendCounter) public view returns (uint) {
+        return deedsVersionHistory[frontendCounter].deedIdLink;
+    }
+
+    // function to get the lawyerId from the history
+    function getOldLawyerIdFromHistory(uint frontendCounter) public view returns (uint) {
+        return deedsVersionHistory[frontendCounter].oldLawyerId;
+    }
+
+    // function to get the sellerId from the history
+    function getOldSellerIdFromHistory(uint frontendCounter) public view returns (uint) {
+        return deedsVersionHistory[frontendCounter].oldSellerId;
+    }
+    
+    // function to get the dateStamp from the history
+    function getDateStampFromHistory(uint frontendCounter) public view returns (string memory) {
+        return deedsVersionHistory[frontendCounter].dateStamp;
+    }
+
+    // function to get the timeStamp from the history
+    function getTimeStampFromHistory(uint frontendCounter) public view returns (string memory) {
+        return deedsVersionHistory[frontendCounter].timeStamp;
     }
 }
