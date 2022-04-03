@@ -336,4 +336,9 @@ contract Land {
     function getTimeStampFromHistory(uint frontendCounter) public view returns (string memory) {
         return deedsVersionHistory[frontendCounter].timeStamp;
     }
+
+    // function to get the count of the history
+    function getHistoryCount() public view returns (uint) {
+        return deedsVersionHistoryCount;
+    }
 }

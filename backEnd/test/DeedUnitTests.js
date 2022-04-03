@@ -240,4 +240,12 @@ contract("Land", account => {
 
         assert.equal(time, "08:53");
     });
+
+    // unit test to get the count of the history
+    it("should get the count of history", async () => {
+
+        const count = await instance.getHistoryCount();
+
+        assert.equal(count, 2);
+    });
 });

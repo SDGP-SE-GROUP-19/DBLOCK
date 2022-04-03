@@ -21,7 +21,9 @@ class DeedHistory extends Component {
             newStreetName: "",
             newCity: "",
             newDistrict: "",
-            newProvince: ""
+            newProvince: "",
+
+            historyArray: null
         }
     }
 
@@ -126,6 +128,11 @@ class DeedHistory extends Component {
         else
         {
             console.log("OK");
+
+            let historyArrayVar = ["stringarray"];
+            //historyLimit = await contract.methods.
+
+            //for(var i = 0; i <)
         }
     }
 
