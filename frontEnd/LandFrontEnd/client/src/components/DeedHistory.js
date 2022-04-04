@@ -129,10 +129,32 @@ class DeedHistory extends Component {
         {
             console.log("OK");
 
+            let deedIdFromHistory = -1;
             let historyArrayVar = ["stringarray"];
-            //historyLimit = await contract.methods.
+            let historyArrayCounter = 0;
+            let oldLawyerId = -1;
+            let oldLawyerEmail = "none";
+            let oldSellerId = -1;
+            let oldSellerEmail = "none";
+            const historyLimit = await contract.methods.getHistoryCount().call();
 
-            //for(var i = 0; i <)
+            for(var i = 0; i < parseInt(historyLimit); i++)
+            {
+                deedIdFromHistory = await contract.methods.getDeedIdFromHistory(i).call();
+
+                if (parseInt(deedIndex) === parseInt(deedIdFromHistory))
+                {
+                    oldLawyerId = await contract.methods.getOldLawyerIdFromHistory(i).call();
+                    oldSellerId = await contract.methods.getOldSellerIdFromHistory(i).call();
+
+                    oldLawyerEmail = await contract.methods.getLawyerEmail(oldLawyerId).call();
+                    oldSellerEmail = await contract.methods.getSellerEmail(oldSellerId).call();
+                    historyArrayVar[historyArrayCounter] = (deedIdFromHistory.toString() + " - L:" + oldLawyerEmail + " S:" + oldSellerEmail);
+                    historyArrayCounter++;  
+                }
+            }
+
+            this.setState({ historyArray: historyArrayVar });
         }
     }
 
@@ -142,37 +164,54 @@ class DeedHistory extends Component {
             return <div>Loading Web3, accounts, and contract...</div>;
         }
 
-        return (
-            <div className="DeedHistory">
-                <form onSubmit={this.handleSubmit}>
-                    <fieldset className="getDeedInfo">
+        if (this.state.historyArray === null)
+        {
+            return (
+                <div className="DeedHistory">
+                    <form onSubmit={this.handleSubmit}>
+                        <fieldset className="getDeedInfo">
 
-                        {/* takes user input to search for a deed */}
-                        <label htmlFor="no">Address No:</label>
-                        <input type="text" id="no" value={this.state.newNo} onChange={this.handleNumberChange.bind(this)} required />
+                            {/* takes user input to search for a deed */}
+                            <label htmlFor="no">Address No:</label>
+                            <input type="text" id="no" value={this.state.newNo} onChange={this.handleNumberChange.bind(this)} required />
 
-                        <label htmlFor="streetname">Street:</label>
-                        <input type="text" id="streetname" value={this.state.newStreetName} onChange={this.handleStreetChange.bind(this)} required />
+                            <label htmlFor="streetname">Street:</label>
+                            <input type="text" id="streetname" value={this.state.newStreetName} onChange={this.handleStreetChange.bind(this)} required />
 
-                        <label htmlFor="city">City:</label>
-                        <input type="text" id="city" value={this.state.newCity} onChange={this.handleCityChange.bind(this)} required />
+                            <label htmlFor="city">City:</label>
+                            <input type="text" id="city" value={this.state.newCity} onChange={this.handleCityChange.bind(this)} required />
 
-                        <label htmlFor="district">District:</label>
-                        <input type="text" id="district" value={this.state.newDistrict} onChange={this.handleDistrictChange.bind(this)} required />
+                            <label htmlFor="district">District:</label>
+                            <input type="text" id="district" value={this.state.newDistrict} onChange={this.handleDistrictChange.bind(this)} required />
 
-                        <label htmlFor="province">Province:</label>
-                        <input type="text" id="province" value={this.state.newProvince} onChange={this.handleProvinceChange.bind(this)} required />
+                            <label htmlFor="province">Province:</label>
+                            <input type="text" id="province" value={this.state.newProvince} onChange={this.handleProvinceChange.bind(this)} required />
 
-                        <div className="addressalert">{this.state.addressAlert}</div>
+                            <div className="addressalert">{this.state.addressAlert}</div>
 
-                        <div className="btn">
-                            <input type="submit" value="Submit" className="submitSD2" />
-                        </div>
+                            <div className="btn">
+                                <input type="submit" value="Submit" className="submitSD2" />
+                            </div>
 
-                    </fieldset>
-                </form>
-            </div>
-        );
+                        </fieldset>
+                    </form>
+                </div>
+            );
+        }
+        else
+        {
+            return (
+                <div>
+                    <ul>
+                        {
+                            this.state.historyArray.map(function(item, i){
+                                return (<li key={i}>{item}</li>);
+                            })
+                        }
+                    </ul>
+                </div>
+            );
+        }
     }
 }
 
