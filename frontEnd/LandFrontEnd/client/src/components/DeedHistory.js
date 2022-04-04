@@ -136,6 +136,8 @@ class DeedHistory extends Component {
             let oldLawyerEmail = "none";
             let oldSellerId = -1;
             let oldSellerEmail = "none";
+            let dateStamp = "0/0/0";
+            let timeStamp = "00:00";
             const historyLimit = await contract.methods.getHistoryCount().call();
 
             for(var i = 0; i < parseInt(historyLimit); i++)
@@ -149,7 +151,17 @@ class DeedHistory extends Component {
 
                     oldLawyerEmail = await contract.methods.getLawyerEmail(oldLawyerId).call();
                     oldSellerEmail = await contract.methods.getSellerEmail(oldSellerId).call();
-                    historyArrayVar[historyArrayCounter] = (deedIdFromHistory.toString() + " - L:" + oldLawyerEmail + " S:" + oldSellerEmail);
+
+                    dateStamp = await contract.methods.getDateStampFromHistory(i).call();
+                    timeStamp = await contract.methods.getTimeStampFromHistory(i).call();
+
+                    historyArrayVar[historyArrayCounter] = (
+                        deedIdFromHistory.toString() + 
+                        " - L:" + oldLawyerEmail + 
+                        " S:" + oldSellerEmail + 
+                        " Date:" + dateStamp + 
+                        " Time:" + timeStamp
+                    );
                     historyArrayCounter++;  
                 }
             }
