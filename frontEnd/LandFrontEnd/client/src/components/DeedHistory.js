@@ -129,7 +129,7 @@ class DeedHistory extends Component {
             console.log("OK");
 
             let deedIdFromHistory = -1;
-            let historyArrayVar = ["stringarray"];
+            let historyArrayVar = ["History is empty"];
             let historyArrayCounter = 0;
             let oldLawyerId = -1;
             let oldLawyerEmail = "none";
