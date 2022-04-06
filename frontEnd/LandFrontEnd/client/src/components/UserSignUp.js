@@ -28,23 +28,22 @@ class UserSignUp extends Component {
       telephoneNumber:""
 
     }
+
+    // Binding for scope
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleIdChange = this.handleIdChange.bind(this);
+    this.handlenicChange = this.handlenicChange.bind(this);
+    this.handleAgeChange = this.handleAgeChange.bind(this);
+    this.handlecityChange = this.handlecityChange.bind(this);
+    this.handleemailChange = this.handleemailChange.bind(this);
+    this.handletelephoneNumberChange = this.handletelephoneNumberChange.bind(this);
   }
   
 
   componentDidMount = async () => {
 
     try {
-
-      // Binding for scope
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleNameChange = this.handleNameChange.bind(this);
-      this.handleIdChange = this.handleIdChange.bind(this);
-      this.handlenicChange = this.handlenicChange.bind(this);
-      this.handleAgeChange = this.handleAgeChange.bind(this);
-      this.handleCityChange = this.handlecityChange.bind(this);
-      this.handleemailChange = this.handleemailChange.bind(this);
-      this.handletelephoneNumberChange = this.handletelephoneNumberChange.bind(this);
-
       // Get network provider and web3 instance.
       const web3 = await getWeb3();
 
@@ -179,33 +178,33 @@ class UserSignUp extends Component {
           {/* form used to take input about the user's information */}
           <div className="name">
           <label htmlFor="name">Name:</label>
-          <input className="input" type="text" id="no" value={ this.state.name } onChange={ this.handleNameChange.bind(this) }/>
+          <input className="input" type="text" id="no" value={ this.state.name } onChange={ this.handleNameChange }/>
           </div>
 
           <div className="Nic">
           <label htmlFor="Nic">Nic:</label>
-          <input className="input" type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.nic } onChange={ this.handlenicChange.bind(this) }/>
+          <input className="input" type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.nic } onChange={ this.handlenicChange }/>
           </div>
 
           <div className="Age">
           <label htmlFor="Age">Age:</label>
-          <input className="input" type="text" id="Age" value={ this.state.age } onChange={ this.handleAgeChange.bind(this) }/>
+          <input className="input" type="text" id="Age" value={ this.state.age } onChange={ this.handleAgeChange }/>
           </div>
 
           <div className="City">
           <label htmlFor="province">City:</label>
-          <input className="input" type="text" id="City" value={ this.state.city } onChange={ this.handlecityChange.bind(this) }/>
+          <input className="input" type="text" id="City" value={ this.state.city } onChange={ this.handlecityChange }/>
           </div>
 
           <div className="Email">
           <label htmlFor="Email">Email:</label>
-          <input className="input" type="email" id="Email" value={ this.state.email } onChange={ this.handleemailChange.bind(this) }/>
+          <input className="input" type="email" id="Email" value={ this.state.email } onChange={ this.handleemailChange }/>
           </div>
           <div>{ this.state.alertMessage }</div>
 
           <div className="telephone">
           <label htmlFor="telephone">Telephone Number:</label>
-          <input className="input" type="number" min="0" id="telephonenumber" value={ this.state.telephoneNumber } onChange={ this.handletelephoneNumberChange.bind(this) }/>
+          <input className="input" type="number" min="0" id="telephonenumber" value={ this.state.telephoneNumber } onChange={ this.handletelephoneNumberChange }/>
           </div>
 
           <div>

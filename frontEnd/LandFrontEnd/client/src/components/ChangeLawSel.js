@@ -25,20 +25,19 @@ class ChangeLawSel extends Component {
             newLawyerEmail: "",
             newSellerEmail: ""
         }
+
+        // Binding for scope
+        this.getDate = this.getDate.bind(this);
+        this.getTime = this.getTime.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDeedIdChange = this.handleDeedIdChange.bind(this);
+        this.handleLawyerEmailChange = this.handleLawyerEmailChange.bind(this);
+        this.handleSellerEmailChange = this.handleSellerEmailChange.bind(this);
     }
 
     componentDidMount = async () => {
 
         try {
-
-            // Binding for scope
-            this.getDate = this.getDate.bind(this);
-            this.getTime = this.getTime.bind(this);
-            this.handleSubmit = this.handleSubmit.bind(this);
-            this.handleDeedIdChange = this.handleDeedIdChange.bind(this);
-            this.handleLawyerEmailChange = this.handleLawyerEmailChange.bind(this);
-            this.handleSellerEmailChange = this.handleSellerEmailChange.bind(this);
-
             // Get network provider and web3 instance.
             const web3 = await getWeb3();
 
@@ -225,17 +224,17 @@ class ChangeLawSel extends Component {
 
                         <div className="deedId">
                             <label htmlFor="deedId">Deed ID:</label>
-                            <input className="inputC" type="number" min="0" id="deedId" value={this.state.deedId} onChange={this.handleDeedIdChange.bind(this)} />
+                            <input className="inputC" type="number" min="0" id="deedId" value={this.state.deedId} onChange={this.handleDeedIdChange} />
                         </div>
 
                         <div className="newLawyerEmail">
                             <label htmlFor="newLawyerEmail">New Lawyer's Email:</label>
-                            <input className="inputC" type="text" id="newLawyerEmail" value={this.state.newLawyerEmail} onChange={this.handleLawyerEmailChange.bind(this)} />
+                            <input className="inputC" type="text" id="newLawyerEmail" value={this.state.newLawyerEmail} onChange={this.handleLawyerEmailChange} />
                         </div>
 
                         <div className="newSellerEmail">
                             <label htmlFor="newSellerEmail">New Owner's Email:</label>
-                            <input className="inputC" type="text" id="newSellerEmail" value={this.state.newSellerEmail} onChange={this.handleSellerEmailChange.bind(this)} />
+                            <input className="inputC" type="text" id="newSellerEmail" value={this.state.newSellerEmail} onChange={this.handleSellerEmailChange} />
                         </div>
 
                         <br></br>

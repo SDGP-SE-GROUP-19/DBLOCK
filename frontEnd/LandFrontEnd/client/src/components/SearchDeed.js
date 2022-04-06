@@ -31,16 +31,15 @@ class SearchDeed extends Component {
 
             searchingDeedId: 0
         }
+
+        // Binding for scope
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSearchingDeedIdChange = this.handleSearchingDeedIdChange.bind(this);
     }
 
     componentDidMount = async () => {
 
         try {
-
-          // Binding for scope
-          this.handleSubmit = this.handleSubmit.bind(this);
-          this.handleSearchingDeedIdChange = this.handleSearchingDeedIdChange.bind(this);
-    
           // Get network provider and web3 instance.
           const web3 = await getWeb3();
     
@@ -172,7 +171,7 @@ class SearchDeed extends Component {
 
                         <label className="DeedIdtext">Deed ID:</label>
                         {/* asking for user to enter deed id to display deed details */}
-                        <input type="number" min="0" id="deedid" value={ this.state.searchingDeedId } onChange={ this.handleSearchingDeedIdChange.bind(this) } required/>
+                        <input type="number" min="0" id="deedid" value={ this.state.searchingDeedId } onChange={ this.handleSearchingDeedIdChange } required/>
                         {/* Error handeling of search deed */}
                         <br></br>
                         <br></br>

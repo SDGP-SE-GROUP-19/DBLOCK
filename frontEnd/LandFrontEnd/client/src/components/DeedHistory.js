@@ -25,20 +25,19 @@ class DeedHistory extends Component {
 
             historyArray: null
         }
+
+        // Binding for scope
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleNumberChange = this.handleNumberChange.bind(this);
+        this.handleStreetChange = this.handleStreetChange.bind(this);
+        this.handleCityChange = this.handleCityChange.bind(this);
+        this.handleDistrictChange = this.handleDistrictChange.bind(this);
+        this.handleProvinceChange = this.handleProvinceChange.bind(this);
     }
 
     componentDidMount = async () => {
 
         try {
-
-            // Binding for scope
-            this.handleSubmit = this.handleSubmit.bind(this);
-            this.handleNumberChange = this.handleNumberChange.bind(this);
-            this.handleStreetChange = this.handleStreetChange.bind(this);
-            this.handleCityChange = this.handleCityChange.bind(this);
-            this.handleDistrictChange = this.handleDistrictChange.bind(this);
-            this.handleProvinceChange = this.handleProvinceChange.bind(this);
-
             // Get network provider and web3 instance.
             const web3 = await getWeb3();
 
@@ -185,19 +184,19 @@ class DeedHistory extends Component {
 
                             {/* takes user input to search for a deed */}
                             <label htmlFor="no">Address No:</label>
-                            <input type="text" id="no" value={this.state.newNo} onChange={this.handleNumberChange.bind(this)} required />
+                            <input type="text" id="no" value={this.state.newNo} onChange={this.handleNumberChange} required />
 
                             <label htmlFor="streetname">Street:</label>
-                            <input type="text" id="streetname" value={this.state.newStreetName} onChange={this.handleStreetChange.bind(this)} required />
+                            <input type="text" id="streetname" value={this.state.newStreetName} onChange={this.handleStreetChange} required />
 
                             <label htmlFor="city">City:</label>
-                            <input type="text" id="city" value={this.state.newCity} onChange={this.handleCityChange.bind(this)} required />
+                            <input type="text" id="city" value={this.state.newCity} onChange={this.handleCityChange} required />
 
                             <label htmlFor="district">District:</label>
-                            <input type="text" id="district" value={this.state.newDistrict} onChange={this.handleDistrictChange.bind(this)} required />
+                            <input type="text" id="district" value={this.state.newDistrict} onChange={this.handleDistrictChange} required />
 
                             <label htmlFor="province">Province:</label>
-                            <input type="text" id="province" value={this.state.newProvince} onChange={this.handleProvinceChange.bind(this)} required />
+                            <input type="text" id="province" value={this.state.newProvince} onChange={this.handleProvinceChange} required />
 
                             <div className="addressalert">{this.state.addressAlert}</div>
 

@@ -25,20 +25,19 @@ class LawyerSignUp extends Component {
             enteredLawyerEmail: "",
             enteredLawyerTelNo: 0
         }
+
+        // scope binding
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleNicChange = this.handleNicChange.bind(this);
+        this.handleRegNoChange = this.handleRegNoChange.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handleTelNoChange = this.handleTelNoChange.bind(this);
     }
 
     componentDidMount = async () => {
 
         try {
-    
-          // Binding for scope
-          this.handleSubmit = this.handleSubmit.bind(this);
-          this.handleNameChange = this.handleNameChange.bind(this);
-          this.handleNicChange = this.handleNicChange.bind(this);
-          this.handleRegNoChange = this.handleRegNoChange.bind(this);
-          this.handleEmailChange = this.handleEmailChange.bind(this);
-          this.handleTelNoChange = this.handleTelNoChange.bind(this);
-    
           // Get network provider and web3 instance.
           const web3 = await getWeb3();
     
@@ -157,28 +156,28 @@ class LawyerSignUp extends Component {
 
                     <div className="nameLS">
                     <label htmlFor="name">Name:</label>
-                    <input className="inputLS" type="text" id="name" value={ this.state.enteredLawyerName } onChange={ this.handleNameChange.bind(this) } required/>
+                    <input className="inputLS" type="text" id="name" value={ this.state.enteredLawyerName } onChange={ this.handleNameChange } required/>
                     </div>
 
                     <div className="nicLS">
                     <label htmlFor="nic">NIC:</label>
-                    <input className="inputLS" type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.enteredLawyerNic } onChange={ this.handleNicChange.bind(this) } required/>
+                    <input className="inputLS" type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.enteredLawyerNic } onChange={ this.handleNicChange } required/>
                     </div>
 
                     <div className="registrationLS">
                     <label htmlFor="regno">Registration Number:</label>
-                    <input className="inputLS" type="text" id="regno" value={ this.state.enteredLawyerRegNo } onChange={ this.handleRegNoChange.bind(this) } required/>
+                    <input className="inputLS" type="text" id="regno" value={ this.state.enteredLawyerRegNo } onChange={ this.handleRegNoChange } required/>
                     </div>
 
                     <div className="emailLS">
                     <label htmlFor="email">Email:</label>
-                    <input className="inputLS" type="email" id="email" value={ this.state.enteredLawyerEmail } onChange={ this.handleEmailChange.bind(this) } required/>
+                    <input className="inputLS" type="email" id="email" value={ this.state.enteredLawyerEmail } onChange={ this.handleEmailChange } required/>
                     <div className="emailval">{ this.state.alertMessage }</div>
                     </div>
 
                     <div className="telephoneLS">
                     <label htmlFor="telNo">Telephone:</label>
-                    <input className="inputLS" type="number" min="0" id="telNo" value={ this.state.enteredLawyerTelNo } onChange={ this.handleTelNoChange.bind(this) } required/>
+                    <input className="inputLS" type="number" min="0" id="telNo" value={ this.state.enteredLawyerTelNo } onChange={ this.handleTelNoChange } required/>
                     </div>
 
                     <div>

@@ -21,7 +21,7 @@ class NewDeedForm extends Component {
       web3: null,
       accounts: null,
       contract: null,
-      
+
       stateDeedId: 0,
       newNo: "",
       newStreetName: "",
@@ -38,7 +38,18 @@ class NewDeedForm extends Component {
       txReceipt: ''
 
     }
+
+    // Binding for scope
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleNumberChange = this.handleNumberChange.bind(this);
+    this.handleStreetChange = this.handleStreetChange.bind(this);
+    this.handleCityChange = this.handleCityChange.bind(this);
+    this.handleDistrictChange = this.handleDistrictChange.bind(this);
+    this.handleProvinceChange = this.handleProvinceChange.bind(this);
+    this.handleLawyerEmailChange = this.handleLawyerEmailChange.bind(this);
+    this.handleSellerEmailChange = this.handleSellerEmailChange.bind(this);
   }
+
   captureFile = (event) => {
     event.stopPropagation()
     event.preventDefault()
@@ -47,44 +58,34 @@ class NewDeedForm extends Component {
     reader.readAsArrayBuffer(file)
     reader.onloadend = () => this.convertToBuffer(reader)
   };
-    //Convert the file to buffer to store on IPFS 
-    convertToBuffer = async (reader) => {
-      //file is converted to a buffer for upload to IPFS        
-      const buffer = await Buffer.from(reader.result);
-      //set this buffer-using es6 syntax        
-      this.setState({ buffer });
-    };
-  
-    //ES6 async 
-    functiononClick = async () => {
-      try {
-        this.setState({ blockNumber: "waiting.." });
-        this.setState({ gasUsed: "waiting..." });
-  
-        await web3.eth.getTransactionReceipt(
-          this.state.transactionHash, (err, txReceipt) => {
-            console.log(err, txReceipt);
-            this.setState({ txReceipt });
-          })
-      } catch (error) {
-        console.log(error);
-      }
+
+  //Convert the file to buffer to store on IPFS 
+  convertToBuffer = async (reader) => {
+    //file is converted to a buffer for upload to IPFS        
+    const buffer = await Buffer.from(reader.result);
+    //set this buffer-using es6 syntax        
+    this.setState({ buffer });
+  };
+
+  //ES6 async 
+  functiononClick = async () => {
+    try {
+      this.setState({ blockNumber: "waiting.." });
+      this.setState({ gasUsed: "waiting..." });
+
+      await web3.eth.getTransactionReceipt(
+        this.state.transactionHash, (err, txReceipt) => {
+          console.log(err, txReceipt);
+          this.setState({ txReceipt });
+        })
+    } catch (error) {
+      console.log(error);
     }
+  }
 
   componentDidMount = async () => {
 
     try {
-
-      // Binding for scope
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleNumberChange = this.handleNumberChange.bind(this);
-      this.handleStreetChange = this.handleStreetChange.bind(this);
-      this.handleCityChange = this.handleCityChange.bind(this);
-      this.handleDistrictChange = this.handleDistrictChange.bind(this);
-      this.handleProvinceChange = this.handleProvinceChange.bind(this);
-      this.handleLawyerEmailChange = this.handleLawyerEmailChange.bind(this);
-      this.handleSellerEmailChange = this.handleSellerEmailChange.bind(this);
-
       // Get network provider and web3 instance.
       const web3 = await getWeb3();
 
@@ -192,8 +193,7 @@ class NewDeedForm extends Component {
       console.log("Seller of that email address does not exists!");
       this.setState({ alertMessage: "Seller of that email address does not exists!", alertsuccess: "" });
     }
-    else
-    {
+    else {
       console.log("OK");
       // Referred from https://www.freecodecamp.org/news/hands-on-get-started-with-infura-and-ipfs-on-ethereum-b63635142af0/
 
@@ -234,7 +234,7 @@ class NewDeedForm extends Component {
       console.log(response);
 
       // Set the state storageValue with the variable
-      this.setState({ storageValue: response, stateDeedId: deedId, alertMessage: "", alertsuccess:"Deed Registered successfully" });
+      this.setState({ storageValue: response, stateDeedId: deedId, alertMessage: "", alertsuccess: "Deed Registered successfully" });
     }
   }
 
@@ -254,49 +254,49 @@ class NewDeedForm extends Component {
       <div className="NewDeedForm">
         <div className="headingND">
           <h2 className="topicND">New Deed</h2>
-          <img src={deed} alt="deed" className="deed"/>
+          <img src={deed} alt="deed" className="deed" />
         </div>
 
         {/* Displays the current amount of deeds stored */}
-        <div className="deedcount">Deed count: { this.state.storageValue }</div>
-        
-      <div className="container">
-          <form className="form" onSubmit={ this.handleSubmit }>
-            
+        <div className="deedcount">Deed count: {this.state.storageValue}</div>
+
+        <div className="container">
+          <form className="form" onSubmit={this.handleSubmit}>
+
             {/* Form that inputs data in regard of a new deed */}
             <div className="addressno">
-            <label htmlFor="no">Address No:</label>
-            <input className="input" type="text" minLength="1" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange.bind(this) } required/>
+              <label htmlFor="no">Address No:</label>
+              <input className="input" type="text" minLength="1" id="no" value={this.state.newNo} onChange={this.handleNumberChange} required />
             </div>
 
             <div className="streetname">
-            <label htmlFor="streetname">Street:</label>
-            <input className="input" type="text" minLength="1" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange.bind(this) } required/>
+              <label htmlFor="streetname">Street:</label>
+              <input className="input" type="text" minLength="1" id="streetname" value={this.state.newStreetName} onChange={this.handleStreetChange} required />
             </div>
 
             <div className="city">
-            <label htmlFor="city">City:</label>
-            <input className="input" type="text" minLength="1" id="city" value={ this.state.newCity } onChange={ this.handleCityChange.bind(this) } required/>
+              <label htmlFor="city">City:</label>
+              <input className="input" type="text" minLength="1" id="city" value={this.state.newCity} onChange={this.handleCityChange} required />
             </div>
 
             <div className="district">
-            <label htmlFor="district">District:</label>
-            <input className="input" type="text" minLength="1" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange.bind(this) } required/>
+              <label htmlFor="district">District:</label>
+              <input className="input" type="text" minLength="1" id="district" value={this.state.newDistrict} onChange={this.handleDistrictChange} required />
             </div>
 
             <div className="province">
-            <label htmlFor="province">Province:</label>
-            <input className="input" type="text" minLength="1" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange.bind(this) } required/>
+              <label htmlFor="province">Province:</label>
+              <input className="input" type="text" minLength="1" id="province" value={this.state.newProvince} onChange={this.handleProvinceChange} required />
             </div>
 
             <div className="lawyerid">
-            <label htmlFor="lawyeremail">Email of assigning lawyer:</label>
-            <input className="input" type="email" id="lawyeremail" value={ this.state.newAssignedLawyerEmail } onChange={ this.handleLawyerEmailChange.bind(this) } required/>
+              <label htmlFor="lawyeremail">Email of assigning lawyer:</label>
+              <input className="input" type="email" id="lawyeremail" value={this.state.newAssignedLawyerEmail} onChange={this.handleLawyerEmailChange} required />
             </div>
 
             <div className="sellerid">
-            <label htmlFor="selleremail">Email of assigning seller:</label>
-            <input className="input" type="email" id="selleremail" value={ this.state.newAssignedSellerEmail } onChange={ this.handleSellerEmailChange.bind(this) } required/>
+              <label htmlFor="selleremail">Email of assigning seller:</label>
+              <input className="input" type="email" id="selleremail" value={this.state.newAssignedSellerEmail} onChange={this.handleSellerEmailChange} required />
             </div>
 
             <form className="buttonCF" onSubmit={this.onSubmit} >
@@ -304,22 +304,22 @@ class NewDeedForm extends Component {
               {/* <input type='submit' className="button"/> */}
             </form>
 
-            <div className="deedduplicateval">{ this.state.alertMessage }</div>
-            <div className="successval">{ this.state.alertsuccess }</div>
-            
+            <div className="deedduplicateval">{this.state.alertMessage}</div>
+            <div className="successval">{this.state.alertsuccess}</div>
+
 
             <div>
-              <input type="submit" value="Submit" className="button"/>
+              <input type="submit" value="Submit" className="button" />
             </div>
 
             <div>
-              <form className="refresh" onSubmit={ this.refreshpage }>
+              <form className="refresh" onSubmit={this.refreshpage}>
                 <button className="refreshbtn">Clear Form</button>
               </form>
             </div>
- 
+
           </form>
-        
+
         </div>
 
       </div>
