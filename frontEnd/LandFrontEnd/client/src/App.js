@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router } from 'react-router-dom';
 import "./App.css";
-import AdminNavigator from "./components/AdminNavigator";
+import AdminSignIn from "./components/AdminSignIn";
 
 class App extends Component {
 
@@ -11,7 +11,7 @@ class App extends Component {
       <>
       <div className="header">
       <Router>
-        <AdminNavigator />
+        <AdminSignIn />
       </Router>
 
       </div>

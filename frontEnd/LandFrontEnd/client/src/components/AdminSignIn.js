@@ -1,8 +1,8 @@
 import React, {Component, useCallback} from "react";
 import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
+import AdminNavigator from "./AdminNavigator";
 import './AdminSignIn.css';
-//import { useNavigate } from 'react-router-dom';
 import profile from "./Images/admin.png";
 
 class AdminSignIn extends Component {
@@ -17,19 +17,18 @@ class AdminSignIn extends Component {
             accounts: null,
             contract: null,
 
-            enteredPassword: "enteredPassword",
+            enteredPassword: "admin password",
             actualPassword: "actualPassword"
         }
+
+        // Binding for scope
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEnteredPasswordChange = this.handleEnteredPasswordChange.bind(this);
     }
 
     componentDidMount = async () => {
 
         try {
-
-            // Binding for scope
-            this.handleSubmit = this.handleSubmit.bind(this);
-            this.handleEnteredPasswordChange = this.handleEnteredPasswordChange.bind(this);
-
             // Get network provider and web3 instance.
             const web3 = await getWeb3();
 
@@ -78,14 +77,12 @@ class AdminSignIn extends Component {
         this.setState({ actualPassword: actualAdminPassword });
 
         // just showing the actual password from the state. MUST BE REMOVED ! 
-        console.log("Password from state " + this.state.actualPassword); // remove after testing
+        //console.log("Password from state " + this.state.actualPassword); // remove after testing
 
         // compare the entered password with the actual password
-        if (this.state.enteredPassword === actualAdminPassword) {
+        if (this.state.enteredPassword === this.state.actualPassword) {
 
             console.log("Password is correct");
-            //const navigate = useNavigate();
-            //const handleOnClick = useCallback(() => navigate('/AdminHome',{replace: true}), [navigate]);
         }
         else
         {
@@ -94,44 +91,53 @@ class AdminSignIn extends Component {
     }
 
     render() {
+        if (!this.state.web3) {
 
-        return (
-            <div className="AdminSignIn">
+            return <div>Loading Web3, accounts, and contract for admin sign in...</div>;
+        }
 
-                <div className="sub-main">
+        if (this.state.enteredPassword === this.state.actualPassword)
+        {
+            const adminLoginMessage = "Admin login successfull!";
+            const web3Var = this.state.web3;
+            const contractVar = this.state.contract;
+            const accountsVar = this.state.accounts;
 
-                    <form onSubmit={ this.handleSubmit }>
+            return ( <AdminNavigator adminLoginMessageFromSignIn={ adminLoginMessage } web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/> );
+        }
+        else {
+            return (
+                <div className="AdminSignIn">
 
-                        <div className="img">
-                            <div className="container-image">
-                                <img src={profile} alt="profile" className="profile"/>
+                    <div className="sub-main">
+
+                        <form onSubmit={ this.handleSubmit }>
+
+                            <div className="img">
+                                <div className="container-image">
+                                    <img src={profile} alt="profile" className="profile"/>
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="admin-name">
-                            <p>ADMIN LOGIN</p>
-                        </div>
+                            <div className="admin-name">
+                                <p>ADMIN LOGIN</p>
+                            </div>
 
-                        <div className="password">
-                            <input type="text" placeholder="PASSWORD" className="PASSWORD" value={ this.state.enteredPassword } onChange={ this.handleEnteredPasswordChange.bind(this) } />
-                        </div>
+                            <div className="password">
+                                <input type="text" placeholder="PASSWORD" className="PASSWORD" value={ this.state.enteredPassword } onChange={ this.handleEnteredPasswordChange } />
+                            </div>
 
-                        <div className="button-holder">
-                            <input type="submit" value="Check" className="button" />
-                        </div>
+                            <div className="button-holder">
+                                <input type="submit" value="Check" className="button" />
+                            </div>
 
-                        {/* <div className="button-holder">
-                            <button type="button" onClick={() => this.handleOnClick}>
-                                SignIn
-                            </button>
-                        </div> */} 
-                        
-                    </form>
+                        </form>
 
+                    </div>
+        
                 </div>
-      
-            </div>
-        );
+            );
+        }
     }
 }
 

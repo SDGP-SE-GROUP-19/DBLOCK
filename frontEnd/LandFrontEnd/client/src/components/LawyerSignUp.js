@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-import LandContract from "../contracts/Land.json";
-import getWeb3 from "../getWeb3";
 import './LawyerSignUp.css'
 import lawyer from "./Images/lawyer.png"
 
@@ -15,9 +13,9 @@ class LawyerSignUp extends Component {
             alertMessage: "",
             lawyerCount: 0,
 
-            web3: null,
-            accounts: null,
-            contract: null,
+            web3: this.props.web3PropFromNav,
+            accounts: this.props.accountsPropFromNav,
+            contract: this.props.contractPropFromNav,
 
             enteredLawyerName: "",
             enteredLawyerNic: "",
@@ -34,38 +32,6 @@ class LawyerSignUp extends Component {
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handleTelNoChange = this.handleTelNoChange.bind(this);
     }
-
-    componentDidMount = async () => {
-
-        try {
-          // Get network provider and web3 instance.
-          const web3 = await getWeb3();
-    
-          // Use web3 to get the user's accounts.
-          const accounts = await web3.eth.getAccounts();
-    
-          // Get the contract instance.
-          const networkId = await web3.eth.net.getId();
-          const deployedNetwork = LandContract.networks[networkId];
-          const instance = new web3.eth.Contract(
-            LandContract.abi,
-            deployedNetwork && deployedNetwork.address,
-          );
-    
-          // Set web3, accounts, and contract to the state, and then proceed with an
-          // example of interacting with the contract's methods.
-          this.setState({ web3, accounts, contract: instance });
-    
-        } catch (error) {
-    
-          // Catch any errors for any of the above operations.
-          alert(
-            `Failed to load web3, accounts, or contract. Check console for details.`,
-          );
-    
-          console.error(error);
-        }
-    };
 
     handleNameChange(event) {
 
@@ -136,7 +102,7 @@ class LawyerSignUp extends Component {
 
         if (!this.state.web3) {
 
-            return <div>Loading Web3, accounts, and contract...</div>;
+            return <div>Loading Web3, accounts, and contract for lawyer sign up...</div>;
         }
 
         return (
