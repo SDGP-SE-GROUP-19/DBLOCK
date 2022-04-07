@@ -148,6 +148,13 @@ contract("Land", account => {
         assert.equal(LawyerPassword, "Sarath@1234");
     });
 
+    //unit testing part of the seller id
+    it("Getting the seller id after registering a id", async () => {
+        const SellerId= await instance.getSellerId(0);
+
+        assert.equal(SellerId, 0);
+    });
+
     //unit testing part of seller name
     it("Getting the seller name after registering a seller", async () => {
         const SellerName = await instance.getSellerName(0);
@@ -197,12 +204,7 @@ contract("Land", account => {
         assert.equal(SellerPassword, "Chris@1234");
     });
 
-    //unit testing part of the seller id
-    it("Getting the seller id after registering a id", async () => {
-        const SellerId= await instance.getSellerId(0);
-
-        assert.equal(SellerId, 0);
-    });
+    
 
     // unit test to change the current lawyer and seller
     it("should change the lawyer for a deed", async () => {
