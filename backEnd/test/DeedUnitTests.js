@@ -8,10 +8,8 @@ contract("Land", account => {
 
         instance = await Land.deployed();
         await instance.addNewDeed("20", "Temple Lane", "Kolpity", "Colombo", "West", 0, 0);
-        await instance.registerLawyer("Sarath", "570511041v", "20200187", "sarath@gmail.com", 0771234567);
-        await instance.registerLawyer("Basil", "570535104v", "20278187", "basil@gmail.com", 0741233567);
-        await instance.registerSeller("Chris", "278987876v", "26","Kandy", "chris@gmail.com", 0761421615);
-        await instance.registerSeller("Udaya", "290987276v", "25","Kandy", "udaya@gmail.com", 0762423675);
+        await instance.registerLawyer("Sarath", "570511041v", "20200187", "sarath@gmail.com", 0771234567, "Sarath@1234");
+        await instance.registerSeller("Chris", "278987876v", "26","Kandy", "chris@gmail.com", 0761421615, "Chris@1234");
     });
 
     //Unit test for admin id
@@ -140,6 +138,14 @@ contract("Land", account => {
         const LawyerTelephoneNumber = await instance.getLawyerTelephoneNumber(0);
 
         assert.equal(LawyerTelephoneNumber, 0771234567);
+    });
+
+    //Unit testing part of Lawyer Password
+    it("Getting the lawyer password after registering a lawyer", async () => {
+
+        const LawyerPassword = await instance.getLawyerPassword(0);
+
+        assert.equal(LawyerPassword, "Sarath@1234");
     });
 
     //unit testing part of seller name
