@@ -190,6 +190,13 @@ contract("Land", account => {
         assert.equal(SellerTelNo, 0761421615);
     });
 
+     //unit testing part of the seller email
+     it("Getting the seller password after registering a seller", async () => {
+        const SellerPassword = await instance.getSellerPassword(0);
+
+        assert.equal(SellerPassword, "Chris@1234");
+    });
+
     //unit testing part of the seller id
     it("Getting the seller id after registering a id", async () => {
         const SellerId= await instance.getSellerId(0);
