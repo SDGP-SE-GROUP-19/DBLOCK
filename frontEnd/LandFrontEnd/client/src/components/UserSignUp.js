@@ -80,6 +80,12 @@ class UserSignUp extends Component {
     this.setState({ telephoneNumber: event.target.value });
   }
 
+  handlepasswordChange(event) {
+
+    // Set the state newAssignedLawyerId with input
+    this.setState({ password: event.target.value });
+  }
+
   async handleSubmit(event) {
 
     // prevent auto refresh on submit
@@ -171,6 +177,12 @@ class UserSignUp extends Component {
           <label htmlFor="telephone">Telephone Number:</label>
           <input className="input" type="number" min="0" id="telephonenumber" value={ this.state.telephoneNumber } onChange={ this.handletelephoneNumberChange }/>
           </div>
+
+          <div className="Password">
+          <label htmlFor="Password">Password:</label>
+          <input className="input" type="password" id="Password" value={ this.state.password } onChange={ this.handlepasswordChange }/>
+          </div>
+          <div>{ this.state.alertMessage }</div>
 
           <div>
           <input type="submit" value="Submit" className="buttonS"/>

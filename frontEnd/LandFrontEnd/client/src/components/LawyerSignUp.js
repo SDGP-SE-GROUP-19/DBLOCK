@@ -63,6 +63,12 @@ class LawyerSignUp extends Component {
         this.setState({ enteredLawyerTelNo: event.target.value });
     }
 
+    handlePasswordChange(event) {
+
+        // Set the state enteredLawyerTelNo with input
+        this.setState({ enteredLawyerPassword: event.target.value });
+    }
+
     async handleSubmit(event) {
 
         // prevent auto refresh on submit
@@ -144,6 +150,12 @@ class LawyerSignUp extends Component {
                     <div className="telephoneLS">
                     <label htmlFor="telNo">Telephone:</label>
                     <input className="inputLS" type="number" min="0" id="telNo" value={ this.state.enteredLawyerTelNo } onChange={ this.handleTelNoChange } required/>
+                    </div>
+
+                    <div className="passwordS">
+                    <label htmlFor="password">Password:</label>
+                    <input className="inputLS" type="password" id="password" value={ this.state.enteredLawyerPassword } onChange={ this.handlePasswordChange } required/>
+                    <div className="passwordval">{ this.state.alertMessage }</div>
                     </div>
 
                     <div>
