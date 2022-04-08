@@ -39,7 +39,7 @@ class AdminNavigator extends Component {
 
         return (
             <div className="AdminNavigator">
-                <h1>{ this.state.loginMessage }</h1>
+                {/* <h1>{ this.state.loginMessage }</h1> */}
                 {/* The navigation bar that routes through pages on a click of a button */}
                 <nav className="navstyle">
                     <button className="Navbtn"><Link to="/" style={{ textDecoration: 'none', color: 'white'}}>Home</Link></button>

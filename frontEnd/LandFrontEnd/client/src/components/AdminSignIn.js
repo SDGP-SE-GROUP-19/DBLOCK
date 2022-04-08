@@ -17,7 +17,7 @@ class AdminSignIn extends Component {
             accounts: null,
             contract: null,
 
-            enteredPassword: "admin password",
+            enteredPassword: "",
             actualPassword: "actualPassword"
         }
 
@@ -98,7 +98,7 @@ class AdminSignIn extends Component {
 
         if (this.state.enteredPassword === this.state.actualPassword)
         {
-            const adminLoginMessage = "Admin login successfull!";
+            const adminLoginMessage = "";
             const web3Var = this.state.web3;
             const contractVar = this.state.contract;
             const accountsVar = this.state.accounts;
