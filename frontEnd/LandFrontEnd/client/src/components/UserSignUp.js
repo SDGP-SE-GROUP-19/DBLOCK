@@ -36,6 +36,7 @@ class UserSignUp extends Component {
     this.handlecityChange = this.handlecityChange.bind(this);
     this.handleemailChange = this.handleemailChange.bind(this);
     this.handletelephoneNumberChange = this.handletelephoneNumberChange.bind(this);
+    this.handlepasswordrChange = this.handlepasswordChange.bind(this);
   }
   
   handleNameChange(event) {
@@ -76,13 +77,13 @@ class UserSignUp extends Component {
 
   handletelephoneNumberChange(event) {
 
-    // Set the state newAssignedSellerId with input
+    // Set the state newAssigned SellerId with input
     this.setState({ telephoneNumber: event.target.value });
   }
 
   handlepasswordChange(event) {
 
-    // Set the state newAssignedLawyerId with input
+    // Set the state newAssigned User password with input
     this.setState({ password: event.target.value });
   }
 

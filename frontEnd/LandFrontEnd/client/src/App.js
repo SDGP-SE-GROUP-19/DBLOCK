@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router } from 'react-router-dom';
 import "./App.css";
 import AdminSignIn from "./components/AdminSignIn";
+import LawyerSignIn from "./components/LawyerSignIn";
 
 class App extends Component {
 

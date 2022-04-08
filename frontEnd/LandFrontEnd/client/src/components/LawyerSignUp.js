@@ -31,6 +31,7 @@ class LawyerSignUp extends Component {
         this.handleRegNoChange = this.handleRegNoChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handleTelNoChange = this.handleTelNoChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
     }
 
     handleNameChange(event) {
@@ -65,7 +66,7 @@ class LawyerSignUp extends Component {
 
     handlePasswordChange(event) {
 
-        // Set the state enteredLawyerTelNo with input
+        // Set the state enteredLawyerPassword with input
         this.setState({ enteredLawyerPassword: event.target.value });
     }
 
