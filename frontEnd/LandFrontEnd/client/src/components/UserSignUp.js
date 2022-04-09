@@ -114,7 +114,7 @@ class UserSignUp extends Component {
         const sellerCountVar = await contract.methods.getSellersCount().call();
 
         // set the state with the new user count
-        this.setState({ sellerCount: sellerCountVar, alertMessage: "" });
+        this.setState({ storageValue: sellerCountVar, alertMessage: "" });
     }
     else
     {
