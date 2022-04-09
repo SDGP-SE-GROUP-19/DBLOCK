@@ -2,10 +2,10 @@ import React, {Component, useCallback} from "react";
 import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
 import AdminNavigator from "./AdminNavigator";
-import './AdminSignIn.css';
+import './LawyerSignIn.css';
 import profile from "./Images/admin.png";
 
-class AdminSignIn extends Component {
+class LawyerSignIn extends Component {
 
     constructor(props) {
 
@@ -24,6 +24,7 @@ class AdminSignIn extends Component {
         // Binding for scope
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEnteredPasswordChange = this.handleEnteredPasswordChange.bind(this);
+        this.handleEnteredUsernameChange = this.handleEnteredUsernameChange.bind(this);
     }
 
     componentDidMount = async () => {
@@ -64,6 +65,12 @@ class AdminSignIn extends Component {
         this.setState({ enteredPassword: event.target.value });
     }
 
+    handleEnteredUsernameChange(event) {
+
+        // Set the state enteredPassword with input
+        this.setState({ enteredUsername: event.target.value });
+    }   
+
     async handleSubmit(event) {
 
         // prevent auto refresh on submit
@@ -72,42 +79,52 @@ class AdminSignIn extends Component {
         // Initialize account and contract variables from state
         const { contract } = this.state;
 
-        // get the actual admin pass from the blockchain
-        const actualAdminPassword = await contract.methods.getAdminPassword().call();
-        this.setState({ actualPassword: actualAdminPassword });
+        // get the actual lawyer pass from the blockchain
+        const actualLawyerPassword = await contract.methods.getLawyerPassword().call();
+        this.setState({ actualPassword: actualLawyerPassword });
+
+        // get the actual lawyer username from the blockchain
+        const actualLawyerUsername = await contract.methods.getLawyerEmail().call();
+        this.setState({ actualUsername: actualLawyerUsername });
 
         // just showing the actual password from the state. MUST BE REMOVED ! 
         //console.log("Password from state " + this.state.actualPassword); // remove after testing
 
-        // compare the entered password with the actual password
-        if (this.state.enteredPassword === this.state.actualPassword) {
+        // compare the entered username and the password with the actual username and the password
+        if(this.state.enteredUsername === this.state.actualUsername) {
+            console.log("Username is correct");
+            if (this.state.enteredPassword === this.state.actualPassword) {
 
-            console.log("Password is correct");
+                console.log("Password is correct");
+            }
+            else {
+                console.log("Incorrect password");
+            }
         }
-        else
-        {
-            console.log("Incorrect password");
+        else {
+            console.log("Incorrect username");
         }
+        
     }
 
     render() {
         if (!this.state.web3) {
 
-            return <div>Loading Web3, accounts, and contract for admin sign in...</div>;
+            return <div>Loading Web3, accounts, and contract for lawyer sign in...</div>;
         }
 
         if (this.state.enteredPassword === this.state.actualPassword)
         {
-            const adminLoginMessage = "";
+            // const adminLoginMessage = "Lawyer login successfull!";
             const web3Var = this.state.web3;
             const contractVar = this.state.contract;
             const accountsVar = this.state.accounts;
 
-            return ( <AdminNavigator adminLoginMessageFromSignIn={ adminLoginMessage } web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/> );
+            return ( <AdminNavigator web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/> );
         }
         else {
             return (
-                <div className="AdminSignIn">
+                <div className="LawyerSignIn">
 
                     <div className="sub-main">
 
@@ -119,12 +136,16 @@ class AdminSignIn extends Component {
                                 </div>
                             </div>
 
-                            <div className="admin-name">
-                                <p>ADMIN LOGIN</p>
+                            <div className="lawyer-name">
+                                <p>Lawyer LOGIN</p>
+                            </div>
+
+                            <div className="username">
+                                <input type="text" placeholder="Email" className="USERNAME" value={ this.state.enteredUsername } onChange={ this.handleEnteredUsernameChange } />
                             </div>
 
                             <div className="password">
-                                <input type="text" placeholder="PASSWORD" className="PASSWORD" value={ this.state.enteredPassword } onChange={ this.handleEnteredPasswordChange } />
+                                <input type="password" placeholder="PASSWORD" className="PASSWORD" value={ this.state.enteredPassword } onChange={ this.handleEnteredPasswordChange } />
                             </div>
 
                             <div className="button-holder">
@@ -141,4 +162,4 @@ class AdminSignIn extends Component {
     }
 }
 
-export default AdminSignIn;
+export default LawyerSignIn;

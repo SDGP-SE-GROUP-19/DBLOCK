@@ -8,10 +8,8 @@ contract("Land", account => {
 
         instance = await Land.deployed();
         await instance.addNewDeed("20", "Temple Lane", "Kolpity", "Colombo", "West", 0, 0);
-        await instance.registerLawyer("Sarath", "570511041v", "20200187", "sarath@gmail.com", 0771234567);
-        await instance.registerLawyer("Basil", "570535104v", "20278187", "basil@gmail.com", 0741233567);
-        await instance.registerSeller("Chris", "278987876v", "26","Kandy", "chris@gmail.com", 0761421615);
-        await instance.registerSeller("Udaya", "290987276v", "25","Kandy", "udaya@gmail.com", 0762423675);
+        await instance.registerLawyer("Sarath", "570511041v", "20200187", "sarath@gmail.com", 0771234567, "Sarath@1234");
+        await instance.registerSeller("Chris", "278987876v", "26","Kandy", "chris@gmail.com", 0761421615, "Chris@1234");
     });
 
     //Unit test for admin id
@@ -142,6 +140,21 @@ contract("Land", account => {
         assert.equal(LawyerTelephoneNumber, 0771234567);
     });
 
+    //Unit testing part of Lawyer Password
+    it("Getting the lawyer password after registering a lawyer", async () => {
+
+        const LawyerPassword = await instance.getLawyerPassword(0);
+
+        assert.equal(LawyerPassword, "Sarath@1234");
+    });
+
+    //unit testing part of the seller id
+    it("Getting the seller id after registering a id", async () => {
+        const SellerId= await instance.getSellerId(0);
+
+        assert.equal(SellerId, 0);
+    });
+
     //unit testing part of seller name
     it("Getting the seller name after registering a seller", async () => {
         const SellerName = await instance.getSellerName(0);
@@ -184,12 +197,14 @@ contract("Land", account => {
         assert.equal(SellerTelNo, 0761421615);
     });
 
-    //unit testing part of the seller id
-    it("Getting the seller id after registering a id", async () => {
-        const SellerId= await instance.getSellerId(0);
+     //unit testing part of the seller email
+     it("Getting the seller password after registering a seller", async () => {
+        const SellerPassword = await instance.getSellerPassword(0);
 
-        assert.equal(SellerId, 0);
+        assert.equal(SellerPassword, "Chris@1234");
     });
+
+    
 
     // unit test to change the current lawyer and seller
     it("should change the lawyer for a deed", async () => {

@@ -36,6 +36,7 @@ class UserSignUp extends Component {
     this.handlecityChange = this.handlecityChange.bind(this);
     this.handleemailChange = this.handleemailChange.bind(this);
     this.handletelephoneNumberChange = this.handletelephoneNumberChange.bind(this);
+    this.handlepasswordrChange = this.handlepasswordChange.bind(this);
   }
   
   handleNameChange(event) {
@@ -76,8 +77,14 @@ class UserSignUp extends Component {
 
   handletelephoneNumberChange(event) {
 
-    // Set the state newAssignedSellerId with input
+    // Set the state newAssigned SellerId with input
     this.setState({ telephoneNumber: event.target.value });
+  }
+
+  handlepasswordChange(event) {
+
+    // Set the state newAssigned User password with input
+    this.setState({ password: event.target.value });
   }
 
   async handleSubmit(event) {
@@ -171,6 +178,12 @@ class UserSignUp extends Component {
           <label htmlFor="telephone">Telephone Number:</label>
           <input className="input" type="number" min="0" id="telephonenumber" value={ this.state.telephoneNumber } onChange={ this.handletelephoneNumberChange }/>
           </div>
+
+          <div className="Password">
+          <label htmlFor="Password">Password:</label>
+          <input className="input" type="password" id="Password" value={ this.state.password } onChange={ this.handlepasswordChange }/>
+          </div>
+          <div>{ this.state.alertMessage }</div>
 
           <div>
           <input type="submit" value="Submit" className="buttonS"/>

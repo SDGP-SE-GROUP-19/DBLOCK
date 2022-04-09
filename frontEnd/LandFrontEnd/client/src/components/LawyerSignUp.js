@@ -31,6 +31,7 @@ class LawyerSignUp extends Component {
         this.handleRegNoChange = this.handleRegNoChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handleTelNoChange = this.handleTelNoChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
     }
 
     handleNameChange(event) {
@@ -61,6 +62,12 @@ class LawyerSignUp extends Component {
 
         // Set the state enteredLawyerTelNo with input
         this.setState({ enteredLawyerTelNo: event.target.value });
+    }
+
+    handlePasswordChange(event) {
+
+        // Set the state enteredLawyerPassword with input
+        this.setState({ enteredLawyerPassword: event.target.value });
     }
 
     async handleSubmit(event) {
@@ -144,6 +151,12 @@ class LawyerSignUp extends Component {
                     <div className="telephoneLS">
                     <label htmlFor="telNo">Telephone:</label>
                     <input className="inputLS" type="number" min="0" id="telNo" value={ this.state.enteredLawyerTelNo } onChange={ this.handleTelNoChange } required/>
+                    </div>
+
+                    <div className="passwordS">
+                    <label htmlFor="password">Password:</label>
+                    <input className="inputLS" type="password" id="password" value={ this.state.enteredLawyerPassword } onChange={ this.handlePasswordChange } required/>
+                    <div className="passwordval">{ this.state.alertMessage }</div>
                     </div>
 
                     <div>

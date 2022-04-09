@@ -1,13 +1,23 @@
 /* This stores the css related to the admin navigator */
 .AdminNavigator{
-    background:linear-gradient(135deg,#0681b9,#f80759);
-    padding-top: 10px;
+    /* background:linear-gradient(135deg,#0681b9,#f80759); */
+    background-color: #014268;
     font-family: sans-serif;
     list-style: none;
+    width: auto;
+    height: auto;
 }
 
 .Navbtn{
-    background-color: black;
+    background-color: transparent;
+    border-color: transparent;
+    margin: 35px;
+    font-size: 12px;
+    margin-left: 12px;
 }
 
-
+.Navbtn:hover{
+    color: black;
+    /* font-weight: bold; */
+    color: black;
+}

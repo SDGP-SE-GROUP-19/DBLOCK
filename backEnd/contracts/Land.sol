@@ -34,6 +34,7 @@ contract Land {
         string lawyerRegNo;
         string lawyerEmail;
         uint lawyerTelephoneNumber;
+        string lawyerPassword;
     }
 
     struct Seller {
@@ -45,6 +46,7 @@ contract Land {
         string city;
 		string email;
         uint telephoneNumber;
+        string password;
     }
 
     struct Admin {
@@ -226,14 +228,14 @@ contract Land {
     }
 
     //function to register a seller
-    function registerSeller(string memory _name, string memory _nic, uint _age, string memory _city, string memory _email, uint _telephoneNumber) public {
-        sellersMapping[sellersCount] = Seller(_name, sellersCount, _nic, _age, _city, _email, _telephoneNumber);
+    function registerSeller(string memory _name, string memory _nic, uint _age, string memory _city, string memory _email, uint _telephoneNumber, string memory _password) public {
+        sellersMapping[sellersCount] = Seller(_name, sellersCount, _nic, _age, _city, _email, _telephoneNumber, _password);
         sellersCount++;
     }
 
     //function to register a new Lawyer
-    function registerLawyer(string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail, uint _lawyerTelephoneNumber) public {
-        Lawyersmapping[lawyerCount] = Lawyer(lawyerCount, _lawyerName, _lawyernic, _lawyerRegNo, _lawyerEmail, _lawyerTelephoneNumber);
+    function registerLawyer(string memory _lawyerName, string memory _lawyernic, string memory _lawyerRegNo, string memory _lawyerEmail, uint _lawyerTelephoneNumber, string memory _lawyerPassword) public {
+        Lawyersmapping[lawyerCount] = Lawyer(lawyerCount, _lawyerName, _lawyernic, _lawyerRegNo, _lawyerEmail, _lawyerTelephoneNumber, _lawyerPassword);
         lawyerCount++;
     }
 
@@ -265,6 +267,11 @@ contract Land {
     // function to get the lawyer email
     function getLawyerTelephoneNumber(uint index) public view returns (uint) {
         return Lawyersmapping[index].lawyerTelephoneNumber;
+    }
+    
+    // function to get the lawyer password
+    function getLawyerPassword(uint index) public view returns (string memory) {
+        return Lawyersmapping[index].lawyerPassword;
     }
 
     // function to get the seller id
@@ -300,6 +307,11 @@ contract Land {
     // function to get the seller telephonenumber
     function getSellerTelephoneNo(uint index) public view returns (uint) {
         return sellersMapping[index].telephoneNumber;
+    }
+
+    // function to get the seller password
+    function getSellerPassword(uint index) public view returns (string memory) {
+        return sellersMapping[index].password;
     }
     
     //function to get admin id
