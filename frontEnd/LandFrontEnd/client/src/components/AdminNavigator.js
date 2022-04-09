@@ -8,8 +8,10 @@ import PageNotFound from "./PageNotFound";
 import UserSignUp from "./UserSignUp";
 import LawyerSignUp from "./LawyerSignUp";
 import DeedHistory from "./DeedHistory";
+import Userpage from "./Userpage";
 import './AdminNavigator.css';
 import { Routes, Route, Link } from 'react-router-dom';
+
 
 class AdminNavigator extends Component {
 
@@ -39,7 +41,7 @@ class AdminNavigator extends Component {
 
         return (
             <div className="AdminNavigator">
-                <h1>{ this.state.loginMessage }</h1>
+                {/* <h1>{ this.state.loginMessage }</h1> */}
                 {/* The navigation bar that routes through pages on a click of a button */}
                 <nav className="navstyle">
                     <button className="Navbtn"><Link to="/" style={{ textDecoration: 'none', color: 'white'}}>Home</Link></button>
@@ -50,6 +52,8 @@ class AdminNavigator extends Component {
                     <button className="Navbtn"><Link to="/UserSignUp" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></button>
                     <button className="Navbtn"><Link to="/LawyerSignUp" style={{ textDecoration: 'none', color: 'white'}}>Lawyer Sign up</Link></button>
                     <button className="Navbtn"><Link to="/DeedHistory" style={{ textDecoration: 'none', color: 'white'}}>Deed History</Link></button>
+                    <button className="Navbtn"><Link to="/Userpage" style={{ textDecoration: 'none', color: 'white'}}>User page</Link></button>
+                   
                 </nav>
 
                 {/* The naming and defining of the route paths */}
@@ -62,6 +66,15 @@ class AdminNavigator extends Component {
                     <Route path="/UserSignUp" element={ <UserSignUp web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
                     <Route path="/LawyerSignUp" element={ <LawyerSignUp web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
                     <Route path="/DeedHistory" element={ <DeedHistory web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
+                    <Route path="/NewDeedForm" element={ <NewDeedForm /> }/>
+                    <Route path="/SearchDeed" element={ <SearchDeed /> }/>
+                    <Route path="/SearchDeed2" element={ <SearchDeed2 /> }/>
+                    <Route path="/ChangeLawSel" element={ <ChangeLawSel /> }/>
+                    <Route path="/UserSignUp" element={ <UserSignUp /> }/>
+                    <Route path="/LawyerSignUp" element={ <LawyerSignUp /> }/>
+                    <Route path="/Userpage"element={ <Userpage web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
+                    
+                    
                     <Route path="*" element={ <PageNotFound /> }/>
                 </Routes>
 

@@ -23,7 +23,8 @@ class UserSignUp extends Component {
       age:"",
       city:"",
       email:"",
-      telephoneNumber:""
+      telephoneNumber:"",
+      password:""
 
     }
 
@@ -36,7 +37,7 @@ class UserSignUp extends Component {
     this.handlecityChange = this.handlecityChange.bind(this);
     this.handleemailChange = this.handleemailChange.bind(this);
     this.handletelephoneNumberChange = this.handletelephoneNumberChange.bind(this);
-    this.handlepasswordrChange = this.handlepasswordChange.bind(this);
+    this.handlepasswordChange = this.handlepasswordChange.bind(this);
   }
   
   handleNameChange(event) {
@@ -105,7 +106,8 @@ class UserSignUp extends Component {
             this.state.age,
             this.state.city,
             this.state.email,
-            this.state.telephoneNumber
+            this.state.telephoneNumber,
+            this.state.password
         ).send({ from: accounts[0] });
 
         // get the number of users added so far fron the blockchain using getLawyerCount method in smart contract
@@ -181,9 +183,9 @@ class UserSignUp extends Component {
 
           <div className="Password">
           <label htmlFor="Password">Password:</label>
-          <input className="input" type="password" id="Password" value={ this.state.password } onChange={ this.handlepasswordChange }/>
+          <input className="input" type="text" id="password" value={ this.state.password } onChange={ this.handlepasswordChange }/>
           </div>
-          <div>{ this.state.alertMessage }</div>
+          
 
           <div>
           <input type="submit" value="Submit" className="buttonS"/>

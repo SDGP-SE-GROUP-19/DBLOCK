@@ -231,6 +231,7 @@ contract Land {
     function registerSeller(string memory _name, string memory _nic, uint _age, string memory _city, string memory _email, uint _telephoneNumber, string memory _password) public {
         sellersMapping[sellersCount] = Seller(_name, sellersCount, _nic, _age, _city, _email, _telephoneNumber, _password);
         sellersCount++;
+        
     }
 
     //function to register a new Lawyer
