@@ -1,7 +1,7 @@
-import React, {Component, useCallback} from "react";
-import LandContract from "../contracts/Land.json";
-import getWeb3 from "../getWeb3";
-import AdminNavigator from "./AdminNavigator";
+import React, {Component} from "react";
+//import LandContract from "../contracts/Land.json";
+//import getWeb3 from "../getWeb3";
+//import AdminNavigator from "./AdminNavigator";
 import './LawyerSignIn.css';
 import profile from "./Images/admin.png";
 
