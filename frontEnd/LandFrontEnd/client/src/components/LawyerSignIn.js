@@ -1,7 +1,7 @@
-import React, {Component, useCallback} from "react";
-import LandContract from "../contracts/Land.json";
-import getWeb3 from "../getWeb3";
-import AdminNavigator from "./AdminNavigator";
+import React, {Component} from "react";
+//import LandContract from "../contracts/Land.json";
+//import getWeb3 from "../getWeb3";
+//import AdminNavigator from "./AdminNavigator";
 import './LawyerSignIn.css';
 import profile from "./Images/admin.png";
 
@@ -13,12 +13,14 @@ class LawyerSignIn extends Component {
 
         this.state = {
 
-            web3: null,
-            accounts: null,
-            contract: null,
+            web3: this.props.web3Prop,
+            accounts: this.props.accountsProp,
+            contract: this.props.contractProp,
 
             enteredPassword: "",
-            actualPassword: "actualPassword"
+            actualPassword: "actualPassword",
+            enteredUsername:"",
+            actualUsername:""
         }
 
         // Binding for scope
@@ -27,37 +29,37 @@ class LawyerSignIn extends Component {
         this.handleEnteredUsernameChange = this.handleEnteredUsernameChange.bind(this);
     }
 
-    componentDidMount = async () => {
+    // componentDidMount = async () => {
 
-        try {
-            // Get network provider and web3 instance.
-            const web3 = await getWeb3();
+    //     try {
+    //         // Get network provider and web3 instance.
+    //         const web3 = await getWeb3();
 
-            // Use web3 to get the user's accounts.
-            const accounts = await web3.eth.getAccounts();
+    //         // Use web3 to get the user's accounts.
+    //         const accounts = await web3.eth.getAccounts();
 
-            // Get the contract instance.
-            const networkId = await web3.eth.net.getId();
-            const deployedNetwork = LandContract.networks[networkId];
-            const instance = new web3.eth.Contract(
-            LandContract.abi,
-            deployedNetwork && deployedNetwork.address,
-            );
+    //         // Get the contract instance.
+    //         const networkId = await web3.eth.net.getId();
+    //         const deployedNetwork = LandContract.networks[networkId];
+    //         const instance = new web3.eth.Contract(
+    //         LandContract.abi,
+    //         deployedNetwork && deployedNetwork.address,
+    //         );
 
-            // Set web3, accounts, and contract to the state, and then proceed with an
-            // example of interacting with the contract's methods.
-            this.setState({ web3, accounts, contract: instance });
+    //         // Set web3, accounts, and contract to the state, and then proceed with an
+    //         // example of interacting with the contract's methods.
+    //         this.setState({ web3, accounts, contract: instance });
 
-        } catch (error) {
+    //     } catch (error) {
 
-            // Catch any errors for any of the above operations.
-            alert(
-            `Failed to load web3, accounts, or contract. Check console for details.`,
-            );
+    //         // Catch any errors for any of the above operations.
+    //         alert(
+    //         `Failed to load web3, accounts, or contract. Check console for details.`,
+    //         );
 
-            console.error(error);
-        }
-    };
+    //         console.error(error);
+    //     }
+    // };
 
     handleEnteredPasswordChange(event) {
 
@@ -78,14 +80,17 @@ class LawyerSignIn extends Component {
 
         // Initialize account and contract variables from state
         const { contract } = this.state;
+        const lawyeridemail = await contract.methods.findLawyerByEmail(this.state.enteredUsername).call();
 
         // get the actual lawyer pass from the blockchain
-        const actualLawyerPassword = await contract.methods.getLawyerPassword().call();
+        const actualLawyerPassword = await contract.methods.getLawyerPassword(lawyeridemail).call();
         this.setState({ actualPassword: actualLawyerPassword });
 
         // get the actual lawyer username from the blockchain
-        const actualLawyerUsername = await contract.methods.getLawyerEmail().call();
-        this.setState({ actualUsername: actualLawyerUsername });
+        const actualLawyerusername = await contract.methods.getLawyerEmail(lawyeridemail).call();
+        this.setState({ actualUsername: actualLawyerusername });
+
+        
 
         // just showing the actual password from the state. MUST BE REMOVED ! 
         //console.log("Password from state " + this.state.actualPassword); // remove after testing
@@ -113,18 +118,22 @@ class LawyerSignIn extends Component {
             return <div>Loading Web3, accounts, and contract for lawyer sign in...</div>;
         }
 
-        if (this.state.enteredPassword === this.state.actualPassword)
+
+        if (this.state.enteredPassword === this.state.actualPassword && this.state.enteredUsername === this.state.actualUsername)
         {
             // const adminLoginMessage = "Lawyer login successfull!";
             const web3Var = this.state.web3;
             const contractVar = this.state.contract;
             const accountsVar = this.state.accounts;
 
-            return ( <AdminNavigator web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/> );
+            // return ( <AdminNavigator  web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/> );
+            return (
+                <div>Next lawyer page...</div>
+            );
         }
         else {
             return (
-                <div className="LawyerSignIn">
+                <div className="UserSignIn">
 
                     <div className="sub-main">
 
@@ -137,7 +146,7 @@ class LawyerSignIn extends Component {
                             </div>
 
                             <div className="lawyer-name">
-                                <p>Lawyer LOGIN</p>
+                                <p>LAWYER LOGIN</p>
                             </div>
 
                             <div className="username">
