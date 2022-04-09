@@ -1,4 +1,4 @@
-import React, {Component, useCallback} from "react";
+import React, { Component } from "react";
 import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
 import AdminNavigator from "./AdminNavigator";
@@ -18,7 +18,8 @@ class AdminSignIn extends Component {
             contract: null,
 
             enteredPassword: "",
-            actualPassword: "actualPassword"
+            actualPassword: "actualPassword",
+            passwordAlert: ""
         }
 
         // Binding for scope
@@ -82,10 +83,12 @@ class AdminSignIn extends Component {
         // compare the entered password with the actual password
         if (this.state.enteredPassword === this.state.actualPassword) {
 
+            this.setState({ passwordAlert: "" });            
             console.log("Password is correct");
         }
         else
         {
+            this.setState({ passwordAlert: "Invalid password!" });
             console.log("Incorrect password");
         }
     }
@@ -126,6 +129,8 @@ class AdminSignIn extends Component {
                             <div className="password">
                                 <input type="text" placeholder="PASSWORD" className="PASSWORD" value={ this.state.enteredPassword } onChange={ this.handleEnteredPasswordChange } />
                             </div>
+
+                            <div>{ this.state.passwordAlert }</div>
 
                             <div className="button-holder">
                                 <input type="submit" value="Check" className="button" />
