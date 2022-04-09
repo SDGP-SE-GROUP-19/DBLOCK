@@ -18,7 +18,9 @@ class LawyerSignIn extends Component {
             contract: null,
 
             enteredPassword: "",
-            actualPassword: "actualPassword"
+            actualPassword: "actualPassword",
+            enteredUsername:"",
+            actualUsername:""
         }
 
         // Binding for scope
@@ -78,14 +80,17 @@ class LawyerSignIn extends Component {
 
         // Initialize account and contract variables from state
         const { contract } = this.state;
+        const lawyeridemail = await contract.methods.findLawyerByEmail(this.state.enteredUsername).call();
 
         // get the actual lawyer pass from the blockchain
-        const actualLawyerPassword = await contract.methods.getLawyerPassword().call();
+        const actualLawyerPassword = await contract.methods.getLawyerPassword(lawyeridemail).call();
         this.setState({ actualPassword: actualLawyerPassword });
 
         // get the actual lawyer username from the blockchain
-        const actualLawyerUsername = await contract.methods.getLawyerEmail().call();
-        this.setState({ actualUsername: actualLawyerUsername });
+        const actualLawyerusername = await contract.methods.getLawyerEmail(lawyeridemail).call();
+        this.setState({ actualUsername: actualLawyerusername });
+
+        
 
         // just showing the actual password from the state. MUST BE REMOVED ! 
         //console.log("Password from state " + this.state.actualPassword); // remove after testing
@@ -113,18 +118,19 @@ class LawyerSignIn extends Component {
             return <div>Loading Web3, accounts, and contract for lawyer sign in...</div>;
         }
 
-        if (this.state.enteredPassword === this.state.actualPassword)
+
+        if (this.state.enteredPassword === this.state.actualPassword && this.state.enteredUsername === this.state.actualUsername)
         {
             // const adminLoginMessage = "Lawyer login successfull!";
             const web3Var = this.state.web3;
             const contractVar = this.state.contract;
             const accountsVar = this.state.accounts;
 
-            return ( <AdminNavigator web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/> );
+            return ( <AdminNavigator  web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/> );
         }
         else {
             return (
-                <div className="LawyerSignIn">
+                <div className="UserSignIn">
 
                     <div className="sub-main">
 
@@ -137,7 +143,7 @@ class LawyerSignIn extends Component {
                             </div>
 
                             <div className="lawyer-name">
-                                <p>Lawyer LOGIN</p>
+                                <p>LAWYER LOGIN</p>
                             </div>
 
                             <div className="username">
