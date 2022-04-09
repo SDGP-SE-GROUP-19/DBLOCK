@@ -14,6 +14,8 @@ class App extends Component {
       <div className="header">
       <Router>
         <AdminSignIn/>
+        {/* <LawyerSignIn /> */}
+        {/* <UserSignIn /> */}
       </Router>
 
       </div>
