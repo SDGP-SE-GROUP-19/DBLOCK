@@ -21,7 +21,8 @@ class LawyerSignUp extends Component {
             enteredLawyerNic: "",
             enteredLawyerRegNo: "",
             enteredLawyerEmail: "",
-            enteredLawyerTelNo: 0
+            enteredLawyerTelNo: 0,
+            enteredLawyerPassword: ""
         }
 
         // scope binding
@@ -89,7 +90,8 @@ class LawyerSignUp extends Component {
                 this.state.enteredLawyerNic,
                 this.state.enteredLawyerRegNo,
                 this.state.enteredLawyerEmail,
-                this.state.enteredLawyerTelNo
+                this.state.enteredLawyerTelNo,
+                this.state.enteredLawyerPassword
             ).send({ from: accounts[0] });
 
             // get the number of lawyers added so far fron the blockchain using getLawyerCount method in smart contract
