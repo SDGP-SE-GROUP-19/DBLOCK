@@ -4,13 +4,14 @@ import getWeb3 from "../getWeb3";
 import './SearchDeed.css';
 
 
-class Userpage extends Component {
+class userpage extends Component {
 
     constructor(props) {
 
         super(props);
 
         this.state = {
+            
 
             deedIndexAlert: "",
 
@@ -206,4 +207,4 @@ class Userpage extends Component {
 
 
 
-export default Userpage;
+export default userpage;
