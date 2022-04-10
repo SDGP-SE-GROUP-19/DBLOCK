@@ -5,7 +5,6 @@ import AdminSignIn from "./AdminSignIn";
 import LawyerSignIn from "./LawyerSignIn";
 import UserSignIn from "./UserSignIn";
 import './MainHomePage.css';
-import SignupPages from "./SignupNavigator";
 
 class MainHomePage extends Component {
 
@@ -21,15 +20,13 @@ class MainHomePage extends Component {
 
             navToAdmin: false,
             navToLawyer: false,
-            navToUser: false,
-            navTosignup: false
+            navToUser: false
         }
 
         // Binding for scope
         this.handleAdminSubmit = this.handleAdminSubmit.bind(this);
         this.handleLawyerSubmit = this.handleLawyerSubmit.bind(this);
         this.handleUserSubmit = this.handleUserSubmit.bind(this);
-        this.handlesignupSubmit = this.handlesignupSubmit.bind(this);
     }
 
     componentDidMount = async () => {
@@ -63,22 +60,7 @@ class MainHomePage extends Component {
             console.error(error);
         }
     };
-    //handle submit for sign up button
-    async handlesignupSubmit(event) {
-        // prevent auto refresh on submit
-        event.preventDefault();
 
-        console.log("Nav => Signup");
-
-        this.setState({
-
-            navToAdmin: false,
-            navToLawyer: false,
-            navToUser: false,
-            navTosignup: true
-        });
-    }
-    //handle submit for admin button
     async handleAdminSubmit(event) {
         // prevent auto refresh on submit
         event.preventDefault();
@@ -88,11 +70,10 @@ class MainHomePage extends Component {
         this.setState({
             navToAdmin: true,
             navToLawyer: false,
-            navTosignup: false,
             navToUser: false
         });
     }
-    //handle submit for lawyer button
+
     async handleLawyerSubmit(event) {
         // prevent auto refresh on submit
         event.preventDefault();
@@ -102,20 +83,19 @@ class MainHomePage extends Component {
         this.setState({
             navToAdmin: false,
             navToLawyer: true,
-            navTosignup: false,
             navToUser: false
         });
     }
-    //handle submit for user button
+
     async handleUserSubmit(event) {
         // prevent auto refresh on submit
         event.preventDefault();
+
         console.log("Nav => User");
 
         this.setState({
             navToAdmin: false,
             navToLawyer: false,
-            navTosignup: false,
             navToUser: true
         });
     }
@@ -124,7 +104,6 @@ class MainHomePage extends Component {
         const navToAdminVar = this.state.navToAdmin;
         const navToLawyerVar = this.state.navToLawyer;
         const navToUserVar = this.state.navToUser;
-        const navTosignupVar = this.state.navTosignup;
 
         if (!this.state.web3) {
 
@@ -136,7 +115,7 @@ class MainHomePage extends Component {
             const contractVar = this.state.contract;
             const accountsVar = this.state.accounts;
 
-            if ((navToAdminVar === false) && (navToLawyerVar === false) && (navToUserVar === false) && (navTosignupVar === false))
+            if ((navToAdminVar === false) && (navToLawyerVar === false) && (navToUserVar === false))
             {
                 return (
                     <div className="MainHomePage">
@@ -152,28 +131,21 @@ class MainHomePage extends Component {
                         <form onSubmit={ this.handleUserSubmit }>
                             <input type="submit" value="User"/>
                         </form>
-                        <form onSubmit={ this.handlesignupSubmit }>
-                            <input type="submit" value="signup"/>
-                        </form>
         
                     </div>
                 );
             }
-            else if ((navToAdminVar === true) && (navToLawyerVar === false) && (navToUserVar === false) && (navTosignupVar === false))
+            else if ((navToAdminVar === true) && (navToLawyerVar === false) && (navToUserVar === false))
             {
                 return (<AdminSignIn web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
             }
-            else if ((navToAdminVar === false) && (navToLawyerVar === true) && (navToUserVar === false)&& (navTosignupVar === false))
+            else if ((navToAdminVar === false) && (navToLawyerVar === true) && (navToUserVar === false))
             {
                 return (<LawyerSignIn web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
             }
-            else if ((navToAdminVar === false) && (navToLawyerVar === false) && (navToUserVar === true)&& (navTosignupVar === false))
+            else if ((navToAdminVar === false) && (navToLawyerVar === false) && (navToUserVar === true))
             {
                 return (<UserSignIn web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
-            }
-            else if ((navToAdminVar === false) && (navToLawyerVar === false) && (navToUserVar === false)&& (navTosignupVar === true))
-            {
-                return (<SignupPages web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
             }
             else
             {
@@ -184,7 +156,6 @@ class MainHomePage extends Component {
                             <li>navToAdminVar - { navToAdminVar }</li>
                             <li>navToLawyerVar - { navToLawyerVar }</li>
                             <li>navToUserVar - { navToUserVar }</li>
-                            <li>navTosignupVar - { navTosignupVar }</li>
                         </ol>
                     </div>
                 );
