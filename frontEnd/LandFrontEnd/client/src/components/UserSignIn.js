@@ -23,7 +23,7 @@ class UserSignIn extends Component {
             actualUsername:""
         }
 
-        // Binding for scope
+        // Binding  for scope
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEnteredPasswordChange = this.handleEnteredPasswordChange.bind(this);
         this.handleEnteredUsernameChange = this.handleEnteredUsernameChange.bind(this);
