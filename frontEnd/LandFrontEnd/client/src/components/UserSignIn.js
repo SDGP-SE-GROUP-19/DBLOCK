@@ -4,6 +4,7 @@ import React, {Component} from "react";
 //import AdminNavigator from "./AdminNavigator";
 import './LawyerSignIn.css';
 import profile from "./Images/admin.png";
+import UserNavigator from "./UserNavigator";
 
 class UserSignIn extends Component {
 
@@ -127,9 +128,7 @@ class UserSignIn extends Component {
             const accountsVar = this.state.accounts;
 
             //return ( <AdminNavigator  web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/> );
-            return (
-                <div>Next user page...</div>
-            );
+            return (<UserNavigator web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
         }
         else {
             return (
