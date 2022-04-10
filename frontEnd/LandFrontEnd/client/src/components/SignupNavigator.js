@@ -5,9 +5,10 @@ import AdminSignIn from "./AdminSignIn";
 import LawyerSignIn from "./LawyerSignIn";
 import UserSignIn from "./UserSignIn";
 import './MainHomePage.css';
-import SignupPages from "./SignupNavigator";
+import LawyerSignUp from "./LawyerSignUp";
+import UserSignUp from "./UserSignUp";
 
-class MainHomePage extends Component {
+class SignupPages extends Component {
 
     constructor(props) {
 
@@ -15,21 +16,19 @@ class MainHomePage extends Component {
 
         this.state = {
 
-            web3: null,
+            web3: this.props.web3Prop,
             accounts: null,
             contract: null,
 
-            navToAdmin: false,
+        
             navToLawyer: false,
-            navToUser: false,
-            navTosignup: false
+            navToUser: false
         }
 
         // Binding for scope
-        this.handleAdminSubmit = this.handleAdminSubmit.bind(this);
+        
         this.handleLawyerSubmit = this.handleLawyerSubmit.bind(this);
         this.handleUserSubmit = this.handleUserSubmit.bind(this);
-        this.handlesignupSubmit = this.handlesignupSubmit.bind(this);
     }
 
     componentDidMount = async () => {
@@ -63,36 +62,8 @@ class MainHomePage extends Component {
             console.error(error);
         }
     };
-    //handle submit for sign up button
-    async handlesignupSubmit(event) {
-        // prevent auto refresh on submit
-        event.preventDefault();
 
-        console.log("Nav => Signup");
 
-        this.setState({
-
-            navToAdmin: false,
-            navToLawyer: false,
-            navToUser: false,
-            navTosignup: true
-        });
-    }
-    //handle submit for admin button
-    async handleAdminSubmit(event) {
-        // prevent auto refresh on submit
-        event.preventDefault();
-
-        console.log("Nav => Admin");
-
-        this.setState({
-            navToAdmin: true,
-            navToLawyer: false,
-            navTosignup: false,
-            navToUser: false
-        });
-    }
-    //handle submit for lawyer button
     async handleLawyerSubmit(event) {
         // prevent auto refresh on submit
         event.preventDefault();
@@ -100,31 +71,29 @@ class MainHomePage extends Component {
         console.log("Nav => Lawyer");
 
         this.setState({
-            navToAdmin: false,
+            
             navToLawyer: true,
-            navTosignup: false,
             navToUser: false
         });
     }
-    //handle submit for user button
+
     async handleUserSubmit(event) {
         // prevent auto refresh on submit
         event.preventDefault();
+
         console.log("Nav => User");
 
         this.setState({
-            navToAdmin: false,
+            
             navToLawyer: false,
-            navTosignup: false,
             navToUser: true
         });
     }
     
     render() {
-        const navToAdminVar = this.state.navToAdmin;
+        
         const navToLawyerVar = this.state.navToLawyer;
         const navToUserVar = this.state.navToUser;
-        const navTosignupVar = this.state.navTosignup;
 
         if (!this.state.web3) {
 
@@ -136,15 +105,10 @@ class MainHomePage extends Component {
             const contractVar = this.state.contract;
             const accountsVar = this.state.accounts;
 
-            if ((navToAdminVar === false) && (navToLawyerVar === false) && (navToUserVar === false) && (navTosignupVar === false))
+            if ((navToLawyerVar === false) && (navToUserVar === false))
             {
                 return (
                     <div className="MainHomePage">
-        
-                        <form onSubmit={ this.handleAdminSubmit }>
-                            <input type="submit" value="Admin"/>
-                        </form>
-        
                         <form onSubmit={ this.handleLawyerSubmit }>
                             <input type="submit" value="Lawyer"/>
                         </form>
@@ -152,39 +116,29 @@ class MainHomePage extends Component {
                         <form onSubmit={ this.handleUserSubmit }>
                             <input type="submit" value="User"/>
                         </form>
-                        <form onSubmit={ this.handlesignupSubmit }>
-                            <input type="submit" value="signup"/>
-                        </form>
         
                     </div>
                 );
             }
-            else if ((navToAdminVar === true) && (navToLawyerVar === false) && (navToUserVar === false) && (navTosignupVar === false))
+
+            
+            else if ((navToLawyerVar === true) && (navToUserVar === false))
             {
-                return (<AdminSignIn web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
+                return (<LawyerSignUp web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
             }
-            else if ((navToAdminVar === false) && (navToLawyerVar === true) && (navToUserVar === false)&& (navTosignupVar === false))
+            else if ((navToLawyerVar === false) && (navToUserVar === true))
             {
-                return (<LawyerSignIn web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
-            }
-            else if ((navToAdminVar === false) && (navToLawyerVar === false) && (navToUserVar === true)&& (navTosignupVar === false))
-            {
-                return (<UserSignIn web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
-            }
-            else if ((navToAdminVar === false) && (navToLawyerVar === false) && (navToUserVar === false)&& (navTosignupVar === true))
-            {
-                return (<SignupPages web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
+                return (<UserSignUp web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
             }
             else
             {
                 return(
                     <div>
-                        <p>Main Page Navigation Error!</p>
+                        <p>Sign up Page Navigation Error!</p>
                         <ol>
-                            <li>navToAdminVar - { navToAdminVar }</li>
+                        
                             <li>navToLawyerVar - { navToLawyerVar }</li>
                             <li>navToUserVar - { navToUserVar }</li>
-                            <li>navTosignupVar - { navTosignupVar }</li>
                         </ol>
                     </div>
                 );
@@ -193,4 +147,4 @@ class MainHomePage extends Component {
     }
 }
 
-export default MainHomePage;
+export default SignupPages;
