@@ -8,7 +8,7 @@ import './MainHomePage.css';
 import LawyerSignUp from "./LawyerSignUp";
 import UserSignUp from "./UserSignUp";
 import DeedHistory from "./DeedHistory";
-import Userpage from "./Userpage";
+import UserPage from "./UserPage";
 
 class UserNavigator extends Component {
 
@@ -130,7 +130,7 @@ class UserNavigator extends Component {
             }
             else if ((navTohistoryVar === false) && (navToUserVar === true))
             {
-                return (<Userpage web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
+                return (<UserPage web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
             }
             else
             {

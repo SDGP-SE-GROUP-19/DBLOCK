@@ -4,7 +4,7 @@ import getWeb3 from "../getWeb3";
 import './SearchDeed.css';
 
 
-class Userpage extends Component {
+class UserPage extends Component {
 
     constructor(props) {
 
@@ -207,4 +207,4 @@ class Userpage extends Component {
 
 
 
-export default Userpage;
+export default UserPage;
