@@ -4,7 +4,7 @@ import React, {Component} from "react";
 //import AdminNavigator from "./AdminNavigator";
 import './LawyerSignIn.css';
 import profile from "./Images/admin.png";
-import UserNavigator from "./UserNavigator";
+import Usernavigator from "./Usernavigator";
 
 class UserSignIn extends Component {
 
@@ -128,7 +128,7 @@ class UserSignIn extends Component {
             const accountsVar = this.state.accounts;
 
             //return ( <AdminNavigator  web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/> );
-            return (<UserNavigator web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
+            return (<Usernavigator web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
         }
         else {
             return (
