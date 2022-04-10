@@ -8,7 +8,7 @@ import './MainHomePage.css';
 import LawyerSignUp from "./LawyerSignUp";
 import UserSignUp from "./UserSignUp";
 import DeedHistory from "./DeedHistory";
-import userpage from "./userpage";
+import userpage from "./UserPage";
 
 class Usernavigator extends Component {
 

@@ -4,7 +4,7 @@ import React, {Component} from "react";
 //import AdminNavigator from "./AdminNavigator";
 import './LawyerSignIn.css';
 import profile from "./Images/admin.png";
-import Usernavigator from "./UserNavigator";
+import Usernavigator from "./Usernavigator";
 
 class UserSignIn extends Component {
 
