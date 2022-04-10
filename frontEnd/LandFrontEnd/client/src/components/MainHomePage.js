@@ -63,7 +63,7 @@ class MainHomePage extends Component {
             console.error(error);
         }
     };
-
+    //handle submit for sign up button
     async handlesignupSubmit(event) {
         // prevent auto refresh on submit
         event.preventDefault();
@@ -78,7 +78,7 @@ class MainHomePage extends Component {
             navTosignup: true
         });
     }
-
+    //handle submit for admin button
     async handleAdminSubmit(event) {
         // prevent auto refresh on submit
         event.preventDefault();
@@ -92,7 +92,7 @@ class MainHomePage extends Component {
             navToUser: false
         });
     }
-
+    //handle submit for lawyer button
     async handleLawyerSubmit(event) {
         // prevent auto refresh on submit
         event.preventDefault();
@@ -106,7 +106,7 @@ class MainHomePage extends Component {
             navToUser: false
         });
     }
-
+    //handle submit for user button
     async handleUserSubmit(event) {
         // prevent auto refresh on submit
         event.preventDefault();
