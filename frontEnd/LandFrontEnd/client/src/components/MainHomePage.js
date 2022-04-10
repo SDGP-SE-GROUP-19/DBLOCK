@@ -5,7 +5,7 @@ import AdminSignIn from "./AdminSignIn";
 import LawyerSignIn from "./LawyerSignIn";
 import UserSignIn from "./UserSignIn";
 import './MainHomePage.css';
-import SignupPages from "./SignupPages";
+import SignupPages from "./SignupNavigator";
 
 class MainHomePage extends Component {
 
