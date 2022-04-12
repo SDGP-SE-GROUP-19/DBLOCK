@@ -3,6 +3,7 @@ import React, {Component} from "react";
 //import getWeb3 from "../getWeb3";
 //import AdminNavigator from "./AdminNavigator";
 import './LawyerSignIn.css';
+import LawyerNavigator from "./LawyerNavigator";
 import profile from "./Images/admin.png";
 
 class LawyerSignIn extends Component {
@@ -82,13 +83,9 @@ class LawyerSignIn extends Component {
         const { contract } = this.state;
         const lawyeridemail = await contract.methods.findLawyerByEmail(this.state.enteredUsername).call();
 
-        // get the actual lawyer pass from the blockchain
-        const actualLawyerPassword = await contract.methods.getLawyerPassword(lawyeridemail).call();
-        this.setState({ actualPassword: actualLawyerPassword });
-
         // get the actual lawyer username from the blockchain
-        const actualLawyerusername = await contract.methods.getLawyerEmail(lawyeridemail).call();
-        this.setState({ actualUsername: actualLawyerusername });
+        //const actualLawyerusername = await contract.methods.getLawyerEmail(lawyeridemail).call();
+        //this.setState({ actualUsername: actualLawyerusername });
 
         
 
@@ -96,8 +93,15 @@ class LawyerSignIn extends Component {
         //console.log("Password from state " + this.state.actualPassword); // remove after testing
 
         // compare the entered username and the password with the actual username and the password
-        if(this.state.enteredUsername === this.state.actualUsername) {
+        if(lawyeridemail > -1) {
+
             console.log("Username is correct");
+
+            // get the actual lawyer pass from the blockchain
+            const actualLawyerPassword = await contract.methods.getLawyerPassword(lawyeridemail).call();
+            const actualLawyerusername = await contract.methods.getLawyerEmail(lawyeridemail).call();
+            this.setState({ actualPassword: actualLawyerPassword, actualUsername: actualLawyerusername });
+
             if (this.state.enteredPassword === this.state.actualPassword) {
 
                 console.log("Password is correct");
@@ -128,7 +132,8 @@ class LawyerSignIn extends Component {
 
             // return ( <AdminNavigator  web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/> );
             return (
-                <div>Next lawyer page...</div>
+                // <div>Next lawyer page...</div>
+                <LawyerNavigator web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>
             );
         }
         else {
