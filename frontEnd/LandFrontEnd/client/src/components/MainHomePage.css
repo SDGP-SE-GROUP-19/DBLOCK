@@ -1,6 +1,6 @@
 .MainHomePage{ 
     background: url("https://www.ibm.com/blogs/blockchain/wp-content/uploads/2019/12/Retina_Display-758591537-768x432.jpg");
-    padding: 21px;
+    padding: 88px;
 }
 
 .mainHome-glass{
@@ -49,7 +49,7 @@
 }
 
 .mainHomebtn{
-    width: 250px;
+    width: 100px;
     height: 50px;
     font-size: 15px;
     color: white;
