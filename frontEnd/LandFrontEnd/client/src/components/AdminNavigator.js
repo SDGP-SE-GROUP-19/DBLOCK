@@ -39,10 +39,10 @@ class AdminNavigator extends Component {
         }
 
         return (
-            <div className="AdminNavigator">
+            <div>
                 {/* <h1>{ this.state.loginMessage }</h1> */}
                 {/* The navigation bar that routes through pages on a click of a button */}
-                <nav className="navstyle">
+                {/* <nav className="navstyle">
                     <button className="Navbtn"><Link to="/" style={{ textDecoration: 'none', color: 'white'}}>Home</Link></button>
                     <button className="Navbtn"><Link to="/NewDeedForm" style={{ textDecoration: 'none', color: 'white'}}>New Land Deed</Link></button>
                     <button className="Navbtn"><Link to="/SearchDeed" style={{ textDecoration: 'none', color: 'white'}}>Search Deeds</Link></button>
@@ -52,6 +52,19 @@ class AdminNavigator extends Component {
                     <button className="Navbtn"><Link to="/LawyerSignUp" style={{ textDecoration: 'none', color: 'white'}}>Lawyer Sign up</Link></button>
                     <button className="Navbtn"><Link to="/DeedHistory" style={{ textDecoration: 'none', color: 'white'}}>Deed History</Link></button>
                    
+                </nav> */}
+
+                <nav className="AdminNavigator">
+                    <ul className="nav">
+                        <li className="Navbtn"><Link to ="/" className="a" style={{ textDecoration: 'none', color: 'white'}}>Home</Link></li>
+                        <li className="Navbtn"><Link to="/NewDeedForm" className="a" style={{ textDecoration: 'none', color: 'white',}}>New Land Deed</Link></li>
+                        <li className="Navbtn"><Link to="/SearchDeed" className="a" style={{ textDecoration: 'none', color: 'white'}}>Search Deeds</Link></li>
+                        <li className="Navbtn"><Link to="/SearchDeed2" className="a" style={{ textDecoration: 'none', color: 'white'}}>Search Deeds By Address</Link></li>
+                        <li className="Navbtn"><Link to="/ChangeLawSel" className="a" style={{ textDecoration: 'none', color: 'white'}}>Change Lawyer And Owner</Link></li>
+                        <li className="Navbtn"><Link to="/UserSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></li>
+                        <li className="Navbtn"><Link to="/LawyerSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>Lawyer Sign up</Link></li>
+                        <li className="Navbtn"><Link to="/DeedHistory" className="a" style={{ textDecoration: 'none', color: 'white'}}>Deed History</Link></li>
+                    </ul>
                 </nav>
 
                 {/* The naming and defining of the route paths */}

@@ -11,8 +11,9 @@ class AdminHome extends Component {
             <>
             {/* column which holds the description of what this page is about */}
                 <div className="Row">
+                <div className="adminHome-glass">
                     <div className="Column">
-                        <h3 className="heading">Welcome Admin !</h3>
+                        <h2 className="adminHome-heading">Welcome Admin !</h2>
                     </div>
 
                     <div className="Column">
@@ -38,6 +39,7 @@ class AdminHome extends Component {
                         </div>
                         </form>
 
+                    </div>
                     </div>
                     
                     

@@ -1,6 +1,10 @@
 /* This page contains the css of the admin home page */
+*{
+    font-family: sans-serif;
+}
 .Row{
-    background-color: black;
+    background:url("Images/adminHome.jpg");
+    background-repeat: no-repeat;
     color: white;
     font-size: 30px;
     font-family: sans-serif;
@@ -8,29 +12,48 @@
     max-width: 100%;
 }
 
-.heading{
+/* .heading{
     text-align: center;
+} */
+
+.adminHome-glass{
+    margin: 5px auto;
+    width: 500px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.adminHome-heading{
+    color: white;
+    text-shadow: 4px 4px 5px black;
+    font-weight: bold;
+    float: center;
+    text-align: center;
+    font-size: 45px;
 }
 
 .profile{
     height: 100px;
     width: 100px; 
     padding-bottom: 10px;
+    padding-top: 10px;
   }
 
 .containerH{
-    background: linear-gradient(135deg,#0681b9,#f80759);
     width: 100%;
     min-height: 50vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
 .formH{
-    background-color: black;
     min-width: 500px;
     min-height: 200px;
     padding: 30px;
@@ -39,10 +62,19 @@
 }
 
 .AdminHomebtn{
+    width: 250px;
+    height: 50px;
     font-size: 15px;
     color: white;
-    border-radius: 25px;
-    border-color: black;
-    background:linear-gradient(135deg,#0681b9,#f80759);
-    padding: px 20px;
+    border-radius: 10px;
+    border-color:transparent;
+    background:#014268;
+    padding: 10px;
+    margin: 8px;
+}
+
+.AdminHomebtn:hover{
+    cursor: pointer;
+    background:#e7301c;
+    font-weight: bold;
 }
