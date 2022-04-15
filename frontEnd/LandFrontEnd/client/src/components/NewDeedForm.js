@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import web3 from "../web3";
 import ipfs from "../ipfs";
 import './NewDeedForm.css';
-import deed from "./Images/deed.png";
+import NewDeedIcon from "./Images/newDeed.png";
 
 class NewDeedForm extends Component {
 
@@ -218,9 +218,10 @@ class NewDeedForm extends Component {
     return (
       // description about the new deed form page
       <div className="NewDeedForm">
-        <div className="headingND">
-          <h2 className="topicND">New Deed</h2>
-          <img src={deed} alt="deed" className="deed" />
+        <div className="newDeedForm-glass">
+        <div className="newDeed-topic">
+          <h2 className="newDeed-heading">New Deed</h2>
+          <img src={NewDeedIcon} alt="New Deed Icon" className="newDeed-icon" />
         </div>
 
         {/* Displays the current amount of deeds stored */}
@@ -232,41 +233,41 @@ class NewDeedForm extends Component {
             {/* Form that inputs data in regard of a new deed */}
             <div className="addressno">
               <label htmlFor="no">Address No:</label>
-              <input className="input" type="text" minLength="1" id="no" value={this.state.newNo} onChange={this.handleNumberChange} required />
+              <input className="newDeed-input" type="text" minLength="1" id="no" value={this.state.newNo} onChange={this.handleNumberChange} required />
             </div>
 
             <div className="streetname">
               <label htmlFor="streetname">Street:</label>
-              <input className="input" type="text" minLength="1" id="streetname" value={this.state.newStreetName} onChange={this.handleStreetChange} required />
+              <input className="newDeed-input" type="text" minLength="1" id="streetname" value={this.state.newStreetName} onChange={this.handleStreetChange} required />
             </div>
 
             <div className="city">
               <label htmlFor="city">City:</label>
-              <input className="input" type="text" minLength="1" id="city" value={this.state.newCity} onChange={this.handleCityChange} required />
+              <input className="newDeed-input" type="text" minLength="1" id="city" value={this.state.newCity} onChange={this.handleCityChange} required />
             </div>
 
             <div className="district">
               <label htmlFor="district">District:</label>
-              <input className="input" type="text" minLength="1" id="district" value={this.state.newDistrict} onChange={this.handleDistrictChange} required />
+              <input className="newDeed-input" type="text" minLength="1" id="district" value={this.state.newDistrict} onChange={this.handleDistrictChange} required />
             </div>
 
             <div className="province">
               <label htmlFor="province">Province:</label>
-              <input className="input" type="text" minLength="1" id="province" value={this.state.newProvince} onChange={this.handleProvinceChange} required />
+              <input className="newDeed-input" type="text" minLength="1" id="province" value={this.state.newProvince} onChange={this.handleProvinceChange} required />
             </div>
 
             <div className="lawyerid">
               <label htmlFor="lawyeremail">Email of assigning lawyer:</label>
-              <input className="input" type="email" id="lawyeremail" value={this.state.newAssignedLawyerEmail} onChange={this.handleLawyerEmailChange} required />
+              <input className="newDeed-input" type="email" id="lawyeremail" value={this.state.newAssignedLawyerEmail} onChange={this.handleLawyerEmailChange} required />
             </div>
 
             <div className="sellerid">
               <label htmlFor="selleremail">Email of assigning seller:</label>
-              <input className="input" type="email" id="selleremail" value={this.state.newAssignedSellerEmail} onChange={this.handleSellerEmailChange} required />
+              <input className="newDeed-input" type="email" id="selleremail" value={this.state.newAssignedSellerEmail} onChange={this.handleSellerEmailChange} required />
             </div>
 
-            <form className="buttonCF" onSubmit={this.onSubmit} >
-              <input type="file" onChange={this.captureFile} />
+            <form className="chooseFile" onSubmit={this.onSubmit} >
+              <input type="file" className="chooseFile-button" onChange={this.captureFile} />
               {/* <input type='submit' className="button"/> */}
             </form>
 
@@ -275,17 +276,18 @@ class NewDeedForm extends Component {
 
 
             <div>
-              <input type="submit" value="Submit" className="button" />
+              <form className="clear-button" onSubmit={this.refreshpage}>
+                <button className="newDeed-clear">Clear</button>
+              </form>
             </div>
 
             <div>
-              <form className="refresh" onSubmit={this.refreshpage}>
-                <button className="refreshbtn">Clear Form</button>
-              </form>
+              <input type="submit" value="Submit" className="newDeed-submit" />
             </div>
 
           </form>
 
+        </div>
         </div>
 
       </div>
