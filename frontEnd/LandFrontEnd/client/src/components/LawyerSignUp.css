@@ -1,29 +1,55 @@
 /* Lawyer sign up css file */
-.headingLS{
-    background-color: black;
-    color: #f8074f;
-    font-size: 30px;
+.LawyerSignUp{
+    background:url("Images/lawyerSignUp.jpg");
+    padding: 5px;
+}
+
+.newLawyer-heading{
+    color: white;
+    text-shadow: 4px 4px 5px black;
+    font-weight: bold;
+    float: center;
+    text-align: center;
+    font-size: 45px;
+}
+
+.newLawyer-icon{
+    height: 100px;
+    width: 100px; 
+    padding-bottom: 10px;
+    padding-top: 10px; 
+}
+
+.lawyerSignUp-glass{
+    margin: 5px auto;
+    width: 600px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .lawyercount{
-    background-color: black;
-    color: #f8074f;
+    color: white;
     font-family:'Tahoma';
     font-weight: bold;
+    padding-top: 20px;
     padding-bottom: 20px;
+    text-shadow: 4px 4px 5px black;
 }
 
-.formLS{
-    background-color: black;
+.newLawyer-form{
     min-width: 350px;
     min-height: 600px;
     padding: 30px;
     box-sizing: border-box;
     border-radius: 30px;
+    font-weight: bold;
 }
 
-.containerLS {
-    background: linear-gradient(135deg,#0681b9,#f80759);
+.newLawyer-container {
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -31,6 +57,7 @@
     align-items: center;
     padding-top: 20px;
     padding-bottom: 20px;
+    
   }
 
   .containerLS,
@@ -40,30 +67,40 @@
   .emailLS,
   .telephoneLS{
     margin: 20px;
-    color: white;
+    color: black;
+    text-shadow: 1px 1px 9px white;
     font-size: 16px;
+    
   }
 
-  .buttonLS{
+  .newLawyer-submit{
     text-transform: uppercase;
+    height: 40px;
     font-size: 15px;
     color: white;
-    border-radius: 25px;
-    border-color: black;
-    background:linear-gradient(135deg,#0681b9,#f80759);
+    border-radius: 5px;
+    background-color: black;
     padding: 8px 40px;
 }
 
-.inputLS{
-    height: 32px;
+.newLawyer-submit:hover{
+    cursor: pointer;
+    background:#e7301c;
+    color: white;
+}
+
+.newLawyer-input{
     font-size: 20px;
-    outline: none;
     width: 100%;
-    height: 10%;
+    height: 30px;
+    border-radius: 5px;
+    margin: 5px;
+    margin-bottom: 10px;
+    background: #bfbfbf;
+    outline: none;
     border-top-style: none;
     border-left-style: none;
-    border-bottom-style: 2px solid black;
-    margin-bottom: 10px;
+    border-bottom-style: 2px solid black; 
 }
 
 .emailval{
@@ -72,21 +109,33 @@
     padding-bottom: 5px;
 }
 
-.lawyer{
-    height: 120px;
-    width: 100px; 
-  }
-
-  .refreshbtnLS{
-    text-transform: uppercase;
-    font-size: 15px;
-    color: white;
-    border-radius: 25px;
-    border-color: black;
-    background:linear-gradient(135deg,#0681b9,#f80759);
-    padding: 8px 25px;
+.clear-button{
+    padding-top: 15px;
 }
 
-.refresh{
-    padding-top: 15px;
+.newLawyer-clear{
+    text-transform: uppercase;
+    height: 40px;
+    font-size: 15px;
+    color: white;
+    border-radius: 5px;
+    background-color: black;
+}
+
+.newLawyer-clear:hover{
+    cursor: pointer;
+    background:#e7301c;
+    color: white;
+}
+
+.emailval{
+    color: #db1515;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.passwordval{
+    color: #db1515;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
