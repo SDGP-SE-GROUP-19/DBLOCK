@@ -1,42 +1,60 @@
 /* user sign up css file */
-.headingS{
-    /* background-color: black; */
-    background-image: url("https://phantom-marca.unidadeditorial.es/a85b7ffa363e6efc8b151f052def9a00/crop/0x0/887x499/resize/660/f/webp/assets/multimedia/imagenes/2022/03/10/16469298673188.png");
-    color: #f8074f;
-    font-size: 30px;
+.Sign-Up{
+    background:url("Images/userSignUp.jpg");
+    padding: 5px;
 }
 
-.sign{
-    height: 100px;
-    width: 120px; 
-  }
+.newUser-heading{
+color: white;
+text-shadow: 4px 4px 5px black;
+font-weight: bold;
+float: center;
+text-align: center;
+font-size: 45px;
+}
+
+.newUser-glass{
+margin: 5px auto;
+width: 600px;
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border-radius: 20px;
+border:1px solid rgba(255, 255, 255, 0.18);
+box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.newUser-icon{
+height: 100px;
+width: 100px; 
+padding-bottom: 10px;
+padding-top: 10px; 
+}
 
 .Sellercount{
-    background-color: black;
-    color: #f8074f;
-    font-family:'Tahoma';
-    font-weight: bold;
-    padding-bottom: 20px;
+color: black;
+font-family:'Tahoma';
+font-weight: bold;
+padding-top: 20px;
+padding-bottom: 20px;
 }
 
-.containerS{
-    background: linear-gradient(135deg,#0681b9,#f80759);
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;  
+.newUser-container{
+width: 100%;
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+padding-top: 20px;
+padding-bottom: 20px;  
 }
 
-.formS{
-    background-color: black;
-    min-width: 350px;
-    min-height: 600px;
-    padding: 30px;
-    box-sizing: border-box;
-    border-radius: 30px;
+.newUser-form{
+min-width: 350px;
+min-height: 600px;
+padding: 30px;
+box-sizing: border-box;
+border-radius: 30px;
 }
 
 .name,
@@ -44,39 +62,58 @@
 .Age,
 .City,
 .Email,
-.telephone,
-.Password{
-    margin: 20px;
-    color: white;
-    font-size: 16px;
+.telephone{
+margin: 20px;
+color: black;
+font-size: 16px;
+font-weight: bold;
 }
 
-.buttonS{
-    text-transform: uppercase;
-    font-size: 15px;
-    color: white;
-    border-radius: 25px;
-    border-color: black;
-    background:linear-gradient(135deg,#0681b9,#f80759);
-    padding: 8px 40px;
+.newUser-input{
+font-size: 20px;
+width: 100%;
+height: 30px;
+border-radius: 5px;
+margin: 5px;
+margin-bottom: 10px;
+background: #bfbfbf;
+outline: none;
+border-top-style: none;
+border-left-style: none;
+border-bottom-style: 2px solid black;
 }
 
-.input{
-    border-radius: 10px;
-    background-color: rgb(56, 56, 55);
-    color: white;
+.newUser-submit{
+text-transform: uppercase;
+height: 40px;
+font-size: 15px;
+color: white;
+border-radius: 5px;
+background-color: black;
+padding: 8px 40px;
 }
 
-.refreshbtnUS{
-    text-transform: uppercase;
-    font-size: 15px;
-    color: white;
-    border-radius: 25px;
-    border-color: black;
-    background:linear-gradient(135deg,#0681b9,#f80759);
-    padding: 8px 25px;
+.newUser-submit:hover{
+cursor: pointer;
+background:#e7301c;
+color: white;
 }
 
-.refresh{
-    padding-top: 15px;
+.clear-button{
+padding-top: 15px;
+}
+
+.newUser-clear{
+text-transform: uppercase;
+height: 40px;
+font-size: 15px;
+color: white;
+border-radius: 5px;
+background-color: black;
+}
+
+.newUser-clear:hover{
+cursor: pointer;
+background:#e7301c;
+color: white;
 }

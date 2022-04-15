@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './UserSignUp.css';
-import sign from "./Images/sign.png";
+import newUserIcon from "./Images/user.png";
 
 class UserSignUp extends Component {
 
@@ -139,66 +139,68 @@ class UserSignUp extends Component {
 
     return (
       // displays details about the new user sign up page
-      <div className="Sign Up">
-        <div className="headingS">
-          <h2 className="topicS">New User</h2>
-          <img src={sign} alt="sign" className="sign"/>
+      <div className="Sign-Up">
+        <div className="newUser-glass">
+        <div className="newUser-topic">
+          <h2 className="newUser-heading">New User</h2>
+          <img src={newUserIcon} alt="New User Icon" className="newUser-icon"/>
         </div>
         {/* displays the current seller count */}
         <div className="Sellercount">Seller count: { this.state.storageValue }</div>
         
-      <div className="containerS">
-        <form className="formS" onSubmit={ this.handleSubmit }>
+      <div className="newUser-container">
+        <form className="newUser-form" onSubmit={ this.handleSubmit }>
           {/* form used to take input about the user's information */}
           <div className="name">
           <label htmlFor="name">Name:</label>
-          <input className="input" type="text" id="no" value={ this.state.name } onChange={ this.handleNameChange }/>
+          <input className="newUser-input" type="text" id="no" value={ this.state.name } onChange={ this.handleNameChange }/>
           </div>
 
           <div className="Nic">
           <label htmlFor="Nic">Nic:</label>
-          <input className="input" type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.nic } onChange={ this.handlenicChange }/>
+          <input className="newUser-input" type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.nic } onChange={ this.handlenicChange }/>
           </div>
 
           <div className="Age">
           <label htmlFor="Age">Age:</label>
-          <input className="input" type="text" id="Age" value={ this.state.age } onChange={ this.handleAgeChange }/>
+          <input className="newUser-input" type="text" id="Age" value={ this.state.age } onChange={ this.handleAgeChange }/>
           </div>
 
           <div className="City">
           <label htmlFor="province">City:</label>
-          <input className="input" type="text" id="City" value={ this.state.city } onChange={ this.handlecityChange }/>
+          <input className="newUser-input" type="text" id="City" value={ this.state.city } onChange={ this.handlecityChange }/>
           </div>
 
           <div className="Email">
           <label htmlFor="Email">Email:</label>
-          <input className="input" type="email" id="Email" value={ this.state.email } onChange={ this.handleemailChange }/>
+          <input className="newUser-input" type="email" id="Email" value={ this.state.email } onChange={ this.handleemailChange }/>
           </div>
           <div>{ this.state.alertMessage }</div>
 
           <div className="telephone">
           <label htmlFor="telephone">Telephone Number:</label>
-          <input className="input" type="number" min="0" id="telephonenumber" value={ this.state.telephoneNumber } onChange={ this.handletelephoneNumberChange }/>
+          <input className="newUser-input" type="number" min="0" id="telephonenumber" value={ this.state.telephoneNumber } onChange={ this.handletelephoneNumberChange }/>
           </div>
 
           <div className="Password">
           <label htmlFor="Password">Password:</label>
-          <input className="input" type="text" id="password" value={ this.state.password } onChange={ this.handlepasswordChange }/>
+          <input className="newUser-input" type="password" id="password" value={ this.state.password } onChange={ this.handlepasswordChange }/>
           </div>
           
 
           <div>
-          <input type="submit" value="Submit" className="buttonS"/>
+            <form className="clear-button" onSubmit={ this.refreshpage }>
+              <button className="newUser-clear">Clear</button>
+            </form>
           </div>
 
           <div>
-            <form className="refresh" onSubmit={ this.refreshpage }>
-              <button className="refreshbtnUS">Clear Form</button>
-            </form>
+          <input type="submit" value="Submit" className="newUser-submit"/>
           </div>
 
         </form>
         
+        </div>
         </div>
 
       </div>
