@@ -112,10 +112,9 @@ class UserSignIn extends Component {
                         <img src={profile} alt="profile" className="profile"/>
 
                         <div className="UserSignIn-container">
-                        <form className="UserSignIn-form" onSubmit={ this.handleSubmit }>
-
-                            
-                            
+                        <form className="UserSignIn-form" onSubmit={ this.handleSubmit }> 
+                        
+                          
                             <div className="userpw">
                             <label className="UserSignIn-label">Enter Email: </label>
                                 <input className="UserSignIn-input" type="text" placeholder="EMAIL" value={ this.state.enteredUsername } onChange={ this.handleEnteredUsernameChange } />
