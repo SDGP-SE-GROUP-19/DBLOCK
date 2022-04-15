@@ -111,32 +111,31 @@ class AdminSignIn extends Component {
         else {
             return (
                 <div className="AdminSignIn">
+                    <div className="AdminSignIn-glass">
+                        <div className="AdminSignIn-topic">
+                            <h2 className="AdminSignIn-heading">Administrator Log In</h2> 
+                        </div>
 
-                    <div className="sub-main">
+                        
 
-                        <form onSubmit={ this.handleSubmit }>
+                        <img src={profile} alt="profile" className="profile"/>
+                                
+                        <div className="AdminSignIn-container">
+                        <form className="AdminSignIn-form" onSubmit={ this.handleSubmit }>    
 
-                            <div className="img">
-                                <div className="container-image">
-                                    <img src={profile} alt="profile" className="profile"/>
-                                </div>
-                            </div>
-
-                            <div className="admin-name">
-                                <p>ADMIN LOGIN</p>
-                            </div>
-
-                            <div className="password">
-                                <input type="text" placeholder="PASSWORD" className="PASSWORD" value={ this.state.enteredPassword } onChange={ this.handleEnteredPasswordChange } />
+                        <div className="adminpw">
+                            <label className="adminsignup-label">Enter Password:</label>
+                                <input className="adminsignup-input" type="text" placeholder="PASSWORD"  value={ this.state.enteredPassword } onChange={ this.handleEnteredPasswordChange } />
                             </div>
 
                             <div>{ this.state.passwordAlert }</div>
 
-                            <div className="button-holder">
-                                <input type="submit" value="Check" className="button" />
+                            <div>
+                            <input type="submit" value="Check" className="adminsignin-button" />
                             </div>
 
                         </form>
+                        </div>
 
                     </div>
         
