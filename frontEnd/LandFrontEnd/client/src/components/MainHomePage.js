@@ -5,6 +5,7 @@ import AdminSignIn from "./AdminSignIn";
 import LawyerSignIn from "./LawyerSignIn";
 import UserSignIn from "./UserSignIn";
 import './MainHomePage.css';
+import Key from "./Images/Key.png";
 
 class MainHomePage extends Component {
 
@@ -119,19 +120,37 @@ class MainHomePage extends Component {
             {
                 return (
                     <div className="MainHomePage">
+                        <div className="mainHome-glass">
+                        <div className="mainHome-topic">
+                            <h2 className="mainHome-heading">WELCOME TO DBLOCK !</h2> 
+                        </div>
+                
+                        <img src={Key} alt="Main Home Icon" className="mainHome-icon" />
+                 
+
+                        <div className="mainHome-select">
+                            <p><b>SELECT ACCOUNT</b></p>
+                        </div>
+
+                        <div className="mainHome-container">
+
+                        {/* <form className="mainHome-form"> */}
         
-                        <form onSubmit={ this.handleAdminSubmit }>
-                            <input type="submit" value="Admin"/>
-                        </form>
-        
-                        <form onSubmit={ this.handleLawyerSubmit }>
-                            <input type="submit" value="Lawyer"/>
-                        </form>
-        
-                        <form onSubmit={ this.handleUserSubmit }>
-                            <input type="submit" value="User"/>
-                        </form>
-        
+                            <form  onSubmit={ this.handleAdminSubmit }>
+                                <input className="mainHomebtn" type="submit" value="Admin"/>
+                            </form>
+            
+                            <form onSubmit={ this.handleLawyerSubmit }>
+                                <input className="mainHomebtn" type="submit" value="Lawyer"/>
+                            </form>
+            
+                            <form onSubmit={ this.handleUserSubmit }>
+                                <input className="mainHomebtn" type="submit" value="User"/>
+                            </form>
+
+                        {/* </form> */}
+                        </div>
+                        </div>
                     </div>
                 );
             }

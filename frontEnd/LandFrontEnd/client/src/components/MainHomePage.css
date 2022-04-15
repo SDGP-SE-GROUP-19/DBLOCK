@@ -1,65 +1,72 @@
-.MainHomePage{ text-align: center;
-    justify-content: center;
-    display: flex;
-    padding: 140px 0 90px 0;
+.MainHomePage{ 
     background: url("https://www.ibm.com/blogs/blockchain/wp-content/uploads/2019/12/Retina_Display-758591537-768x432.jpg");
-    height: 270px;
+    padding: 21px;
 }
 
-.sub-mainMH{
-display: flex;
-justify-content: center;
-height: 320px;
-width: 30%;
-border-radius: 50px;
-background-color: white;
+.mainHome-glass{
+    margin: 5px auto;
+    width: 600px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-.imgMH{
-padding-top: 20px;
-justify-content: center;
-align-items: center;
-display: flex;
-}
-
-.container-imageMH{
-background-color: rgb(223,221,221);
-border-radius: 100px;
-align-items: center;
-height: 115px;
-width: 115px;
-display: flex;
-}
-
-.Key{
-height: 110px;
-width: 110px;
-
-}
-
-
-.buttonMH{
-background-color: rgb(194, 168, 82);
-border-radius: 80px;
-width:100px;
-height:20px;
-color: white;
-border: none;
-}
-
-.button-holderMH{
-    padding-bottom: 10px;
-}
-
-.mainhead{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 500px;
-    
-}
-
-.topicback{
-    background-color: black;
-    display: flex;
+.mainHome-heading{
     color: white;
+    text-shadow: 4px 4px 5px black;
+    font-weight: bold;
+    float: center;
+    text-align: center;
+    font-size: 40px;
+}
+
+.mainHome-icon{
+    height: 100px;
+    width: 100px; 
+    padding-bottom: 10px;
+    padding-top: 10px; 
+  }
+
+.mainHome-container{
+    width: 100%;
+    /* min-height: 50vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.mainHome-form{
+    min-width: 350px;
+    min-height: 200px;
+    /* padding: 30px; */
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+.mainHomebtn{
+    width: 250px;
+    height: 50px;
+    font-size: 15px;
+    color: white;
+    border-radius: 10px;
+    border-color:transparent;
+    background-color: rgb(187, 155, 49);
+    /* padding: 10px; */
+    margin: 8px;
+}
+
+.mainHomebtn:hover{
+    cursor: pointer;
+    background:#e7301c;
+    font-weight: bold;
+}
+
+.mainHome-select{
+    color: white;
+    font-size: 15px;
 }
