@@ -124,8 +124,8 @@ class DeedHistory extends Component {
 
                     historyArrayVar[historyArrayCounter] = (
                         deedIdFromHistory.toString() + 
-                        " - L:" + oldLawyerEmail + 
-                        " S:" + oldSellerEmail + 
+                        " Lawyer:" + oldLawyerEmail + 
+                        " Seller:" + oldSellerEmail + 
                         " Date:" + dateStamp + 
                         " Time:" + timeStamp
                     );
@@ -151,7 +151,7 @@ class DeedHistory extends Component {
                         <h2 className="DeedHistory-heading">Deed History</h2>
                         <img src={DeedHistoryIcon} alt="Deed History Icon" className="DeedHistory-icon"/>
                         <div className="deedHistory-container">
-                    <form className="deedHistory-form"  onSubmit={this.handleSubmit}>
+                        <form className="deedHistory-form"  onSubmit={this.handleSubmit}>
                         <fieldset className="getDeedInfo">
 
                             {/* takes user input to search for a deed */}
@@ -196,14 +196,16 @@ class DeedHistory extends Component {
         else
         {
             return (
-                <div>
-                    <ul>
+                <div className="DH">
+                    <div className="DeedHistory-glass">
+                    <ul className="DeedHistoryProcessed">
                         {
                             this.state.historyArray.map(function(item, i){
                                 return (<li key={i}>{item}</li>);
                             })
                         }
                     </ul>
+                    </div>
                 </div>
             );
         }
