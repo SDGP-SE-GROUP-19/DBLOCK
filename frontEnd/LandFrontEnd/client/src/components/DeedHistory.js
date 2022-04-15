@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import DeedHistoryIcon from "./Images/history.png";
+import './DeedHistory.css';
 
 class DeedHistory extends Component {
 
@@ -145,33 +147,49 @@ class DeedHistory extends Component {
         {
             return (
                 <div className="DeedHistory">
-                    <form onSubmit={this.handleSubmit}>
+                    <div className="DeedHistory-glass">
+                        <h2 className="DeedHistory-heading">Deed History</h2>
+                        <img src={DeedHistoryIcon} alt="Deed History Icon" className="DeedHistory-icon"/>
+                        <div className="deedHistory-container">
+                    <form className="deedHistory-form"  onSubmit={this.handleSubmit}>
                         <fieldset className="getDeedInfo">
 
                             {/* takes user input to search for a deed */}
-                            <label htmlFor="no">Address No:</label>
-                            <input type="text" id="no" value={this.state.newNo} onChange={this.handleNumberChange} required />
+                            <div className="space-deedsearch">
+                                <label htmlFor="no">Address No:</label>
+                                <input className="deedHistory-input" type="text" id="no" value={this.state.newNo} onChange={this.handleNumberChange} required />
+                                </div>
 
-                            <label htmlFor="streetname">Street:</label>
-                            <input type="text" id="streetname" value={this.state.newStreetName} onChange={this.handleStreetChange} required />
+                                <div className="space-deedsearch">
+                                <label htmlFor="streetname">Street:</label>
+                                <input className="deedHistory-input" type="text" id="streetname" value={this.state.newStreetName} onChange={this.handleStreetChange} required />
+                                </div>
 
-                            <label htmlFor="city">City:</label>
-                            <input type="text" id="city" value={this.state.newCity} onChange={this.handleCityChange} required />
+                                <div className="space-deedsearch">
+                                <label htmlFor="city">City:</label>
+                                <input className="deedHistory-input" type="text" id="city" value={this.state.newCity} onChange={this.handleCityChange} required />
+                                </div>
 
-                            <label htmlFor="district">District:</label>
-                            <input type="text" id="district" value={this.state.newDistrict} onChange={this.handleDistrictChange} required />
+                                <div className="space-deedsearch">
+                                <label htmlFor="district">District:</label>
+                                <input className="deedHistory-input" type="text" id="district" value={this.state.newDistrict} onChange={this.handleDistrictChange} required />
+                                </div>
 
-                            <label htmlFor="province">Province:</label>
-                            <input type="text" id="province" value={this.state.newProvince} onChange={this.handleProvinceChange} required />
+                                <div className="space-deedsearch">
+                                <label htmlFor="province">Province:</label>
+                                <input className="deedHistory-input" type="text" id="province" value={this.state.newProvince} onChange={this.handleProvinceChange} required />
+                                </div>
 
-                            <div className="addressalert">{this.state.addressAlert}</div>
+                            <div className="deedhistoryalert">{this.state.addressAlert}</div>
 
                             <div className="btn">
-                                <input type="submit" value="Submit" className="submitSD2" />
+                                <input type="submit" value="Submit" className="deedhistory-submit" />
                             </div>
 
                         </fieldset>
                     </form>
+                    </div>
+                    </div>
                 </div>
             );
         }
