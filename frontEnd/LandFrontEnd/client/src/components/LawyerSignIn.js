@@ -138,32 +138,29 @@ class LawyerSignIn extends Component {
         }
         else {
             return (
-                <div className="UserSignIn">
+                <div className="LawyerSignIn">
+                    <div className="LawyerSignIn-glass">
+                        <div className="LawyerSignIn-topic">
+                            <h2 className="LawyerSignIn-heading">Lawyer Log In</h2> 
+                        </div>
 
-                    <div className="sub-main">
+                        <img src={profile} alt="profile" className="profile"/>
+                    
+                        <div className="LawyerSignIn-container"></div>
+                        <form className="LawyerSignIn-form" onSubmit={ this.handleSubmit }>
 
-                        <form onSubmit={ this.handleSubmit }>
-
-                            <div className="img">
-                                <div className="container-image">
-                                    <img src={profile} alt="profile" className="profile"/>
-                                </div>
+                            <div className="lawyerpw">
+                            <label className="LawyerSignIn-label">Enter Email: </label>
+                                <input className="LawyerSignIn-input" type="text" placeholder="EMAIL" value={ this.state.enteredUsername } onChange={ this.handleEnteredUsernameChange } />
                             </div>
 
-                            <div className="lawyer-name">
-                                <p>LAWYER LOGIN</p>
+                            <div className="lawyerpw">
+                            <label className="LawyerSignIn-label">Enter Password:</label>
+                                <input className="LawyerSignIn-input" type="password" placeholder="PASSWORD" value={ this.state.enteredPassword } onChange={ this.handleEnteredPasswordChange } />
                             </div>
 
-                            <div className="username">
-                                <input type="text" placeholder="Email" className="USERNAME" value={ this.state.enteredUsername } onChange={ this.handleEnteredUsernameChange } />
-                            </div>
-
-                            <div className="password">
-                                <input type="password" placeholder="PASSWORD" className="PASSWORD" value={ this.state.enteredPassword } onChange={ this.handleEnteredPasswordChange } />
-                            </div>
-
-                            <div className="button-holder">
-                                <input type="submit" value="Check" className="button" />
+                            <div>
+                                <input type="submit" value="Check" className="LawyerSignIn-button" />
                             </div>
 
                         </form>
