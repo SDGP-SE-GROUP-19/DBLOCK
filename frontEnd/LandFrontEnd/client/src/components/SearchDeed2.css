@@ -1,52 +1,121 @@
 /* search deed by address css */
-.headingSD2{
-    background-color: black;
-    color: #f8074f;
-    font-size: 30px;
+.SearchDeed2{
+    background:url("Images/searchDeed.jpg");
+    padding: 5px;
 }
 
-.searchdeed2{
-    height: 100px;
-    width: 110px; 
-  }
-
-.getDeedInfo{
+.searchDeed2-heading{
     color: white;
-    padding-top: 20px;
-    font-weight: bolder;
+    text-shadow: 4px 4px 5px black;
+    font-weight: bold;
+    float: center;
+    text-align: center;
+    font-size: 40px;
+}
+
+.searchDeed2-icon{
+    height: 100px;
+    width: 100px; 
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .variableSD2{
     color: white;
-    background-color: black;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.submitSD2{
-    background-color: rgb(0, 224, 75);
-    border-radius: 80px;
-    width:100px;
-    height:20px;
-    color: white;
-    border: none;
-}
-
-.btnSD2{
-    padding-top: 10px;
+.getDeedInfo{
+    color: black;
+    padding-top: 20px;
     font-weight: bolder;
 }
 
-.displayLawyerInfo{
+.searchDeed2-button{
+    border: none;
+    width:100px;
+    height:30px;
     color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+}
+
+.searchDeed2-button:hover{
+        cursor: pointer;
+        background:#e7301c;
+        color: white;
+}
+
+/* .btnSD2{
+    padding-top: 10px;
+    font-weight: bolder;
+} */
+
+.displayLawyerInfo{
+    align-items: right;
+    color: black;
+    /* text-shadow: 1px 1px 5px white; */
+}
+
+h4{
+    font-size: 25px;
 }
 
 .displayOwnerInfo{
+    color: black;
+}
+
+.searchDeed2-input{
+    border-radius: 5px;
+    margin: 5px;
+    background: #bfbfbf;
+    height: 20px;
+    outline: none;
+    border-top-style: none;
+    border-left-style: none;
+    margin-bottom: 10px;
+    outline: black;
+}
+
+.searchDeed2-label{
     color: white;
+    text-shadow: 4px 4px 5px black;
+}
+
+fieldset{
+    border: none;
+}
+
+.searchDeed2-glass{
+    margin: 5px auto;
+    width: 1300px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.searchDeed2-glass2{
+    margin: 5px auto;
+    width: 600px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .addressalert{
     color: #ff0000;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.refresh{
+    padding-top: 15px;
 }
