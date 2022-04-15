@@ -22,8 +22,8 @@ class App extends Component {
 
       </div>
       
-        <div className="footer">
-          <p>Developed by <b>INNOVSOLVES</b> | Contact us :<b>+94*********</b></p>
+      <div className="footer">
+        <p>Copyright &copy; 2022 | Developed by <b>INNOVSOLVES</b> | All Rights Reserved. | Contact us :<b>+94*********</b></p>
         </div>
         
         </>
