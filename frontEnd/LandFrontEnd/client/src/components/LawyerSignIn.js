@@ -146,7 +146,7 @@ class LawyerSignIn extends Component {
 
                         <img src={profile} alt="profile" className="profile"/>
                     
-                        <div className="LawyerSignIn-container"></div>
+                        <div className="LawyerSignIn-container">
                         <form className="LawyerSignIn-form" onSubmit={ this.handleSubmit }>
 
                             <div className="lawyerpw">
@@ -164,6 +164,7 @@ class LawyerSignIn extends Component {
                             </div>
 
                         </form>
+                        </div>
 
                     </div>
         

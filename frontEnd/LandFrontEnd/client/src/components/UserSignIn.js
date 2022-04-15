@@ -2,7 +2,7 @@ import React, {Component} from "react";
 //import LandContract from "../contracts/Land.json";
 //import getWeb3 from "../getWeb3";
 //import AdminNavigator from "./AdminNavigator";
-import './LawyerSignIn.css';
+import './UserSignIn.css';
 import profile from "./Images/admin.png";
 import UserNavigator from "./UserNavigator";
 
@@ -104,35 +104,35 @@ class UserSignIn extends Component {
         else {
             return (
                 <div className="UserSignIn">
+                    <div className="UserSignIn-glass">
+                        <div className="UserSignIn-topic">
+                            <h2 className="UserSignIn-heading">User Log In</h2> 
+                        </div>
 
-                    <div className="sub-main">
+                        <img src={profile} alt="profile" className="profile"/>
 
-                        <form onSubmit={ this.handleSubmit }>
+                        <div className="UserSignIn-container">
+                        <form className="UserSignIn-form" onSubmit={ this.handleSubmit }>
 
-                            <div className="img">
-                                <div className="container-image">
-                                    <img src={profile} alt="profile" className="profile"/>
-                                </div>
+                            
+                            
+                            <div className="userpw">
+                            <label className="UserSignIn-label">Enter Email: </label>
+                                <input className="UserSignIn-input" type="text" placeholder="EMAIL" value={ this.state.enteredUsername } onChange={ this.handleEnteredUsernameChange } />
                             </div>
 
-                            <div className="lawyer-name">
-                                <p>User LOGIN</p>
+                            <div className="userpw">
+                            <label className="UserSignIn-label">Enter Password:</label>
+                                <input className="UserSignIn-input" type="password" placeholder="PASSWORD" value={ this.state.enteredPassword } onChange={ this.handleEnteredPasswordChange } />
                             </div>
 
-                            <div className="username">
-                                <input type="text" placeholder="Email" className="USERNAME" value={ this.state.enteredUsername } onChange={ this.handleEnteredUsernameChange } />
-                            </div>
-
-                            <div className="password">
-                                <input type="password" placeholder="PASSWORD" className="PASSWORD" value={ this.state.enteredPassword } onChange={ this.handleEnteredPasswordChange } />
-                            </div>
-
-                            <div className="button-holder">
-                                <input type="submit" value="Check" className="button" />
+                            <div>
+                                <input type="submit" value="Check" className="UserSignIn-button" />
                             </div>
 
                         </form>
 
+                    </div>
                     </div>
         
                 </div>
