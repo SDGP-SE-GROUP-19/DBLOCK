@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './ChangeLawSel.css'
-import transfer from "./Images/transfer.png";
+import changeLawyerIcon from "./Images/transfer.png";
 
 class ChangeLawSel extends Component {
 
@@ -178,29 +178,30 @@ class ChangeLawSel extends Component {
         return (
             // holds the data which describes about the page
             <div className="ChangeLawSel">
-                <div className="headingC">
-                    <h2 className="topicC">Change Lawyer And Owner</h2>
-                    <img src={transfer} alt="transfer" className="transfer" />
+                <div className="changeLawSel-glass">
+                <div className="changeLawyer-topic">
+                    <h2 className="changeLawyer-heading">Change Lawyer And Owner</h2>
+                    <img src={changeLawyerIcon} alt="Change Lawyer Icon" className="changeLawyer-icon" />
                 </div>
 
 
                 {/* The form related to the change in lawyer and owner page */}
-                <div className="containerC">
-                    <form className="formC" onSubmit={this.handleSubmit}>
+                <div className="changeLawyer-container">
+                    <form className="changeLawyer-form" onSubmit={this.handleSubmit}>
 
                         <div className="deedId">
-                            <label htmlFor="deedId">Deed ID:</label>
-                            <input className="inputC" type="number" min="0" id="deedId" value={this.state.deedId} onChange={this.handleDeedIdChange} />
+                            <label className="changeLawyer-label" htmlFor="deedId">Deed ID:</label>
+                            <input className="changeLawyer-input" type="number" min="0" id="deedId" value={this.state.deedId} onChange={this.handleDeedIdChange} />
                         </div>
 
                         <div className="newLawyerEmail">
-                            <label htmlFor="newLawyerEmail">New Lawyer's Email:</label>
-                            <input className="inputC" type="text" id="newLawyerEmail" value={this.state.newLawyerEmail} onChange={this.handleLawyerEmailChange} />
+                            <label className="changeLawyer-label" htmlFor="newLawyerEmail">New Lawyer's Email:</label>
+                            <input className="changeLawyer-input" type="text" id="newLawyerEmail" value={this.state.newLawyerEmail} onChange={this.handleLawyerEmailChange} />
                         </div>
 
                         <div className="newSellerEmail">
-                            <label htmlFor="newSellerEmail">New Owner's Email:</label>
-                            <input className="inputC" type="text" id="newSellerEmail" value={this.state.newSellerEmail} onChange={this.handleSellerEmailChange} />
+                            <label className="changeLawyer-label" htmlFor="newSellerEmail">New Owner's Email:</label>
+                            <input className="changeLawyer-input"  type="text" id="newSellerEmail" value={this.state.newSellerEmail} onChange={this.handleSellerEmailChange} />
                         </div>
 
                         <br></br>
@@ -215,19 +216,22 @@ class ChangeLawSel extends Component {
                             {this.state.oldLawyerTelNo}
                         </div>
 
-                        <div>
-                            <input type="submit" value="Submit" className="buttonC" />
-                        </div>
-
                         {/* button to clear fields of the page by refreshing */}
                         <div>
-                        <form className="refresh" onSubmit={ this.refreshpage }>
-                            <button className="refreshbtnCLS">Clear Form</button>
+                        <form className="clear-button" onSubmit={ this.refreshpage }>
+                            <button className="changeLawyer-clear">Clear</button>
                         </form>
                         </div>
 
+                        <div>
+                            <input type="submit" value="Submit" className="changeLawyer-submit" />
+                        </div>
+
+                    
+
                     </form>
 
+                </div>
                 </div>
 
             </div>
