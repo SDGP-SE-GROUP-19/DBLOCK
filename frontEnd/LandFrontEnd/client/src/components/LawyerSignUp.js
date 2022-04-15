@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import './LawyerSignUp.css'
-import lawyer from "./Images/lawyer.png"
+import newLawyerIcon from "./Images/lawyer.png"
 
 class LawyerSignUp extends Component {
 
@@ -117,62 +117,63 @@ class LawyerSignUp extends Component {
         return (
             // holds data which describes about the lawyer sign up page
             <div className="LawyerSignUp">
-                <div className="headingLS">
-                    <h2 className="topicLS">Lawyer Sign Up</h2>
-                    <img src={lawyer} alt="lawyer" className="lawyer"/>
+                <div className="lawyerSignUp-glass">
+                <div className="newlawyer-topic">
+                    <h2 className="newLawyer-heading">Lawyer Sign Up</h2>
+                    <img src={newLawyerIcon} alt="New Lawyer Icon" className="newLawyer-icon"/>
                 </div>
 
                 {/* Displays the current amount of lawyers */}
                     <div className="lawyercount">Lawyer Count: { this.state.lawyerCount }</div>
 
                 {/* The form related to signing up a lawyer to the blockchain */}
-                <div className="containerLS">
-                    <form className="formLS" onSubmit={ this.handleSubmit }>
+                <div className="newlawyer-container">
+                    <form className="newLawyer-form" onSubmit={ this.handleSubmit }>
 
                     <div className="nameLS">
                     <label htmlFor="name">Name:</label>
-                    <input className="inputLS" type="text" id="name" value={ this.state.enteredLawyerName } onChange={ this.handleNameChange } required/>
+                    <input className="newLawyer-input" type="text" id="name" value={ this.state.enteredLawyerName } onChange={ this.handleNameChange } required/>
                     </div>
 
                     <div className="nicLS">
                     <label htmlFor="nic">NIC:</label>
-                    <input className="inputLS" type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.enteredLawyerNic } onChange={ this.handleNicChange } required/>
+                    <input className="newLawyer-input" type="text" minLength="10"  maxLength="12" id="nic" value={ this.state.enteredLawyerNic } onChange={ this.handleNicChange } required/>
                     </div>
 
                     <div className="registrationLS">
                     <label htmlFor="regno">Registration Number:</label>
-                    <input className="inputLS" type="text" id="regno" value={ this.state.enteredLawyerRegNo } onChange={ this.handleRegNoChange } required/>
+                    <input className="newLawyer-input" type="text" id="regno" value={ this.state.enteredLawyerRegNo } onChange={ this.handleRegNoChange } required/>
                     </div>
 
                     <div className="emailLS">
                     <label htmlFor="email">Email:</label>
-                    <input className="inputLS" type="email" id="email" value={ this.state.enteredLawyerEmail } onChange={ this.handleEmailChange } required/>
+                    <input className="newLawyer-input" type="email" id="email" value={ this.state.enteredLawyerEmail } onChange={ this.handleEmailChange } required/>
                     <div className="emailval">{ this.state.alertMessage }</div>
                     </div>
 
                     <div className="telephoneLS">
                     <label htmlFor="telNo">Telephone:</label>
-                    <input className="inputLS" type="number" min="0" id="telNo" value={ this.state.enteredLawyerTelNo } onChange={ this.handleTelNoChange } required/>
+                    <input className="newLawyer-input" type="number" min="0" id="telNo" value={ this.state.enteredLawyerTelNo } onChange={ this.handleTelNoChange } required/>
                     </div>
 
                     <div className="passwordS">
                     <label htmlFor="password">Password:</label>
-                    <input className="inputLS" type="password" id="password" value={ this.state.enteredLawyerPassword } onChange={ this.handlePasswordChange } required/>
+                    <input className="newLawyer-input" type="password" id="password" value={ this.state.enteredLawyerPassword } onChange={ this.handlePasswordChange } required/>
                     <div className="passwordval">{ this.state.alertMessage }</div>
                     </div>
 
                     <div>
-                        <input type="submit" value="Submit" className="buttonLS"/>
-                    </div>
-
-                    <div>
-                        <form className="refresh" onSubmit={ this.refreshpage }>
-                        <button className="refreshbtnLS">Clear Form</button>
+                        <form className="clear-button" onSubmit={ this.refreshpage }>
+                        <button className="newLawyer-clear">Clear</button>
                         </form>
                     </div>
 
+                    <div>
+                        <input type="submit" value="Submit" className="newLawyer-submit"/>
+                    </div>
                 </form>
 
+                </div>
                 </div>
             </div>
         );
