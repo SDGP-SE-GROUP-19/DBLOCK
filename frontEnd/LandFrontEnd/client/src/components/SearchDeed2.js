@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './SearchDeed2.css';
-import searchdeed2 from "./Images/searchdeed2.png"
+import searchDeed2Icon from "./Images/searchDeed2.png"
 
 class SearchDeed2 extends Component {
 
@@ -204,9 +204,10 @@ class SearchDeed2 extends Component {
     return (
       // displays details regarding the search deed by address
       <div className="SearchDeed2">
-        <div className="headingSD2">
-          <h2 className="topicSD2">Deed Search By Address</h2>
-          <img src={searchdeed2} alt="searchdeed2" className="searchdeed2" />
+        <div className="searchDeed2-glass">
+        <div className="searchDeed2-topic">
+          <h2 className="searchDeed2-heading">Deed Search By Address</h2>
+          <img src={searchDeed2Icon} alt="search Deed2 Icon" className="searchDeed2-icon" />
         </div>
         {/* shows the deed id */}
         <div className="variableSD2"><b>Deed ID:</b> { this.state.storageValue }</div> 
@@ -217,42 +218,44 @@ class SearchDeed2 extends Component {
 
           <fieldset className="getDeedInfo">
             {/* takes user input to search for a deed */}
-            <label htmlFor="no">Address No:</label>
-            <input type="text" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange } required/>
+            <label className="searchDeed2-label" htmlFor="no">Address No:</label>
+            <input type="text" className="searchDeed2-input" id="no" value={ this.state.newNo } onChange={ this.handleNumberChange } required/>
             
 
-            <label htmlFor="streetname">Street:</label>
-            <input type="text" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange } required/>
+            <label className="searchDeed2-label" htmlFor="streetname">Street:</label>
+            <input type="text" className="searchDeed2-input" id="streetname" value={ this.state.newStreetName } onChange={ this.handleStreetChange } required/>
             
 
-            <label htmlFor="city">City:</label>
-            <input type="text" id="city" value={ this.state.newCity } onChange={ this.handleCityChange } required/>
+            <label className="searchDeed2-label" htmlFor="city">City:</label>
+            <input type="text" className="searchDeed2-input" id="city" value={ this.state.newCity } onChange={ this.handleCityChange } required/>
             
 
-            <label htmlFor="district">District:</label>
-            <input type="text" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange } required/>
+            <label className="searchDeed2-label" htmlFor="district">District:</label>
+            <input type="text" className="searchDeed2-input" id="district" value={ this.state.newDistrict } onChange={ this.handleDistrictChange } required/>
             
 
-            <label htmlFor="province">Province:</label>
-            <input type="text" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange } required/>
+            <label className="searchDeed2-label" htmlFor="province">Province:</label>
+            <input type="text" className="searchDeed2-input" id="province" value={ this.state.newProvince } onChange={ this.handleProvinceChange } required/>
 
             
             <div className="addressalert">{ this.state.addressAlert }</div>
             
               
             <div className="btn">
-            <input type="submit" value="Submit" className="submitSD2"/>
+            <input type="submit" value="Submit" className="searchDeed2-button"/>
             </div>
 
             <div>
               <form className="refresh" onSubmit={ this.refreshpage }>
-                <button className="refreshbtn">Refresh Form</button>
+                <button className="searchDeed2-button">Refresh Form</button>
               </form>
             </div>
 
           </fieldset>
+          </form>
 
 
+          <div className="searchDeed2-glass2">
           <fieldset className="displayLawyerInfo">
             {/* display relevant lawyer details in regard of that deed */}
             <h4>Relevant Lawyer's Info</h4>
@@ -307,8 +310,9 @@ class SearchDeed2 extends Component {
             <p></p>
 
           </fieldset>
+          </div>
 
-        </form>
+        </div>
 
       </div>
     );
