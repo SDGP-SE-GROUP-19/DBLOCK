@@ -175,7 +175,7 @@ class UserSignUp extends Component {
           <label htmlFor="Email">Email:</label>
           <input className="newUser-input" type="email" id="Email" value={ this.state.email } onChange={ this.handleemailChange }/>
           </div>
-          <div>{ this.state.alertMessage }</div>
+          <div className="USemailalert">{ this.state.alertMessage }</div>
 
           <div className="telephone">
           <label htmlFor="telephone">Telephone Number:</label>
