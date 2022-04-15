@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './SearchDeed.css';
-import searchdeed from "./Images/searchdeed.png";
+import searchDeedIcon from "./Images/searchdeed.png";
 class SearchDeed extends Component {
 
     constructor(props) {
@@ -128,11 +128,12 @@ class SearchDeed extends Component {
         return (
             // describes about the search deed page
             <div className="SearchDeed">
-                <div className="headingDS">
-                    <h2 className="topicDS">Deed Search</h2>
-                    <img src={searchdeed} alt="searchdeed" className="searchdeed"/>
+                <div className="searchDeed-glass">
+                    <div className="searchDeed-topic">
+                    <h2 className="searchDeed-heading">Deed Search</h2>
+                    <img src={searchDeedIcon} alt="Search Deed Icon" className="searchDeed-icon"/>
 
-                    <form onSubmit={ this.handleSubmit }>
+                    <form className="deedIdSearch" onSubmit={ this.handleSubmit }>
 
                         <label className="DeedIdtext">Deed ID:</label>
                         {/* asking for user to enter deed id to display deed details */}
@@ -145,7 +146,7 @@ class SearchDeed extends Component {
                         <br></br>
 
                         <div>
-                            <input type="submit" value="Submit" className="DSVDbtn"/>
+                            <input type="submit" value="Submit" className="searchDeed-button"/>
                         </div>
                     </form>
                 </div>
@@ -153,9 +154,9 @@ class SearchDeed extends Component {
 
                 
 
-                <div className="containerDS">
+                <div className="searchDeed-container">
 
-                    <form className="formDS">
+                    <form className="searchDeed-form">
                     {/* container which displays search deed data */}
                     <div className="addressnoDS">
                     <p><b>No: </b>{ this.state.searchedNo }</p>
@@ -187,7 +188,7 @@ class SearchDeed extends Component {
 
                     <button
                         type="button"
-                        className="DSVDbtn"
+                        className="searchDeedImage-button"
                         onClick={(e) => {
                             e.preventDefault();
                             window.location.href = `https://ipfs.io/ipfs/${this.state.ipfsHash}`;
@@ -196,6 +197,7 @@ class SearchDeed extends Component {
 
                     </form>
 
+                </div>
                 </div>
                 
             </div>
