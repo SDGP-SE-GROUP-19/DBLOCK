@@ -149,7 +149,7 @@ class SearchDeed extends Component {
                             <input type="submit" value="Submit" className="searchDeed-button"/>
                         </div>
                     </form>
-                </div>
+                    </div>
                  
 
                 
