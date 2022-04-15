@@ -1,82 +1,4 @@
 /* css file to new deed form */
-.headingND{
-    background-color: black;
-    color: #f8074f;
-    font-size: 30px;
-}
-
-.deed{
-    height: 100px;
-    width: 80px; 
-  }
-
-.deedcount{
-    background-color: black;
-    color: #f8074f;
-    font-family:'Tahoma';
-    font-weight: bold;
-    padding-bottom: 20px;
-}
-
-.form{
-    background-color: black;
-    min-width: 350px;
-    min-height: 600px;
-    padding: 30px;
-    box-sizing: border-box;
-    border-radius: 30px;
-}
-
-.button{
-    text-transform: uppercase;
-    font-size: 15px;
-    color: white;
-    border-radius: 25px;
-    border-color: black;
-    background:linear-gradient(135deg,#0681b9,#f80759);
-    padding: 8px 40px;
-}
-
-.addressno,
-.streetname,
-.city,
-.district,
-.province,
-.lawyerid,
-.sellerid{
-    margin: 20px;
-    color: white;
-    font-size: 16px;
-}
-
-.input{
-    height: 32px;
-    font-size: 20px;
-    outline: none;
-    width: 100%;
-    height: 10%;
-    border-top-style: none;
-    border-left-style: none;
-    border-bottom-style: 2px solid black;
-    margin-bottom: 10px;
-  }
-
-  .container {
-    background: linear-gradient(135deg,#0681b9,#f80759);
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-.buttonCF{
-    padding-left: 165px;
-}
-
-
 
 .deedduplicateval{
     color: #db1515;
@@ -90,17 +12,138 @@
     padding-bottom: 10px;
 }
 
-.refreshbtn{
-    text-transform: uppercase;
-    font-size: 15px;
-    color: white;
-    border-radius: 25px;
-    border-color: black;
-    background:linear-gradient(135deg,#0681b9,#f80759);
-    padding: 8px 35px;
+.NewDeedForm{
+    background:url("Images/newLandDeed.jpg");
+    background-repeat: none;
+    padding: 5px;
+
 }
 
-.refresh{
-    padding-top: 15px;
+.newDeedForm-glass{
+    margin: 5px auto;
+    width: 600px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
+
+.newDeed-heading{
+    color: white;
+    text-shadow: 4px 4px 5px black;
+    font-weight: bold;
+    float: center;
+    text-align: center;
+    font-size: 45px;
+}
+
+.newDeed-icon{
+    height: 100px;
+    width: 100px; 
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
+.deedcount{
+    color: white;
+    font-family:'Tahoma';
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-shadow: 4px 4px 5px black;
+}
+
+.form{
+    min-width: 350px;
+    min-height: 600px;
+    padding: 0px;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+.addressno,
+.streetname,
+.city,
+.district,
+.province,
+.lawyerid,
+.sellerid{
+    margin: 20px;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.newDeed-input{
+    font-size: 20px;
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    margin: 5px;
+    margin-bottom: 10px;
+    background: #bfbfbf;
+    outline: none;
+    border-top-style: none;
+    border-left-style: none;
+    border-bottom-style: 2px solid black; 
+  }
+
+  .container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+.chooseFile-button{
+    color: #e7301c;
+    cursor:pointer;
+    padding-left: 150px;
+}
+
+.newDeed-submit{
+    text-transform: uppercase;
+    height: 40px;
+    font-size: 15px;
+    color: white;
+    border-radius: 5px;
+    background-color: black;
+    padding: 8px 40px;
+}
+
+.newDeed-submit:hover{
+    cursor: pointer;
+    background:#e7301c;
+    color: white;
+}
+
+.clear-button{
+    padding-bottom: 15px;
+}
+
+.newDeed-clear{
+    text-transform: uppercase;
+    height: 30px;
+    font-size: 15px;
+    color: white;
+    border-radius: 5px;
+    background-color: black;
+}
+
+.newDeed-clear:hover{
+    cursor: pointer;
+    background:#e7301c;
+    color: white;
+}
+
+
+
+
+
+ 
  
