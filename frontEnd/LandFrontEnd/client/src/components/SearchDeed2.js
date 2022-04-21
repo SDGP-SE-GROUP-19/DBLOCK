@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './SearchDeed2.css';
-import searchDeed2Icon from "./Images/searchDeed2.png"
+import searchDeed2Icon from "./Images/searchdeed2.png"
 
 class SearchDeed2 extends Component {
 
