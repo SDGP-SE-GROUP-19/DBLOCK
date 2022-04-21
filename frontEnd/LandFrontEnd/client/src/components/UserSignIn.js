@@ -52,22 +52,21 @@ class UserSignIn extends Component {
         const { contract } = this.state;
         const selleridemail = await contract.methods.findSellerByEmail(this.state.enteredUsername).call();
 
-        // get the actual lawyer pass from the blockchain
-        const actualUserPassword = await contract.methods.getSellerPassword(selleridemail).call();
-        this.setState({ actualPassword: actualUserPassword });
-
-        // get the actual lawyer username from the blockchain
-        const actualUserusername = await contract.methods.getSellerEmail(selleridemail).call();
-        this.setState({ actualUsername: actualUserusername });
-
-        
-
         // just showing the actual password from the state. MUST BE REMOVED ! 
         //console.log("Password from state " + this.state.actualPassword); // remove after testing
 
-        // compare the entered username and the password with the actual username and the password
-        if(this.state.enteredUsername === this.state.actualUsername) {
+        // compare the entered username with the actual username
+        if(selleridemail > -1) {
+
             console.log("Username is correct");
+
+            // get the actual seller pass from the blockchain
+            const actualUserPassword = await contract.methods.getSellerPassword(selleridemail).call();
+            // get the actual seller username from the blockchain
+            const actualUserusername = await contract.methods.getSellerEmail(selleridemail).call();
+            this.setState({ actualPassword: actualUserPassword, actualUsername: actualUserusername });
+
+            // compare the entered password with the actual password
             if (this.state.enteredPassword === this.state.actualPassword) {
 
                 console.log("Password is correct");

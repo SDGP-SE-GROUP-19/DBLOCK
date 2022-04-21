@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PageNotFound from "./PageNotFound";
 import LawyerSignUp from "./LawyerSignUp";
 import UserSignUp from "./UserSignUp";
-import './AdminNavigator.css';
+import SignUpsHome from "./SignUpsHome";
 import { Routes, Route, Link } from 'react-router-dom';
-
+import './SignUps.css';
 
 
 class SignUps extends Component {
@@ -17,9 +17,7 @@ class SignUps extends Component {
 
             web3: this.props.web3Prop,
             accounts: this.props.accountsProp,
-            contract: this.props.contractProp,
-
-            loginMessage: this.props.adminLoginMessageFromSignIn
+            contract: this.props.contractProp
         }
     }
 
@@ -34,22 +32,22 @@ class SignUps extends Component {
         }
 
         return (
-            <div className="AdminNavigator">
-                {/* <h1>{ this.state.loginMessage }</h1> */}
-                {/* The navigation bar that routes through pages on a click of a button */}
-                <nav className="navstyle">
-                    <button className="Navbtn"><Link to="/LawyerSignUp" style={{ textDecoration: 'none', color: 'white'}}>Lawyer SignUp</Link></button>
-                    <button className="Navbtn"><Link to="/UserSignUp" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></button>
-                   
+            <div>
+            <nav className="SignUps">              
+                <ul className="nav">
+                    <li className="Navbtn"><Link to="/" className="a" style={{ textDecoration: 'none', color: 'white'}}>Sign up home</Link></li>
+                    <li className="Navbtn"><Link to="/LawyerSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>Lawyer SignUp</Link></li>
+                    <li className="Navbtn"><Link to="/UserSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></li>
+                </ul>
                 </nav>
 
                 {/* The naming and defining of the route paths */}
                 <Routes>
+                    <Route path="/" element={ <SignUpsHome /> }/>
                     <Route path="/LawyerSignUp" element={ <LawyerSignUp web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
                     <Route path="/UserSignUp" element={ <UserSignUp web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
                     <Route path="*" element={ <PageNotFound /> }/>
                 </Routes>
-
             </div>
         );
     }
