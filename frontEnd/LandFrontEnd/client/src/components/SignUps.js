@@ -35,9 +35,9 @@ class SignUps extends Component {
             <div>
             <nav className="SignUps">              
                 <ul className="nav">
-                    <li className="Navbtn"><Link to="/" className="a" style={{ textDecoration: 'none', color: 'white'}}>Sign up home</Link></li>
-                    <li className="Navbtn"><Link to="/LawyerSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>Lawyer SignUp</Link></li>
-                    <li className="Navbtn"><Link to="/UserSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></li>
+                    <li className="Navbtn"><Link to="/" className="a" style={{ textDecoration: 'none', color: 'white'}}>Sign Up</Link></li>
+                    <li className="Navbtn"><Link to="/LawyerSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>Lawyer Sign Up</Link></li>
+                    <li className="Navbtn"><Link to="/UserSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>User Sign Up</Link></li>
                 </ul>
                 </nav>
 

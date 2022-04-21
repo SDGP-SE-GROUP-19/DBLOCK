@@ -9,20 +9,16 @@ class SignUpsHome extends Component {
             <div className="SignUpsHome">
                     <div className="SignUpsHome-glass">
                         <div className="SignUpsHome-topic">
-                            <h2 className="SignUpsHome-heading">Sign Ups Page</h2> 
+                            <h2 className="SignUpsHome-heading">Sign Up</h2> 
                             <p className="SignUpsHome-description">Select your sign up option</p> 
                         </div>
 
                         <div>
-                            <div>
-                            <button className="SignUpsHomeBtn" ><Link to="/" style={{ textDecoration: 'none', color: 'white'}}>Sign up home</Link></button>
-                            </div>
-                            <div>
-                            <button className="SignUpsHomeBtn" ><Link to="/LawyerSignUp" style={{ textDecoration: 'none', color: 'white'}}>Lawyer SignUp</Link></button>
-                            </div>
-                            <div>
-                            <button className="SignUpsHomeBtn" ><Link to="/UserSignUp" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></button>
-                            </div>
+                            
+                            <button className="SignUpsHomeBtn" ><Link to="/LawyerSignUp" style={{ textDecoration: 'none', color: 'white'}}>Lawyer Sign Up</Link></button>
+                            
+                            <button className="SignUpsHomeBtn" ><Link to="/UserSignUp" style={{ textDecoration: 'none', color: 'white'}}>User Sign Up</Link></button>
+                            
                         </div>
                     </div>
             </div>

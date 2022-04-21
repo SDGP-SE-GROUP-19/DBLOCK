@@ -169,12 +169,13 @@ class MainHomePage extends Component {
                                 <input className="mainHomebtn" type="submit" value="User"/>
                             </form>
 
-                            <form onSubmit={ this.handleSignUpsSubmit }>
-                                <input className="mainHomebtn" type="submit" value="Sign Up"/>
-                            </form>
-
                         {/* </form> */}
                         </div>
+                            <div>
+                            <form onSubmit={ this.handleSignUpsSubmit }>
+                                <input className="mainHomebtn1" type="submit" value="Sign Up"/>
+                            </form>
+                            </div>
                         </div>
                     </div>
                 );

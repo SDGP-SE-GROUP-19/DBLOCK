@@ -1,6 +1,6 @@
 .SignUpsHome{
     background: url("Images/signups.jpg");
-    padding: 73px;
+    padding: 130px;
 }
 
 .SignUpsHome-glass{
@@ -12,6 +12,7 @@
     border-radius: 20px;
     border:1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding-bottom: 20px;
     }
     
 .SignUpsHome-heading{
@@ -29,7 +30,7 @@
 }
 
 .SignUpsHomeBtn{
-    width: 100px;
+    width: 150px;
     height: 50px;
     font-size: 15px;
     color: white;
