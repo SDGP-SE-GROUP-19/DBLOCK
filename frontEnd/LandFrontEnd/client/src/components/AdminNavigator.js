@@ -61,8 +61,8 @@ class AdminNavigator extends Component {
                         <li className="Navbtn"><Link to="/SearchDeed" className="a" style={{ textDecoration: 'none', color: 'white'}}>Search Deeds</Link></li>
                         <li className="Navbtn"><Link to="/SearchDeed2" className="a" style={{ textDecoration: 'none', color: 'white'}}>Search Deeds By Address</Link></li>
                         <li className="Navbtn"><Link to="/ChangeLawSel" className="a" style={{ textDecoration: 'none', color: 'white'}}>Change Lawyer And Owner</Link></li>
-                        <li className="Navbtn"><Link to="/UserSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></li>
-                        <li className="Navbtn"><Link to="/LawyerSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>Lawyer Sign up</Link></li>
+                        {/* <li className="Navbtn"><Link to="/UserSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></li> */}
+                        {/* <li className="Navbtn"><Link to="/LawyerSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>Lawyer Sign up</Link></li> */}
                         <li className="Navbtn"><Link to="/DeedHistory" className="a" style={{ textDecoration: 'none', color: 'white'}}>Deed History</Link></li>
                     </ul>
                 </nav>
@@ -74,8 +74,8 @@ class AdminNavigator extends Component {
                     <Route path="/SearchDeed" element={ <SearchDeed web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
                     <Route path="/SearchDeed2" element={ <SearchDeed2 web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
                     <Route path="/ChangeLawSel" element={ <ChangeLawSel web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
-                    <Route path="/UserSignUp" element={ <UserSignUp web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
-                    <Route path="/LawyerSignUp" element={ <LawyerSignUp web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
+                    {/* <Route path="/UserSignUp" element={ <UserSignUp web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/> */}
+                    {/* <Route path="/LawyerSignUp" element={ <LawyerSignUp web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/> */}
                     <Route path="/DeedHistory" element={ <DeedHistory web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
                     <Route path="*" element={ <PageNotFound /> }/>
                 </Routes>

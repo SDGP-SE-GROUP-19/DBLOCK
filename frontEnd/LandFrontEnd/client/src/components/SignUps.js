@@ -4,6 +4,7 @@ import LawyerSignUp from "./LawyerSignUp";
 import UserSignUp from "./UserSignUp";
 import './AdminNavigator.css';
 import { Routes, Route, Link } from 'react-router-dom';
+import SignUpsHome from "./SignUpsHome";
 
 
 
@@ -17,9 +18,7 @@ class SignUps extends Component {
 
             web3: this.props.web3Prop,
             accounts: this.props.accountsProp,
-            contract: this.props.contractProp,
-
-            loginMessage: this.props.adminLoginMessageFromSignIn
+            contract: this.props.contractProp
         }
     }
 
@@ -40,11 +39,12 @@ class SignUps extends Component {
                 <nav className="navstyle">
                     <button className="Navbtn"><Link to="/LawyerSignUp" style={{ textDecoration: 'none', color: 'white'}}>Lawyer SignUp</Link></button>
                     <button className="Navbtn"><Link to="/UserSignUp" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></button>
-                   
+                    <button className="Navbtn"><Link to="/" style={{ textDecoration: 'none', color: 'white'}}>Sign up home</Link></button>
                 </nav>
 
                 {/* The naming and defining of the route paths */}
                 <Routes>
+                    <Route path="/" element={ <SignUpsHome /> }/>
                     <Route path="/LawyerSignUp" element={ <LawyerSignUp web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
                     <Route path="/UserSignUp" element={ <UserSignUp web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
                     <Route path="*" element={ <PageNotFound /> }/>
