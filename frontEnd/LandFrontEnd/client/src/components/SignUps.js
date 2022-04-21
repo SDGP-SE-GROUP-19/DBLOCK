@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PageNotFound from "./PageNotFound";
 import LawyerSignUp from "./LawyerSignUp";
 import UserSignUp from "./UserSignUp";
-import './AdminNavigator.css';
+import './SignUps.css';
 import { Routes, Route, Link } from 'react-router-dom';
 import SignUpsHome from "./SignUpsHome";
 
@@ -33,16 +33,14 @@ class SignUps extends Component {
         }
 
         return (
-            <div className="AdminNavigator">
-                {/* <h1>{ this.state.loginMessage }</h1> */}
-                {/* The navigation bar that routes through pages on a click of a button */}
-                <nav className="navstyle">
-                    <button className="Navbtn"><Link to="/LawyerSignUp" style={{ textDecoration: 'none', color: 'white'}}>Lawyer SignUp</Link></button>
-                    <button className="Navbtn"><Link to="/UserSignUp" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></button>
-                    <button className="Navbtn"><Link to="/" style={{ textDecoration: 'none', color: 'white'}}>Sign up home</Link></button>
-                </nav>
+            
+                <div className="SignUps">
+                <div>
+                    <button ><Link to="/LawyerSignUp" style={{ textDecoration: 'none', color: 'white'}}>Lawyer SignUp</Link></button>
+                    <button ><Link to="/UserSignUp" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></button>
+                    <button ><Link to="/" style={{ textDecoration: 'none', color: 'white'}}>Sign up home</Link></button>
+                </div>
 
-                {/* The naming and defining of the route paths */}
                 <Routes>
                     <Route path="/" element={ <SignUpsHome /> }/>
                     <Route path="/LawyerSignUp" element={ <LawyerSignUp web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
@@ -50,7 +48,7 @@ class SignUps extends Component {
                     <Route path="*" element={ <PageNotFound /> }/>
                 </Routes>
 
-            </div>
+                </div>
         );
     }
 }
