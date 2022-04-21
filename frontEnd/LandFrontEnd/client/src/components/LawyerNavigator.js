@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LawyerHome from "./LawyerHome";
 import { Routes, Route, Link } from 'react-router-dom';
 import PageNotFound from "./PageNotFound";
+import './LawyerNavigator.css';
 
 class LawyerNavigator extends Component {
 
@@ -20,8 +21,10 @@ class LawyerNavigator extends Component {
     render() {
         return(
             <div>
-                <nav>
-                    <Link to="/">[LawyerHome]</Link>
+                <nav className="LawyerNavigator">
+                    <ul className="nav">
+                        <li className="Navbtn"><Link to="/" className="a" style={{ textDecoration: 'none', color: 'white'}}>LawyerHome</Link></li>
+                    </ul>
                 </nav>
                 <Routes>
                     <Route path="/" element={ <LawyerHome /> }/>
