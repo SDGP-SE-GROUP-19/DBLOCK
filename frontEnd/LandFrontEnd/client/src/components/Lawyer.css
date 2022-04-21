@@ -1,0 +1,55 @@
+.body{
+    background-color: black;
+    background-size: cover;
+}
+
+.content{
+    justify-content: center;
+    align-items: center;
+}
+
+h2{
+    font-size: 60px;
+    color: #FFF;
+    font-weight: 500;
+    padding-top:10%;
+    text-align: center;
+    font-family: 'Poppins';
+}
+
+p{
+    font-weight:300;
+    color: #FFF;
+    text-align: center;
+    padding-bottom:2%;
+    font-size: 20px;
+}
+
+.lawyer{
+    color: #7DF9FF ;
+}
+
+.Notification{
+    color: #FFC000 ;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons button{
+    border-radius: 5%;
+    width: 100px;
+    height:40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border:none;
+    background:white;
+    cursor: pointer;
+    margin:auto;
+    font-size: 17px;
+    color: #00004F;
+    font-family: 'Poppins';
+    text-align: center;
+}
