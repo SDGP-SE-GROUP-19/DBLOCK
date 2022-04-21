@@ -1,0 +1,98 @@
+.DeedHistory{
+    background:url("Images/deedhistory.jpeg");
+    padding: 5px;
+}
+
+.DeedHistory-glass{
+    margin: 5px auto;
+    width: 600px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.DeedHistory-heading{
+    color: white;
+    text-shadow: 4px 4px 5px black;
+    font-weight: bold;
+    float: center;
+    text-align: center;
+    font-size: 45px; 
+}
+
+.DeedHistory-icon{
+    height: 100px;
+    width: 100px; 
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.deedHistory-input{
+    font-size: 20px;
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    margin: 5px;
+    margin-bottom: 10px;
+    background: #bfbfbf;
+    outline: none;
+    border-top-style: none;
+    border-left-style: none;
+    border-bottom-style: 2px solid black;
+}
+
+.deedHistory-form{
+    min-width: 500px;
+    min-height: 300px;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+.deedHistory-container{
+    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deedhistoryalert{
+    color: red;
+}
+
+.deedhistory-submit{
+    text-transform: uppercase;
+    height: 40px;
+    font-size: 15px;
+    color: white;
+    border-radius: 5px;
+    background-color: black;
+    padding: 8px 40px;
+}
+
+.deedhistory-submit:hover{
+    cursor: pointer;
+    background:#e7301c;
+    color: white;
+}
+
+.space-deedsearch{
+    margin: 20px;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.DeedHistoryProcessed{
+    padding: 100px;
+    color: white;
+    font-weight: bold;
+}
+
+.DH{
+    background: url("https://www.ibm.com/blogs/blockchain/wp-content/uploads/2019/12/Retina_Display-758591537-768x432.jpg");
+    padding: 102px;
+}

@@ -1,0 +1,85 @@
+.LawyerSignIn{ 
+    background:url("Images/lawyerSignUp.jpg");
+    padding: 25px;
+  }
+  
+  .LawyerSignIn-glass{
+  margin: 5px auto;
+  width: 600px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border:1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  .LawyerSignIn-heading{
+  color: white;
+  text-shadow: 4px 4px 5px black;
+  font-weight: bold;
+  float: center;
+  text-align: center;
+  font-size: 40px;
+  }
+  
+  .profile{
+  height: 100px;
+  width: 100px; 
+  padding-bottom: 10px;
+  padding-top: 10px; 
+  }
+  
+  .LawyerSignIn-container{
+  width: 100%;
+  /* min-height: 50vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  }
+  
+  .LawyerSignIn-button{
+  width: 120px;
+  height: 40px;
+  font-size: 15px;
+  color: white;
+  border-radius: 10px;
+  border-color:transparent;
+  background-color: black;
+  padding: 10px;
+  margin: 8px;
+  }
+  .LawyerSignIn-button:hover{
+  cursor: pointer;
+  background:#e7301c;
+  color: white;
+  }
+  
+  
+  .LawyerSignIn-input{
+  font-size: 15px;
+  width: 80%;
+  height: 30px;
+  border-radius: 5px;
+  margin: 5px;
+  margin-bottom: 10px;
+  background: #bfbfbf;
+  outline: none;
+  border-top-style: none;
+  border-left-style: none;
+  border-bottom-style: 2px solid black;
+  text-align: center;
+  }
+  
+  .lawyerpw{
+  margin: 20px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  }
+  
+  .LawyerSignIn-label{
+  color: black;
+  }

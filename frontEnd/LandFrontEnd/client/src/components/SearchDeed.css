@@ -1,0 +1,104 @@
+/* Search deed css  */
+.SearchDeed{
+    background:url("Images/searchDeed.jpg");
+    padding: 5px;
+}
+
+.searchDeed-glass{
+    margin: 5px auto;
+    width: 600px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.searchDeed-heading{
+    color: white;
+    text-shadow: 4px 4px 5px black;
+    font-weight: bold;
+    float: center;
+    text-align: center;
+    font-size: 45px;
+}
+
+.searchDeed-icon{
+    height: 100px;
+    width: 100px; 
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.deedIdSearch{
+    padding-top: 25px;
+}
+
+.DeedIdtext{
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+}
+
+.searchDeed-button{
+    width:100px;
+    height:30px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+   
+}
+
+.searchDeed-button:hover{
+    cursor: pointer;
+    background:#e7301c;
+    color: white;
+}
+
+.searchDeed-container{
+    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchDeed-form{
+    min-width: 500px;
+    min-height: 300px;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+.addressnoDS,
+.streetnameDS,
+.cityDS,
+.districtDS,
+.provinceDS,
+.lawyeridDS,
+.selleridDS{
+    margin: 20px;
+    color: black;
+    font-size: 16px;
+    text-align: left;
+}
+
+.searchDeedImage-button{
+    width:100px;
+    height:30px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+   
+}
+
+.searchDeedImage-button:hover{
+    cursor: pointer;
+    background:#e7301c;
+    color: white;
+}
+
+

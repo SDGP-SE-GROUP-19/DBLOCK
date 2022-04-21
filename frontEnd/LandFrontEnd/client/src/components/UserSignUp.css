@@ -1,0 +1,124 @@
+/* user sign up css file */
+.Sign-Up{
+    background:url("Images/userSignUp.jpg");
+    padding: 5px;
+}
+
+.newUser-heading{
+color: white;
+text-shadow: 4px 4px 5px black;
+font-weight: bold;
+float: center;
+text-align: center;
+font-size: 45px;
+}
+
+.newUser-glass{
+margin: 5px auto;
+width: 600px;
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border-radius: 20px;
+border:1px solid rgba(255, 255, 255, 0.18);
+box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.newUser-icon{
+height: 100px;
+width: 100px; 
+padding-bottom: 10px;
+padding-top: 10px; 
+}
+
+.Sellercount{
+color: black;
+font-family:'Tahoma';
+font-weight: bold;
+padding-top: 20px;
+padding-bottom: 20px;
+}
+
+.newUser-container{
+width: 100%;
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+padding-top: 20px;
+padding-bottom: 20px;  
+}
+
+.newUser-form{
+min-width: 350px;
+min-height: 600px;
+padding: 30px;
+box-sizing: border-box;
+border-radius: 30px;
+}
+
+.name,
+.Nic,
+.Age,
+.City,
+.Email,
+.telephone,
+.Password{
+margin: 20px;
+color: black;
+font-size: 16px;
+font-weight: bold;
+}
+
+.newUser-input{
+font-size: 20px;
+width: 100%;
+height: 30px;
+border-radius: 5px;
+margin: 5px;
+margin-bottom: 10px;
+background: #bfbfbf;
+outline: none;
+border-top-style: none;
+border-left-style: none;
+border-bottom-style: 2px solid black;
+}
+
+.newUser-submit{
+text-transform: uppercase;
+height: 40px;
+font-size: 15px;
+color: white;
+border-radius: 5px;
+background-color: black;
+padding: 8px 40px;
+}
+
+.newUser-submit:hover{
+cursor: pointer;
+background:#e7301c;
+color: white;
+}
+
+.clear-button{
+padding-top: 15px;
+}
+
+.newUser-clear{
+text-transform: uppercase;
+height: 40px;
+font-size: 15px;
+color: white;
+border-radius: 5px;
+background-color: black;
+}
+
+.newUser-clear:hover{
+cursor: pointer;
+background:#e7301c;
+color: white;
+}
+
+.USemailalert{
+    color: red;
+}
