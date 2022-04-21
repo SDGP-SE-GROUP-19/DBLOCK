@@ -1,9 +1,9 @@
-.body{
+.LawyerHome-body{
     background-color: black;
     background-size: cover;
 }
 
-.content{
+.LawyerHome-content{
     justify-content: center;
     align-items: center;
 }
@@ -17,7 +17,7 @@ h2{
     font-family: 'Poppins';
 }
 
-p{
+.LawyerHome-lawyer-p{
     font-weight:300;
     color: #FFF;
     text-align: center;
@@ -25,21 +25,21 @@ p{
     font-size: 20px;
 }
 
-.lawyer{
+.LawyerHome-lawyer{
     color: #7DF9FF ;
 }
 
-.Notification{
+.LawyerHome-Notification{
     color: #FFC000 ;
 }
 
-.buttons{
+.LawyerHome-buttons{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.buttons button{
+.LawyerHome-btn{
     border-radius: 5%;
     width: 100px;
     height:40px;
