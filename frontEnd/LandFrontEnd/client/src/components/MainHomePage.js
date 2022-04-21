@@ -6,6 +6,7 @@ import LawyerSignIn from "./LawyerSignIn";
 import UserSignIn from "./UserSignIn";
 import './MainHomePage.css';
 import Key from "./Images/Key.png";
+import SignUps from "./SignUps";
 
 class MainHomePage extends Component {
 
@@ -21,13 +22,15 @@ class MainHomePage extends Component {
 
             navToAdmin: false,
             navToLawyer: false,
-            navToUser: false
+            navToUser: false,
+            navToSignUps: false
         }
 
         // Binding for scope
         this.handleAdminSubmit = this.handleAdminSubmit.bind(this);
         this.handleLawyerSubmit = this.handleLawyerSubmit.bind(this);
         this.handleUserSubmit = this.handleUserSubmit.bind(this);
+        this.handleSignUpsSubmit = this.handleSignUpsSubmit.bind(this);
     }
 
     componentDidMount = async () => {
@@ -71,7 +74,8 @@ class MainHomePage extends Component {
         this.setState({
             navToAdmin: true,
             navToLawyer: false,
-            navToUser: false
+            navToUser: false,
+            navToSignUps: false
         });
     }
 
@@ -84,7 +88,8 @@ class MainHomePage extends Component {
         this.setState({
             navToAdmin: false,
             navToLawyer: true,
-            navToUser: false
+            navToUser: false,
+            navToSignUps: false
         });
     }
 
@@ -97,7 +102,22 @@ class MainHomePage extends Component {
         this.setState({
             navToAdmin: false,
             navToLawyer: false,
-            navToUser: true
+            navToUser: true,
+            navToSignUps: false
+        });
+    }
+
+    async handleSignUpsSubmit(event) {
+        // prevent auto refresh on submit
+        event.preventDefault();
+
+        console.log("Nav => SignUps");
+
+        this.setState({
+            navToAdmin: false,
+            navToLawyer: false,
+            navToUser: false,
+            navToSignUps: true
         });
     }
     
@@ -105,6 +125,7 @@ class MainHomePage extends Component {
         const navToAdminVar = this.state.navToAdmin;
         const navToLawyerVar = this.state.navToLawyer;
         const navToUserVar = this.state.navToUser;
+        const navToSignUpsVar = this.state.navToSignUps;
 
         if (!this.state.web3) {
 
@@ -116,7 +137,7 @@ class MainHomePage extends Component {
             const contractVar = this.state.contract;
             const accountsVar = this.state.accounts;
 
-            if ((navToAdminVar === false) && (navToLawyerVar === false) && (navToUserVar === false))
+            if ((navToAdminVar === false) && (navToLawyerVar === false) && (navToUserVar === false) && (navToSignUpsVar === false))
             {
                 return (
                     <div className="MainHomePage">
@@ -148,23 +169,31 @@ class MainHomePage extends Component {
                                 <input className="mainHomebtn" type="submit" value="User"/>
                             </form>
 
+                            <form onSubmit={ this.handleSignUpsSubmit }>
+                                <input className="mainHomebtn" type="submit" value="Sign Up"/>
+                            </form>
+
                         {/* </form> */}
                         </div>
                         </div>
                     </div>
                 );
             }
-            else if ((navToAdminVar === true) && (navToLawyerVar === false) && (navToUserVar === false))
+            else if ((navToAdminVar === true) && (navToLawyerVar === false) && (navToUserVar === false) && (navToSignUpsVar === false))
             {
                 return (<AdminSignIn web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
             }
-            else if ((navToAdminVar === false) && (navToLawyerVar === true) && (navToUserVar === false))
+            else if ((navToAdminVar === false) && (navToLawyerVar === true) && (navToUserVar === false) && (navToSignUpsVar === false))
             {
                 return (<LawyerSignIn web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
             }
-            else if ((navToAdminVar === false) && (navToLawyerVar === false) && (navToUserVar === true))
+            else if ((navToAdminVar === false) && (navToLawyerVar === false) && (navToUserVar === true) && (navToSignUpsVar === false))
             {
                 return (<UserSignIn web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
+            }
+            else if ((navToAdminVar === false) && (navToLawyerVar === false) && (navToUserVar === false) && (navToSignUpsVar === true))
+            {
+                return (<SignUps web3Prop={ web3Var } contractProp={ contractVar } accountsProp={ accountsVar }/>);
             }
             else
             {
@@ -175,6 +204,7 @@ class MainHomePage extends Component {
                             <li>navToAdminVar - { navToAdminVar }</li>
                             <li>navToLawyerVar - { navToLawyerVar }</li>
                             <li>navToUserVar - { navToUserVar }</li>
+                            <li>navToSignUpsVar - { navToSignUpsVar }</li>
                         </ol>
                     </div>
                 );
