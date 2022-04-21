@@ -6,11 +6,11 @@ class SignUpsHome extends Component {
 
     render() {
         return (
-            <div className="SignUps">
-                    <div className="SignUps-glass">
-                        <div className="SignUps-topic">
-                            <h2 className="SignUps-heading">Sign Ups Page</h2> 
-                            <p className="SignUps-description">Select your sign up option</p> 
+            <div className="SignUpsHome">
+                    <div className="SignUpsHome-glass">
+                        <div className="SignUpsHome-topic">
+                            <h2 className="SignUpsHome-heading">Sign Ups Page</h2> 
+                            <p className="SignUpsHome-description">Select your sign up option</p> 
                         </div>
 
                         <div>

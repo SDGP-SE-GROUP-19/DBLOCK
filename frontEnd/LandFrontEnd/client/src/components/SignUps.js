@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import PageNotFound from "./PageNotFound";
 import LawyerSignUp from "./LawyerSignUp";
 import UserSignUp from "./UserSignUp";
-import './SignUps.css';
-import { Routes, Route, Link } from 'react-router-dom';
 import SignUpsHome from "./SignUpsHome";
-
+import { Routes, Route, Link } from 'react-router-dom';
+import './SignUps.css';
 
 
 class SignUps extends Component {
@@ -35,10 +34,10 @@ class SignUps extends Component {
         return (
             <div>
             <nav className="SignUps">              
-                <ul className="SignUps-nav">
-                    <li className="SignUps-Navbtn"><Link to="/" className="a" style={{ textDecoration: 'none', color: 'white'}}>Sign up home</Link></li>
-                    <li className="SignUps-Navbtn"><Link to="/LawyerSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>Lawyer SignUp</Link></li>
-                    <li className="SignUps-Navbtn"><Link to="/UserSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></li>
+                <ul className="nav">
+                    <li className="Navbtn"><Link to="/" className="a" style={{ textDecoration: 'none', color: 'white'}}>Sign up home</Link></li>
+                    <li className="Navbtn"><Link to="/LawyerSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>Lawyer SignUp</Link></li>
+                    <li className="Navbtn"><Link to="/UserSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></li>
                 </ul>
                 </nav>
 

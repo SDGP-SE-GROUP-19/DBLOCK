@@ -1,9 +1,9 @@
-.SignUps{
+.SignUpsHome{
     background: url("Images/signups.jpg");
-    padding: 240px;
+    padding: 73px;
 }
 
-.SignUps-glass{
+.SignUpsHome-glass{
     margin: 5px auto;
     width: 600px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
@@ -14,7 +14,7 @@
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
     
-.SignUps-heading{
+.SignUpsHome-heading{
     color: white;
     text-shadow: 4px 4px 5px black;
     font-weight: bold;
@@ -23,7 +23,7 @@
     font-size: 40px;
     }
 
-.SignUps-description{
+.SignUpsHome-description{
     color: white;
     font-size: 100%;
 }
@@ -38,4 +38,15 @@
     background-color: rgb(196, 160, 44);
     /* padding: 10px; */
     margin: 8px;
+}
+
+.SignUpsHomeBtn:hover{
+    cursor: pointer;
+    background:#e7301c;
+    font-weight: bold;
+}
+
+.mainHSignUpsHomeBtnome-select{
+    color: white;
+    font-size: 15px;
 }
