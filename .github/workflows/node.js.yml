@@ -21,4 +21,3 @@ jobs:
         node-version: '14'
     - run: cd .\frontEnd\LandFrontEnd\client
     - run: npm install
-    
