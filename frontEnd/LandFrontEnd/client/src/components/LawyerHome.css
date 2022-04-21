@@ -1,55 +1,47 @@
-.LawyerHome-body{
-    background-color: black;
-    background-size: cover;
+.LawyerHome{
+    background: url("Images/lawyerSignUp.jpg");
+    padding: 106px;
 }
 
-.LawyerHome-content{
-    justify-content: center;
-    align-items: center;
-}
-
-h2{
-    font-size: 60px;
-    color: #FFF;
-    font-weight: 500;
-    padding-top:10%;
+.LawyerHome-glass{
+    margin: 5px auto;
+    width: 600px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    
+.LawyerHome-heading{
+    color: white;
+    text-shadow: 4px 4px 5px black;
+    font-weight: bold;
+    float: center;
     text-align: center;
-    font-family: 'Poppins';
-}
+    font-size: 40px;
+    }
 
 .LawyerHome-lawyer-p{
-    font-weight:300;
-    color: #FFF;
-    text-align: center;
-    padding-bottom:2%;
-    font-size: 20px;
-}
-
-.LawyerHome-lawyer{
-    color: #7DF9FF ;
-}
-
-.LawyerHome-Notification{
-    color: #FFC000 ;
-}
-
-.LawyerHome-buttons{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: white;
+    font-size: 100%;
 }
 
 .LawyerHome-btn{
-    border-radius: 5%;
     width: 100px;
-    height:40px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border:none;
-    background:white;
+    height: 50px;
+    font-size: 15px;
+    color: white;
+    border-radius: 10px;
+    border-color:transparent;
+    background-color: rgb(196, 160, 44);
+    /* padding: 10px; */
+    margin: 8px;
+}
+
+.LawyerHome-btn:hover{
     cursor: pointer;
-    margin:auto;
-    font-size: 17px;
-    color: #00004F;
-    font-family: 'Poppins';
-    text-align: center;
+    background:#e7301c;
+    font-weight: bold;
 }

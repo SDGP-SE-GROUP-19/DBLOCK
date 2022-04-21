@@ -6,15 +6,22 @@ class LawyerHome extends Component {
     render() {
         return (
 
-            <div className="LawyerHome-body">
-                <div className="LawyerHome-content">
-                    <h2><span className="LawyerHome-lawyer">Lawyer</span>  <span className="LawyerHome-Notification">Notification</span> Center</h2>
-                    <p className="LawyerHome-lawyer-p"> "Hello, this message is sent you to notify that your land is in transfering process..."</p>
+            <div className="LawyerHome">
+                <div className="LawyerHome-glass">
+                    <div className="LawyerHome-topic">
+                            <h2 className="LawyerHome-heading">Lawyer Home Page</h2> 
+                            <p className="LawyerHome-lawyer-p"> "Hello, this message is sent you to notify that your land is in transfering process..."</p>
+                    </div>
+                    
 
-                    <span className="LawyerHome-buttons">
+                    <div>
+                        <div>
                         <button className="LawyerHome-btn">ACCEPT</button>
+                        </div>
+                        <div>
                         <button className="LawyerHome-btn">DECLINE</button>
-                    </span>
+                        </div>
+                    </div>
                 </div>
 
             </div>
