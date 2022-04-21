@@ -3,7 +3,7 @@ import PageNotFound from "./PageNotFound";
 import UserHome from "./UserHome";
 import DeedHistory from "./DeedHistory";
 import DeedsOfUser from "./DeedsOfUser";
-import './AdminNavigator.css';
+import './UserNavigator.css';
 import { Routes, Route, Link } from 'react-router-dom';
 
 
@@ -35,14 +35,15 @@ class UserNavigator extends Component {
         }
 
         return (
-            <div className="AdminNavigator">
+            <div>
                 {/* <h1>{ this.state.loginMessage }</h1> */}
                 {/* The navigation bar that routes through pages on a click of a button */}
-                <nav className="navstyle">
-                    <button className="Navbtn"><Link to="/" style={{ textDecoration: 'none', color: 'white'}}>Home</Link></button>
-                    <button className="Navbtn"><Link to="/DeedsOfUser" style={{ textDecoration: 'none', color: 'white'}}>Deeds Assigned to User</Link></button>
-                    <button className="Navbtn"><Link to="/DeedHistory" style={{ textDecoration: 'none', color: 'white'}}>Deed History</Link></button>
-                   
+                <nav className="UserNavigator">
+                    <ul className="nav1">
+                    <li className="Navbtn"><Link to="/" className="a" style={{ textDecoration: 'none', color: 'white'}}>Home</Link></li>
+                    <li className="Navbtn"><Link to="/DeedsOfUser" className="a" style={{ textDecoration: 'none', color: 'white'}}>Deeds Assigned to User</Link></li>
+                    <li className="Navbtn"><Link to="/DeedHistory" className="a" style={{ textDecoration: 'none', color: 'white'}}>Deed History</Link></li>
+                    </ul>
                 </nav>
 
                 {/* The naming and defining of the route paths */}
