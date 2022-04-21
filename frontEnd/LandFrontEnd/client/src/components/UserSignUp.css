@@ -62,7 +62,8 @@ border-radius: 30px;
 .Age,
 .City,
 .Email,
-.telephone{
+.telephone,
+.Password{
 margin: 20px;
 color: black;
 font-size: 16px;
