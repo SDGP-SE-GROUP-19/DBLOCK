@@ -65,7 +65,8 @@
   .nicLS,
   .registrationLS,
   .emailLS,
-  .telephoneLS{
+  .telephoneLS,
+  .passwordS{
     margin: 20px;
     color: black;
     text-shadow: 1px 1px 9px white;
