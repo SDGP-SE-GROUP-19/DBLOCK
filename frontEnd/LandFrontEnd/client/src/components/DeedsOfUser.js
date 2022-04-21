@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import LandContract from "../contracts/Land.json";
 import getWeb3 from "../getWeb3";
-import './SearchDeed.css';
+import searchDeedIcon from "./Images/searchdeed.png";
+import './DeedsOfUser.css';
 
 
 class DeedsOfUser extends Component {
@@ -169,18 +170,22 @@ class DeedsOfUser extends Component {
             {
                 return (
 
-                    <div className="SearchDeed">
-                    <div className="Searchuser">
+                    <div className="UserSearchDeed">
+                        <div className="UsersearchDeed-glass">
+                        <div className="UsersearchDeed-topic">
+                            <h2 className="UsersearchDeed-heading">Deed Search</h2>
+                                <img src={searchDeedIcon} alt="Search Deed Icon" className="UsersearchDeed-icon"/>
     
-                        <h2 className="topicDS">User Search</h2>
-                        <form onSubmit={this.handleSubmit}>
+                        
+                        <form className="UserdeedIdSearch" onSubmit={this.handleSubmit}>
     
                             <label className="UserIdtext">User ID:</label>
                             <input type="number" min="0" id="deedid" value={this.state.searchinguserId} onChange={this.handleSearchinguserIdChange.bind(this)} required />
                             <div>
-                                <input type="submit" value="Submit" />
+                                <input type="submit" value="Submit" className="UsersearchDeed-button" />
                             </div>
                         </form>
+                        </div>
     
                     </div>
                     </div>
