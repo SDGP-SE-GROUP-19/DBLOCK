@@ -33,22 +33,23 @@ class SignUps extends Component {
         }
 
         return (
-            
-                <div className="SignUps">
-                <div>
-                    <button ><Link to="/LawyerSignUp" style={{ textDecoration: 'none', color: 'white'}}>Lawyer SignUp</Link></button>
-                    <button ><Link to="/UserSignUp" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></button>
-                    <button ><Link to="/" style={{ textDecoration: 'none', color: 'white'}}>Sign up home</Link></button>
-                </div>
+            <div>
+            <nav className="SignUps">              
+                <ul className="SignUps-nav">
+                    <li className="SignUps-Navbtn"><Link to="/" className="a" style={{ textDecoration: 'none', color: 'white'}}>Sign up home</Link></li>
+                    <li className="SignUps-Navbtn"><Link to="/LawyerSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>Lawyer SignUp</Link></li>
+                    <li className="SignUps-Navbtn"><Link to="/UserSignUp" className="a" style={{ textDecoration: 'none', color: 'white'}}>User Sign up</Link></li>
+                </ul>
+                </nav>
 
+                {/* The naming and defining of the route paths */}
                 <Routes>
                     <Route path="/" element={ <SignUpsHome /> }/>
                     <Route path="/LawyerSignUp" element={ <LawyerSignUp web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
                     <Route path="/UserSignUp" element={ <UserSignUp web3PropFromNav={ web3Var } contractPropFromNav={ contractVar } accountsPropFromNav={ accountsVar }/> }/>
                     <Route path="*" element={ <PageNotFound /> }/>
                 </Routes>
-
-                </div>
+            </div>
         );
     }
 }
